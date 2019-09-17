@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on Thomas Dullien / Halvar Flake</title>
-    <link>https://example.com/about/</link>
+    <link>https://thomasdullien.github.io/about/</link>
     <description>Recent content in Abouts on Thomas Dullien / Halvar Flake</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>thomasdullien@optimyze.cloud (Temple Theme)</managingEditor>
     <webMaster>thomasdullien@optimyze.cloud (Temple Theme)</webMaster>
     <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thomasdullien.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thomas Dullien / Halvar Flake personal website</title>
-      <link>https://example.com/about/about/</link>
+      <link>https://thomasdullien.github.io/about/about/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
       <author>thomasdullien@optimyze.cloud (Temple Theme)</author>
-      <guid>https://example.com/about/about/</guid>
+      <guid>https://thomasdullien.github.io/about/about/</guid>
       <description>I am a trained mathematician who skews heavily toward computer science and programming - perhaps to an extent that I am now more a mathematical computer scientist than a computing mathematician.
 I started reverse engineering software as a teenager, and have always kept a keen interest in all aspects of low-level programming, program analysis,
 My professional work has been centered on computer security. Areas that I have sunk substantial time into are:</description>
