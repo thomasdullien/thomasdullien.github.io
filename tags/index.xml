@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Thomas Dullien / Halvar Flake</title>
@@ -6,10 +6,6 @@
     <description>Recent content in Tags on Thomas Dullien / Halvar Flake</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>thomasdullien@optimyze.cloud (Temple Theme)</managingEditor>
-    <webMaster>thomasdullien@optimyze.cloud (Temple Theme)</webMaster>
-    
-	<atom:link href="https://thomasdullien.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <webMaster>thomasdullien@optimyze.cloud (Temple Theme)</webMaster><atom:link href="https://thomasdullien.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
