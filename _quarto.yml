@@ -12,6 +12,7 @@ website:
   title: "Thomas Dullien / Halvar Flake"
   site-url: "https://thomasdullien.github.io"
   description: "Personal website of Thomas Dullien / Halvar Flake."
+  google-analytics: "G-82ZNC400BC"
   navbar:
     pinned: true
     left:
