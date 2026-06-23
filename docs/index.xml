@@ -10,7 +10,7 @@
 <atom:link href="https://thomasdullien.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Personal website of Thomas Dullien / Halvar Flake.</description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Sun, 14 Jun 2026 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jun 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>RL economics, morally charged terms, and “distillation”</title>
   <dc:creator>Thomas Dullien</dc:creator>
@@ -63,7 +63,7 @@
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2026-06-15-rl-economics-morally-charged-terms-and-distillation/</guid>
-  <pubDate>Sun, 14 Jun 2026 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Slightly safer vibecoding by adopting old hacker habits</title>
@@ -101,7 +101,7 @@
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2026-03-24-slightly-safer-vibecoding-by-adopting-old-hacker-habits/</guid>
-  <pubDate>Mon, 23 Mar 2026 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Ask your LLM for receipts: What I learned teaching Claude C++ crash triage</title>
@@ -145,7 +145,7 @@
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-12-12-ask-your-llm-for-receipts-what-i-learned-teaching-claude-c-crash-triage/</guid>
-  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Understand Neural Nets better, post 5 of N – Code Assistant shootout</title>
@@ -256,7 +256,7 @@ the outputs are the same?</code></pre>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-07-11-understand-neural-nets-better-post-5-of-n-code-assistant-shootout/</guid>
-  <pubDate>Thu, 10 Jul 2025 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 11 Jul 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>A non-anthropomorphized view of LLMs</title>
@@ -327,7 +327,7 @@ the outputs are the same?</code></pre>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-07-06-a-non-anthropomorphized-view-of-llms/</guid>
-  <pubDate>Sat, 05 Jul 2025 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 06 Jul 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Some experiments to help me understand Neural Nets better, post 4 of N</title>
@@ -350,7 +350,7 @@ the outputs are the same?</code></pre>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-05-22-some-experiments-to-help-me-understand-neural-nets-better-post-4-of-n/</guid>
-  <pubDate>Wed, 21 May 2025 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 22 May 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Some experiments to help me understand Neural Nets better, post 3 of N</title>
@@ -395,7 +395,7 @@ the outputs are the same?</code></pre>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-04-10-some-experiments-to-help-me-understand-neural-nets-better-post-3-of-n/</guid>
-  <pubDate>Wed, 09 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Some experiments to help me understand Neural Nets better, post 2 of N</title>
@@ -475,7 +475,7 @@ This gives us a very linear-algebra-ish expression for the entire network:</p>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-04-05-some-experiments-to-help-me-understand-neural-nets-better-post-2-of-n/</guid>
-  <pubDate>Fri, 04 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 05 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The German debt brake is stupid!</title>
@@ -542,7 +542,7 @@ This gives us a very linear-algebra-ish expression for the entire network:</p>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2025-03-02-the-german-debt-brake-is-stupid/</guid>
-  <pubDate>Sat, 01 Mar 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Mar 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What I want for Christmas for the EU startup ecosystem</title>
@@ -582,7 +582,7 @@ This gives us a very linear-algebra-ish expression for the entire network:</p>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2024-12-05-what-i-want-for-christmas-for-the-eu-startup-ecosystem/</guid>
-  <pubDate>Wed, 04 Dec 2024 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 05 Dec 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Someone is wrong on the internet (AGI Doom edition)</title>
@@ -694,7 +694,7 @@ This gives us a very linear-algebra-ish expression for the entire network:</p>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2024-07-10-someone-is-wrong-on-the-internet-agi-doom-edition/</guid>
-  <pubDate>Tue, 09 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 10 Jul 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Some experiments to help me understand Neural Nets better, post 1 of N</title>
@@ -765,7 +765,7 @@ Steps I’ll explain in the near future:</p>
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2024-07-04-some-experiments-to-help-me-understand-neural-nets-better-post-1-of-n/</guid>
-  <pubDate>Wed, 03 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 04 Jul 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The end of my Elastic/optimyze journey …</title>
@@ -813,7 +813,7 @@ My mother died in the morning hours of Jan 1st 2022, a few hours after the firew
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2024-01-31-the-end-of-my-elastic-optimyze-journey/</guid>
-  <pubDate>Tue, 30 Jan 2024 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>A list of factors that act(ed) as drag on the European Tech/Startup scene</title>
@@ -849,7 +849,7 @@ Smaller IPOs also mean that it is comparatively much more attractive to sell to 
 
  ]]></description>
   <guid>https://thomasdullien.github.io/posts/2023-12-11-a-list-of-factors-that-act-ed-as-drag-on-the-european-tech-startup-scene/</guid>
-  <pubDate>Sun, 10 Dec 2023 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 11 Dec 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
