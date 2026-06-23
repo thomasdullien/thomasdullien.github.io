@@ -1,0 +1,17 @@
+---
+title: "Some experiments to help me understand Neural Nets better, post 4 of N"
+date: 2025-05-22
+date-modified: 2025-05-22
+original-url: "https://addxorrol.blogspot.com/2025/05/some-experiments-to-help-me-understand.html"
+blogger-id: "2070522554148020935"
+---
+After the previous blog posts [here](https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html?m=1), [here](https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand.html?m=1), and [here](https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand_10.html?m=1), a friend of mine pointed me to some literature to read, and I will do so now :-).  
+  
+The papers on my reading list are:  
+  
+1. https://proceedings.mlr.press/v80/balestriero18b.html - Randall Balestrieros paper on DNNs as splines.  
+2. https://arxiv.org/abs/1906.00904 - ReLU networks have surprisingly few activation patterns (2019)  
+3. https://arxiv.org/abs/2305.09145 - Deep ReLU networks have surprisingly simple polytopes (2023)  
+4. https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2023.1274831/full  
+  
+I'll blog more once I get around to reading them all.

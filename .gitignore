@@ -1,0 +1,11 @@
+.quarto/
+/.tools/
+/.Rproj.user/
+/.jupyter_cache/
+/.ipynb_checkpoints/
+/.DS_Store
+Thumbs.db
+Halvar’s Guide to Entrepreneurship.pdf
+
+/.quarto/
+**/*.quarto_ipynb

@@ -1,0 +1,165 @@
+---
+title: "Someone is wrong on the internet (AGI Doom edition)"
+date: 2024-07-10
+date-modified: 2024-07-12
+original-url: "https://addxorrol.blogspot.com/2024/07/someone-is-wrong-on-internet-agi-doom.html"
+blogger-id: "5135623300190595019"
+---
+The last few years have seen a wave of hysteria about LLMs becoming conscious and then suddenly attempting to kill humanity. This hysteria, often expressed in scientific-sounding pseudo-bayesian language typical of the „lesswrong“ forums, has seeped into the media and from there into politics, where it has influenced legislation.
+
+This hysteria arises from the claim that there is an existential risk to humanity posed by the sudden emergence of an AGI that then proceeds to wipe out humanity through a rapid series of steps that cannot be prevented.
+
+Much of it is entirely wrong, and I will try to collect my views on the topic in this article - focusing on the „fast takeoff scenario“.
+
+I had encountered strange forms of seemingly irrational views about AI progress before, and I made some critical tweets about the messianic tech-pseudo-religion I dubbed "Kurzweilianism" in [2014](https://twitter.com/halvarflake/status/501498993135071233?s=20), [2016](https://twitter.com/halvarflake/status/783263540228550656?s=20) and [2017](https://twitter.com/halvarflake/status/844281698464534528?s=20) - my objection at the time was that believing in an exponential speed-up of all forms of technological progress looked too much like a traditional messianic religion, e.g. "the end days are coming, if we are good and sacrifice the right things, God will bring us to paradise, if not He will destroy us", dressed in techno-garb. I could never quite understand why people chose to believe Kurzweil, who, in my view, has largely had an [abysmal track record](https://danluu.com/futurist-predictions/) predicting the future.
+
+Apparently, the Kurzweilian ideas have mutated over time, and seem to have taken root in a group of folks associated with a forum called "LessWrong", a more high-brow version of 4chan where mostly young men try to impress each other by their command of mathematical vocabulary (not of actual math). One of the founders of this forum, Eliezer Yudkowsky, has become one of the most outspoken proponents of the hypothesis that "the end is nigh".
+
+I have heard a lot of of secondary reporting about the claims that are advocated, and none of them ever made any sense to me - but I am also a proponent of reading original sources to form an opinion. This blog post is like a blog-post-version of a (nonexistent) YouTube reaction video of me reading original sources and commenting on them.  
+  
+I will begin with the interview published at <https://intelligence.org/2023/03/14/yudkowsky-on-agi-risk-on-the-bankless-podcast/>. 
+
+The proposed sequence of events that would lead to humanity being killed by an AGI is approximately the following:
+
+1.  Assume that humanity manages to build an AGI, which is a computational system that for any decision "outperforms" the best decision of humans. The examples used are all zero-sum games with fixed rule sets (chess etc.).  
+2.  After managing this, humanity sets this AGI to work on improving itself, e.g. writing a better AGI.  
+3.  This is somehow successful and the AGI obtains an "immense technological advantage".
+4.  The AGI also decides that it is in conflict with humanity.
+5.  The AGI then coaxes a bunch of humans to carry out physical actions that enable it to then build something that kills all of humanity, in case of this interview via a "diamondoid bacteria that replicates using carbon, hydrogen, oxygen, nitrogen, and sunlight", that then kills all of humanity.
+
+This is a fun work of fiction, but it is not even science fiction. In the following, a few thoughts:
+
+## Incorrectness and incompleteness of human writing
+
+###  
+
+### Human writing is full of lies that are difficult to disprove theoretically
+
+As a mathematician with an applied bent, I once got drunk with another mathematician, a stack of coins, and a pair of pliers and some tape. The goal of the session was „how can we deform an existing coin as to create a coin with a bias significant enough to measure“. Biased coins are a staple of probability theory exercises, and exist in writing in large quantities (much more than loaded dice).
+
+  
+
+It turns out that it is very complicated and very difficult to modify an existing coin to exhibit even a reliable 0.52:0.48 bias. Modifying the shape needs to be done so aggressively that the resulting object no longer resembles a coin, and gluing two discs of uneven weight together so that they achieve nontrivial bias creates an object that has a very hard time balancing on its edge.
+
+  
+
+An AI model trained on human text will never be able to understand the difficulties in making a biased coin. It needs to be equipped with actual sensing, and it will need to perform actual real experiments. For an AI, a thought experiment and a real experiment are indistinguishable.
+
+  
+
+As a result, any world model that is learnt through the analysis of text is going to be a very poor approximation of reality. 
+
+  
+
+### Practical world-knowledge is rarely put in writing
+
+Pretty much all economies and organisations that are any good at producing something tangible have an (explicit or implicit) system of apprenticeship. The majority of important practical tasks cannot be learnt from a written description. There has never been a chef that became a good chef by reading sufficiently many cookbooks, or a woodworker that became a good woodworker by reading a lot about woodworking.
+
+  
+
+Any skill that affects the real world has a significant amount of real-world trial-and-error involved. And almost all skills that affect the real world involve large quantities of knowledge that has never been written down, but which is nonetheless essential to performing the task.
+
+  
+
+The inaccuracy and incompleteness of written language to describe the world leads to the next point:
+
+  
+
+## No progress without experiments
+
+### No superintelligence can reason itself to progress without doing basic science
+
+One of the most bizarre assumptions in the fast takeoff scenarios is that somehow once a super-intelligence has been achieved, it will be able to create all sorts of novel inventions with fantastic capabilities, simply by reasoning about them abstractly, and without performing any basic science (e.g. real-world experiments that validate hypotheses or check consistency of a theory or simulation with reality).
+
+  
+
+Perhaps this is unsurprising, as few people involved in the LessWrong forums and X-Risk discussions seem to have any experience in manufacturing or actual materials science or even basic woodworking.
+
+  
+
+The reality, though, is that while we have made great strides in areas such as computational fluid dynamics (CFD), crash test simulation etc. in recent decades, obviating the need for many physical experiments in certain areas, reality does not seem to support the thesis that technological innovations are feasible „on paper“ without extensive and painstaking experimental science.
+
+  
+
+Concrete examples:
+
+1.  To this day, CFD simulations of the air resistance that a train is exposed to when hit by wind at an angle need to be experimentally validated - simulations have the tendency to get important details wrong.
+2.  It is safe to assume that the state-supported hackers of the PRCs intelligence services have stolen every last document that was ever put into a computer at all the major chipmakers. Having all this knowledge, and the ability to direct a lot of manpower at analyzing these documents, have not yielded the knowledge necessary to make cutting-edge chips. What is missing is process knowledge, e.g. the details of how to actually make the chips.
+3.  Producing ballpoint pen tips is hard. There are few nations that can reliably produce cheap, high-quality ballpoint pen tips. China famously celebrated in 2017 that they reached that level of manufacturing excellence.
+
+Producing anything real requires a painstaking process of theory/hypothesis formation, experiment design, experiment execution, and slow iterative improvement. Many physical and chemical processes cannot be accelerated artificially. There is a reason why it takes 5-8 weeks or longer to make a wafer of chips.
+
+  
+
+The success of of systems such as AlphaGo depend on the fact that all the rules of the game of Go are fixed in time, and known, and the fact that evaluating the quality of a position is cheap and many different future games can be simulated cheaply and efficiently.
+
+  
+
+None of this is true for reality: 
+
+1.  Simulating reality accurately and cheaply is not a thing. We cannot simulate even simple parts of reality to a high degree of accuracy (think of a water faucet with turbulent flow splashing into a sink). 
+2.  The rules for reality are not known in advance. Humanity has created some good approximations of many rules, but both humanity and a superintelligence still need to create new approximations of the rules by careful experimentation and step-wise refinement.
+3.  The rules for adversarial and competitive games (such as a conflict with humanity) are not stable in time.
+4.  Evaluating any experiment in reality has significant cost, particularly to an AI.
+
+A thought experiment I often use for this is: 
+
+  
+
+Let us assume that scaling is all you need for greater intelligence. If that is the case, Orcas or Sperm Whales are already much more intelligent than the most intelligent human, so perhaps an Orca or a Sperm Whale is already a superintelligence. Now imagine an Orca or Sperm Whale equipped with all written knowledge of humanity and a keyboard with which to email people. How quickly could this Orca or Sperm Whale devise and execute a plot to kill all of humanity?
+
+  
+
+People that focus on fast takeoff scenarios seem to think that humanity has achieved the place it has by virtue of intelligence alone. Personally, I think there are at least three things that came together: Bipedalism with opposable thumbs, an environment where you can have fire, and intelligence.
+
+  
+
+If we lacked any of the three, we would not have built any of our tech. Orcas and Sperm Whales lack thumbs and fire, and you can’t think yourself to world domination.
+
+### 
+
+###  
+
+### Superintelligence will also be bound by fundamental information-theoretic limits
+
+The assumption that superintelligences can somehow simulate reality to arbitrary degrees of precision runs counter to what we know about thermodynamics, computational irreducibility, and information theory.
+
+  
+
+A lot of the narratives seem to assume that a superintelligence will somehow free itself from constraints like „cost of compute“, „cost of storing information“, „cost of acquiring information“ etc. - but if I assume that I assume an omniscient being with infinite calculation powers and deterministically computational physics, I can build a hardcore version of [Maxwells Demon](https://en.m.wikipedia.org/wiki/Maxwell%27s_demon) that incinerates half of the earth by playing extremely clever billards with all atoms in the atmosphere. No diamandoid bacteria (whatever that was supposed to mean) necessary.
+
+  
+
+The reason we cannot build Maxwells Demon, and no perpetuum mobile, is that there is a relationship between information theory and thermodynamics, and nobody, including no superintelligence, will be able to break it.
+
+  
+
+Irrespective of whether you are a believer or an atheist, you cannot accidentally create capital-G God, even if you can build a program that beats all primates on earth at chess. Cue reference to the Landauer principle here.
+
+  
+
+<span style="font-size: 18.719999px; font-weight: 700;">Conflicts (such as an attempt to kill humanity) have no zero-risk moves</span>
+
+  
+
+Traditional wargaming makes extensive use of random numbers - units have a kill probability (usually determined empirically), and using random numbers to model random events is part and parcel for real-world wargaming. This means that a move “not working”, something going horrendously wrong is the norm in any conflict. There are usually no gainful zero-risk moves; e.g. every move you make does open an opportunity for the opponent.
+
+  
+
+I find it somewhat baffling that in all the X-risk scenarios, the superintelligence somehow finds a sequence of zero-risk or near-zero risk moves that somehow yield the desired outcome, without humanity finding even a shred of evidence before it happens.
+
+  
+
+A more realistic scenario (if we take the far-fetched and unrealistic idea of an actual synthetic superintelligence that decides on causing humans harm for granted) involves that AI making moves that incur risk to the AI based on highly uncertain data. A conflict would therefore not be brief, and have multiple interaction points between humanity and the superintelligence.
+
+###  
+
+### Next-token prediction cannot handle Kuhnian paradigm shifts
+
+Some folks have argued that next-token prediction will lead to superintelligence. I do not buy it, largely because it is unclear to me how predicting the next token would deal with Kuhnian paradigm shifts. Science proceeds in fits and bursts; and usually you stay within a creaky paradigm until there is a „scientific revolution“ of sorts. The scientific revolution necessarily changes the way that language is produced — e.g. a corpus of all of human writing prior to a scientific revolution is not a good representation of the language used after a scientific revolution - but the LLM will be trained to mimic the distribution of the training corpus. People point to in-context learning and argue that LLMs can incorporate new knowledge, but I am not convinced of that yet - the fact that all current models fail at generating a sequence of words that - when cut into 2-tuples - occur rarely or never in the training corpus shows that ICL is extremely limited in the way that it can adjust the distribution of LLM outputs.
+
+###  
+
+### Enough for today. Touch some grass, build some stuff
+
+In theory, theory equals practice. In practice it doesn't. Stepping out of the theoretical realm of software (where generations of EE and chip engineers sacrificed their lives to give software engineers an environment where theory is close to practice most of the time) into real-world things that involve dust, sun, radiation, and equipment chatter is a sobering experience that we should all do more often. It's easy to devolve into scholasticism if you're not building anything.

@@ -1,0 +1,13 @@
+---
+title: "Writing"
+listing:
+  contents: "*/index.qmd"
+  type: default
+  sort: "date desc"
+  categories: true
+  feed: true
+---
+
+Some of my writing, a lot of it imported from my blog at addxorrol.blogspot.com - topics
+range from technical, mathematical, political to the very personal. Enjoy.
+

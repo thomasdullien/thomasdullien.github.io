@@ -1,0 +1,24 @@
+---
+title: "Thomas Dullien / Halvar Flake"
+page-layout: full
+listing:
+  contents: "posts/*/index.qmd"
+  type: default
+  sort: "date desc"
+  max-items: 14
+  feed: true
+---
+
+::: {.home-intro}
+I am a mathematician and computer scientist working across low-level systems,
+computer security, reverse engineering, program analysis, and computational
+efficiency.
+
+This site is maintained as a Quarto project, so future writing can include
+mathematics, executable code, citations, and browser-native interactive
+visualizations.
+:::
+
+## Recent writing
+
+The full imported archive is available under [Writing](posts/index.qmd).

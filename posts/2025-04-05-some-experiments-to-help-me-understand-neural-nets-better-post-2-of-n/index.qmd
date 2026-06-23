@@ -1,0 +1,109 @@
+---
+title: "Some experiments to help me understand Neural Nets better, post 2 of N"
+date: 2025-04-05
+date-modified: 2025-05-22
+original-url: "https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand.html"
+blogger-id: "557003261358331167"
+---
+In this post, I will explain my current thinking about neural networks. In a [previous post](https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html) I explained the intuition behind my "origami view of NNs" (also called the "polytope lens" in some circles). In this post, I will go a little bit into the mathematical details of this.  
+  
+The standard textbook explanation of a layer of a neural network looks something like this: 
+
+\\ \sigma( \overline{W}x + b )\\
+
+where \\\sigma : \mathbb{R} \to \mathbb{R}\\ is a nonlinearity (either the sigmoid or the ReLU or something like it), \\\overline{W}\\ is the matrix of weights attached to the edges coming into the neurons, and \\b\\ is the vector of "biases". Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as "matrix multiplications alternating with applying a nonlinearity".
+
+  
+
+I really don't like to think about NNs with nonlinearities other than ReLU and leaky ReLU - perhaps over time I will have to accept that these are a thing, but for now all NNs that I think about are either ReLU or leaky ReLU. For the moment, we also assume that the network outputs a real vector in the end, so it is not (yet) a classifier.
+
+  
+
+Assume we have a network with \\k\\ layers, and the number of neurons in each layer are \\n\_1, \dots, n\_k\\. The network maps between real vector spaces (or an approximation thereof) of dimension \\i\\ and \\o\\.
+
+\\  
+    NN : \mathbb{R}^i \to \mathbb{R}^o  
+\\  
+I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector \\\overline{x}\\ gets augmented by appending a 1, and the bias vector \\b\\ gets appended to \\\overline{W}\\:  
+\\  
+    W' = \[\overline{W}b\], x = \left\[\begin{array}{c}\overline{x}\\1\end{array}\right\]  
+\\  
+
+Instead of \\\sigma(\overline{W}x + b)\\ we can write \\\sigma(W'x)\\.  
+In our case, \\\sigma\\ is always ReLU or leaky ReLU, so a "1" will be mapped to a "1" again. For reasons of being able to compose things nicely later, I would also like the output of \\\sigma(W'x)\\ to have a 1 as last component, like our input vector \\x\\. To achieve this, I need to append a row of all zeroes terminated in a 1 to \\W'\\. Finally we have:
+
+\\  
+    W = \left\[\begin{array}{cc}\overline{W}& b\\0, \dots & 1\end{array}\right\], x = \left\[\begin{array}{c}\overline{x}\\1\end{array}\right\]  
+\\
+
+The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point \\x\_1\\. If you evaluate the NN on \\x\_1\\, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given \\x\_1\\, there will be \\k\\ boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either \\0\\ or \\1\\ in the ReLU case, or \\0.01\\ and \\1\\ in the leaky ReLU case.
+
+  
+We call this function \\a\\. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:
+
+\\  
+    a\_{l, n} : \mathbb{R}^i \to \\ 0, 1 \\ \textnormal{ for ReLU }  
+\\  
+and
+
+\\  
+    a\_{l, n} : \mathbb{R}^i \to \\ 0.01, 1 \\ \textnormal{ for leaky ReLU }  
+\\  
+This gives us a very linear-algebra-ish expression for the entire network:
+
+\\  
+    NN(x) = W\_1 A\_1 \dots W\_k A\_k x = \prod\_{i=0}^k (W\_i A\_i)x  
+\\  
+
+Where the \\A\_k\\ are of the form
+
+\\  
+    A\_k = \left( \begin{array}{cccc} a\_{k, 1}(x) & \dots & 0 & 0\\ \dots & \dots & \dots & \dots \\ 0 & \dots & a\_{k, n\_k}(x) & 0\\ 0 & 0 & 0 & 1\end{array}\right)  
+\\  
+
+So we can see now very clearly that the moment that the activation pattern is determined, the entire function becomes linear, and just a series of matrix multiplications where every 2nd matrix is a diagonal matrix with the image of the activation pattern on the diagonal.  
+  
+This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a "polytope identifier" -- for any input point \\x\\ I can run it through the network, and if a second point \\x'\\ has the same pattern, I know it lives on the same polytope.  
+  
+So from this I can take the sort of movies for single-layer NNs that were created in [part 1](https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html) - where we can take an arbitrary 2-dimensional image as the unknown distribution that we wish to learn and then visualize the training dynamics: Show how the input space is cut up into different polytopes on which the function is then linearly approximated, and show how this partition and approximation evolves through the training process for differently-shaped networks.  
+  
+We take input images of size 1024x1024, so one megabyte of byte-sized values, and sample 5000 data points from them - a small fraction, about 0.4% of the overall points in the image. We specify a shape for the MLP, and train it for 6000 steps, visualizing progress.  
+  
+For simplicity, we try to learn a black ring on white ground, with sharply-delineated edges - first with a network that has 14 neurons per layer, and is 6 layers deep.   
+  
+On the left-hand side, we see the evaluated NN with the boundaries of the polytopes that it has generated to split the input space. In the center, we only see the output of the NN - what the NN has "learnt" to reproduce so far. And on the right hand side we see the original image, with the tiny, barely perceptible red dots the 5000 training points, and the blue dots a validation set of 1000 points.   
+  
+Here is a movie of the dynamics of the training run:  
+  
+
+::: {.video-embed}
+```{=html}
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/-qJatoCWZGE" width="483" youtube-src-id="-qJatoCWZGE"></iframe>
+```
+:::
+
+This is pretty neat, how about a differently-shaped NN? What happens if we force the NN through a 2-neuron bottleneck during the training process?  
+
+::: {.video-embed}
+```{=html}
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/Gv8Onf_c5vs" width="485" youtube-src-id="Gv8Onf_c5vs"></iframe>
+```
+:::
+
+This last network has 10 layers of 10 neurons, then one layer of 2 neurons, then another 3 layers of 10 neurons. By number of parameters it is vaguely comparable to the other network, but it exhibits noticeably different training dynamics.  
+  
+What happens if we dramatically overparametrize a network? Will it overfit our underlying data, and find a way to carve up the input space to reduce the error on the training set without reproducing a circle?  
+  
+Let's try - how about a network with 20 neurons, 40 layers deep? That should use something like 20k floating point parameters in order to learn 5000 data points, so perhaps it will overfit?  
+
+::: {.video-embed}
+```{=html}
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/K_l__mu2r3M" width="471" youtube-src-id="K_l__mu2r3M"></iframe>
+```
+:::
+
+Turns out this example doesn't, but it offers particularly rich dynamics as we watch it: Around epoch 1000 we can see how the network seems to have the general shape of the circle figured out, and most polytope boundaries seem to migrate to this circle. The network wobbles a bit but seems to make headway. By epoch 2000 we think we have seen it all, and the network will just consolidate around the circle. Between epoch 3000 and 4000 something breaks, loss skyrockets, and it seems like the network is disintegrating and training is diverging. By epoch 4000 it has re-stabilized, but in a very different configuration for the input space partition. This video ends around epoch 5500.  
+  
+This is quite fascinating. There is no sign of overfitting, but we can see how the as the network gets deeper, training gets less stable: The circle seems to wobble much more, and we have these strange catastrophic-seeming phase changes after which the network has to re-stabilize. It also appears as if the network accurately captures the "circle" shape in spite of having only relatively few data points and more than enough capacity to overfit on them.  
+  
+I will keep digging into this whenever time permits, I hope this was entertaining and/or informative. My next quest will be building a tool that - for a given point in input space - extracts a system of linear inequations that describe the polytope that this point lives on. Please do not hesitate to reach out if you ever wish to discuss any of this!

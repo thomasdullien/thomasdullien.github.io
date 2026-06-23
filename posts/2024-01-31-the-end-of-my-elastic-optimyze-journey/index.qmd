@@ -1,0 +1,52 @@
+---
+title: "The end of my Elastic/optimyze journey ..."
+date: 2024-01-31
+date-modified: 2024-01-31
+original-url: "https://addxorrol.blogspot.com/2024/01/the-end-of-my-elasticoptimyze-journey_31.html"
+blogger-id: "663897056216180437"
+---
+Hey all,
+
+== tl;dr ==
+
+Today is my last day at Elastic. I'll take an extended break and focus on rest, family, health, writing, a bit of startup mentoring/investing, and some research - at least for a while.
+
+I'm thankful for my great colleagues and my leadership at Elastic - y'all are stellar, even if I was often grumbly about some technical or architectural issues. I'll also miss the ex-optimyze team a lot; you were the best team anyone doing technically sophisticated work could wish for - great individuals, but in sum greater than the parts. I think the future for the tech we built is bright, particularly in light of the recent Otel events :)
+
+========
+
+Extended Version:
+
+Today is my last day at Elastic, and with that, the last day of my journey with optimyze. I am leaving with a heavy heart, and complicated emotions. The 5 years of optimyze (3 years optimyze, 2 years optimyze-integration-into-Elastic) were intense - moderately intense on the work front, but extremely intense on the life front. Fate somehow managed to cram a lot of the ups and downs of midlife into a very small number of years.
+
+A timeline:
+
+1.  I left Google on the 31st of December 2018, and started optimyze.cloud in February 2019. I was highly motivated by the idea of building a company that aligns my ecological, economic, and technical interests. I visited the RSA conference in SF in spring 2019 to network and get people interested in our "cut-of-savings" consulting approach. I met Corey Quinn for coffee, and to this day much appreciate all the sage advice he had (even if I had to ignore some and learn the hard lesson myself).
+2.  In May 2019, I was elated to (finally!) become a father for the first time.
+3.  During 2019, my co-founder Sean and me mostly spent our time trying to get our "cut-of-savings" consulting business of the ground, only to be thwarted by the unfortunate combination that (a) companies nimble enough to do it were too small to make it worth it, and (b) companies big enough to make it worth it couldn't figure out how to make the contract work from a legal and accounting perspective.  
+    We did a few small gigs with friendly startups, and realized in late summer that a zero-instrumentation, multi-runtime, fleet-wide profiler was sorely missing as a product. We also realized that with BOLT making progress, there'd be real value in being a SaaS that sits on profiling data from different verticals. Hence the vision for optimyze.cloud as a product company was born.
+4.  By late 2019, we had a prototype for unwinding C/C++ stacks using .eh\_frame, and Python code, both from eBPF. We knew we could be really zero-friction in deployment, which made us very happy and excited.
+5.  We decided to raise funding, and did so over the winter months - with the funding wire transfer finally hitting our (Silicon Valley Bank) account some time in early 2020. We started building, and hiring what would turn out the best team I've ever worked on.
+6.  We had a working UI and product by late fall 2020, and the first in-prod deployments around the same time. One particular part of the stack was too slow (a particular query that we knew we'd need to move to a distributed K/V store, but hadn't done yet), and we spent the next few months rebuilding that part of the stack to use Scylla.
+7.  We made some very bad calls on the investor relations front, I foolishly stumbled into a premature, fumbled, and retrospectively idiotic fundraise, into the middle of which my second child was born and the first acquisition offers came in.
+8.  We launched Prodfiler in August 2021, to great acclaim and success. People loved the product, they loved the frictionless deployment, they loved the fact that all their stack traces were symbolized out of the box etc. - the product experience was great.
+9.  In mid-October, we were acquired by Elastic with the closing date November 1st. My mother had a hip surgery from which complications arose, which led to her being transferred into an ICU.  
+    The day the deal closed, my mother fell into a coma, and she would never wake up again. I spent the next weeks shuttling back and forth between Zurich (where my wife and my two kids were) and Essen, Germany, to spend time bedside in the ICU.  
+    My mother died in the morning hours of Jan 1st 2022, a few hours after the fireworks.
+10. My elderly father needed a lot of help dealing with the aftermath; at the same time the transition into the Elastic tech stack was technically challenging to pull off.
+11. In Summer 2022, my father stumbled after a small leg surgery, fell, and hit his head; after some complications in the German medical system, it became clear that the injury had induced dementia. We transferred him to a specialist hospital in Berlin and ultimately to a care home close to my brother's family. Since then, I've been shuttling back and forth to see him often.
+12. After two years of hard work at Elastic, we finally managed to launch our product again in fall 2023.
+
+So the entire thing was 5 years, in which I had two children, started a company, hired the best team I've known, launched a product I was (and am) immensely proud of, then lost my mother, most of my father ... and "reluctantly let go" of the company and product.
+
+The sheer forces at play when you cram so much momentum into such a short time-frame will strain everybody; and they will strain everybody's support system. I'm extremely grateful for my entire support system, in particular my brother. I don't know how I would've fared without him, but I hope my kids will have as good a relationship with each other as I do with my brother.
+
+I'm also grateful to the folks at Elastic and the optimyze team, who were extremely supportive and understanding as I was dealing with complications outside of work.
+
+I'm proud that we managed to build, I am also proud that we managed to port it to the Elastic stack and re-launch it. Even after more than 2 years focused on porting the back-end, our profiler remains ahead of the competition. I'm optimistic about what Elastic and the team can build on top of our technology, in particular with OTel profiling moving toward reality.
+
+At the same time, I am pretty spent. My productivity is nowhere near where I expect it to be (it never is - I have difficulty accepting that I am a finite human - but the gap is bigger than usual), and this leads to me having difficulty switching off: When I feel like I am not getting the things I want to get done done, my brain wants to compensate by working more - which is rarely the right step.
+
+So, with a heavy heart, I decided that I will take an extended break. It's been intense, and emotional, and I need some time to rest and recover, and accompany my father on his last few steps into the darkness (or light?). 2019 and 2020 were among the happiest years of my life, the last chunk of 2021 and most of 2022 the most difficult parts of my life. 2023 was trending up, and I expect things to continue trending up for the foreseeable future.
+
+I have planned to do a bit of writing (I think having done two companies, one bootstrapped and one with VC money, gives me a few things I'd like to pass on), perhaps a bit of angel investing or VC scouting, perhaps a bit of consulting where things of particular interest arise - but mostly, I intend to stretch, breathe, be there for my kids, and get a clear view of the horizon.

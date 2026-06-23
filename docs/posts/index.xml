@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Thomas Dullien / Halvar Flake</title>
+<link>https://thomasdullien.github.io/posts/</link>
+<atom:link href="https://thomasdullien.github.io/posts/index.xml" rel="self" type="application/rss+xml"/>
+<description>Personal website of Thomas Dullien / Halvar Flake.</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Sun, 14 Jun 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>RL economics, morally charged terms, and “distillation”</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2026-06-15-rl-economics-morally-charged-terms-and-distillation/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After a number of Twitter discussions, and repeating myself a lot in these discussions, it is time to write a short note on the economics of advancing LLM capabilities through RL, about principles of propaganda and coining new words, and about my stubborn refusal to use the term “distillation” except in a specific narrow sense.</p>
+<section id="how-do-models-advance-when-human-curated-data-has-run-out" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-models-advance-when-human-curated-data-has-run-out">How do models advance when human-curated data has run out?</h3>
+<p>It’s been a while since we ran out of human data to train LLMs on. We are training on copies of the internet, large piles of (originally pirated, then purchased-and-scanned-and-wholesale ingested) books, and whatever other data sources we can obtain. This leads to a certain performance plateau, as we haven’t quite figured out how to make the models more data-efficient in training.</p>
+<p>The advancements we have seen in coding and mathematics in the last year are mostly due to reinforcement learning. At the highest level, you pose a problem to an LLM that the LLM has a small but nontrivial chance of solving. You then run N copies of the LLM to generate solutions, and you get a small number of solutions and many failures. You can then use the successful solutions as new data to improve your model - moving the weights in a way that helps the model succeed with greater probability.</p>
+<p>This is very elegant in a way, because you are kinda pulling yourself up by your own bootstraps. The cost is computational - if you have a 1% chance of finding a solution given your current LLM and current training data, you need to do 100s or 1000s of rollouts to get a reasonable variety of useful solutions.</p>
+<p>Once you have a model that can generate a good solution for this problem with high probability, and you make that model available to others, you also provide a much cheaper way of producing the better training data: Third parties can now just ask your model to generate good solutions for them.</p>
+<p>So for the second-mover that gets to use your model, improving their model from your model outputs is cheaper, as they can skip the more-or-less-random-search into a high-dimensional solution space and be guided better.</p>
+<p>This is a fundamental part of the “closed LLM as a service” business, and it is painful for the leader of the pack because they need to spend money to advance, and others can catch up more cheaply.</p>
+</section>
+<section id="terms-of-service-copyright-law-crimes-vs.-contract-disputes" class="level3">
+<h3 class="anchored" data-anchor-id="terms-of-service-copyright-law-crimes-vs.-contract-disputes">Terms of service, copyright law, crimes vs.&nbsp;contract disputes</h3>
+<p>Copyright law imposes concrete ownership rights on copyrighted material. Pirating material and commercially exploiting it is often a crime.</p>
+<p>The frontier labs have all argued that training on public data does not require them to obtain licenses from the copyright holders (a self-serving and somewhat dubious claim). The Llama release further muddied the waters by adding a license to the redistribution of model weights - by law, the output of an algorithm itself (such as model weights) are not a copyrightable object, and Meta just pretended they were. Other model labs followed suit, in the hope of establishing a practical precedent that can then be used to shape legislation in the future.</p>
+<p>But a priori, model weights are not copyrightable.</p>
+<p>There is an argument, though, that prompts, and the resulting output from the model are <strong>copyrightable to the person submitting the prompts.</strong>&nbsp;Certainly not to the model provider: Running an algorithm on somebody else’s copyrightable work without human input does not make you the owner of the work. There is no human creativity input, which is the minimum threshold for establishing copyright in our current legal system.</p>
+<p><strong>Model providers have no rights to the output of their models</strong> if they provide access to these models to third parties.</p>
+<p>What rights do model providers have? They have the right to set terms-of-service for their service - e.g.&nbsp;if you don’t use the tool in a way we like, we revoke access to the tool.</p>
+<p>Terms-of-service are very different from copyright law - they are essentially private law contracts about the exchange of services between entities. So if a model provider says “you may not use this service to generate training data for your competing LLM”, they can say so, and they have the right to terminate your account if they catch you doing so.</p>
+<p>That said - let’s say I was to run a benchmarking service that tests the progress of LLMs against my favorite programming problems, and all I do is (a) run rollouts against these services (b) score the results (c) archive the results (d) sell access to the results to third parties so they can evaluate progress of models and the quality of their reasoning and (e) publish the positive results after a few months for free.</p>
+<p>This is not a violation of the terms of service – I am just measuring the capabilities of the models and have them solve problems for me. Publishing the data isn’t a violation of the terms of service either.</p>
+<p>Yet - by me publishing the positive results into the greater internet makes them part of the training corpus, <strong>so the improvement in capability that the model provider achieves will flow into other models</strong>. There is no way around this in our current legal system.</p>
+</section>
+<section id="reframing-an-inconvenient-issue-with-your-business-model-in-moral-terms" class="level3">
+<h3 class="anchored" data-anchor-id="reframing-an-inconvenient-issue-with-your-business-model-in-moral-terms">Reframing an inconvenient issue with your business model in moral terms</h3>
+<p>Imagine you’ve raised billions of dollars and you realize that your business model has a rather inconvenient flaw - you have a good business, but for it to become a fantastic business, you’d need to fix this flaw. And the flaw, as you perceive it, is the current legal system for intellectual property with it’s old and well-tested precedents and mechanisms.</p>
+<p>It will be easy to convince yourself that the flaw in your business model that gives your competitors a way to catch up with lesser investment is a moral outrage - it is so unjust! - and then complain about the fact that others have the right to do what they are doing.</p>
+<p>Once you’ve convinced yourself of the immorality of what your competition is doing (how dare they compress your margins?), you will need to somehow re-frame what they are doing in moral terms. So “training on solved problems to improve” doesn’t quite have the right ring to it. We need something malicious, like “distillation attacks”.</p>
+<p>“Distillation” is great, because it evokes bootlegging and 1920s prohibition-era intrigue. And “attack” is great because only bad people attack. So you leverage the fact that people called a technique to teach a smaller model from a larger model <strong>provided you have access to the internals of the larger model</strong>&nbsp;“distillation”, you tack on the word “attack” to make it sound more nefarious, and you start screaming from the rooftops that evil distillation attackers are killing your morally superior business (that started by actual copyright violations, only justified ex-post by your success).</p>
+<p>This is what happened here, and I urge every reader to not go along with it. <strong>Distillation means having access to a large model, including all the last-layer token probabilities, and training a smaller model by taking those internal last-layer probabilities into account</strong>.</p>
+<p>Just training on model output isn’t it. And you cannot have a world where people use LLMs to write code or text, and are allowed to publish that on the internet, and simultaneously prevent up-leveling other models as they train on that data. <strong>You have no legal or moral legs to stand on if you want to prevent that</strong>.</p>
+<p>If the chinese models are distilled, so is the Cursor fine-tune of Kimi, or any model that is trained on the output of other models - and most of human output is now model-assisted.</p>
+<p>You are free to argue that this is inconvenient for your business model, and a legal framework which allows you to prevent that would be useful in attracting more investment to advance your model, but that’s about it.</p>
+</section>
+<section id="this-is-why-i-dont-call-training-on-other-models-output-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="this-is-why-i-dont-call-training-on-other-models-output-distillation">This is why I don’t call training on other models output “distillation”</h3>
+<p>Let’s call it “training on model output”, or whatever else that is not morally charged. And let’s be honest that the existence of LLMs in their current form is the result of highly dubious approaches to copyright that are ex-post legitimized by the actual value these models bring to society. Let’s please avoid allowing parties with particular financial interest build a moral framing around their interests, though.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2026-06-15-rl-economics-morally-charged-terms-and-distillation/</guid>
+  <pubDate>Sun, 14 Jun 2026 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Slightly safer vibecoding by adopting old hacker habits</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2026-03-24-slightly-safer-vibecoding-by-adopting-old-hacker-habits/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I have seen a lot of public discussion around supply-chain attacks on the Python ecosystem, prompt injection risks when using coding agents, and general worries about the security implications of “vibe coding” for the development machine.</p>
+<p>In some of these discussions I find myself puzzled as to what problem is being solved - and it took me a while to realize that my failure to understand lies in the development setup that I tend to use.</p>
+<p>In this blog post I’ll quickly explain my development setup.</p>
+<p>The setup is pretty simple:</p>
+<ol type="1">
+<li>The actual development happens on a rented server (or a VM on that server).<br>
+</li>
+<li>In order to do development, I SSH into that server with key-forwarding for my github keys enabled.<br>
+</li>
+<li>I perform my development on the server by attaching to a screen or tmux session.<br>
+</li>
+<li>I used to just use vim with various extensions, but with the advent of coding agents I also use claude code etc. nowadays.</li>
+<li>I avoid keeping secrets inside the development VM or on the development server.<br>
+</li>
+<li>I let the agent churn away on problems for extended periods of time while I am detached from the tmux/screen.</li>
+</ol>
+<p>A setup like this reduces a large number of supply-chain attacks to - at worst - compromise the development VM.</p>
+<p>There is still a significant risk of the github key forwarding being abused to compromise the upstream main repository.</p>
+<p>The way around this is a bit cumbersome, but not much different from what many open-source projects already do: You keep a main repository, and you *fork* a development repository from it. Then you do all your development on the dev repository, and when you’re done in your development branch, you issue a cross-repository pull request.</p>
+<p>Obviously, a human needs to go through that PR with a fine comb - but this is something you want to do for insider risk etc. anyhow, so your risk profile changes only marginally.</p>
+<p>In a setup like this, the main secret that you’ll lose in a supply chain attack are your Claude credentials. And you don’t need to worry about prompt injection into your coding agent too much, and can just focus on writing code.</p>
+<p>Interestingly, the development model of “SSH into a machine and attach to a screen session” was popularized by the hacker subculture (as in “computer break-in” subculture) since historically it was never a good idea to have data on machines you physically own. SSH’ing into a random machine in a different country that law enforcement couldn’t easily get access to was a reasonable way of keeping your hands clean. I mainly switched to that development model because I almost always need long-running compute and was travelling a lot, and with agent-first development the model is seeing a bit of a resurgence.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2026-03-24-slightly-safer-vibecoding-by-adopting-old-hacker-habits/</guid>
+  <pubDate>Mon, 23 Mar 2026 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Ask your LLM for receipts: What I learned teaching Claude C++ crash triage</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-12-12-ask-your-llm-for-receipts-what-i-learned-teaching-claude-c-crash-triage/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I recently embarked on a small toy project/experiment: How well can I equip Claude Code to automatically analyze and triage crashes in a C++ code base?</p>
+<p>For the experimentation, I worked on a small number of crashes in the ffmpeg bug tracker. The initial results were very discouraging, Claude hallucinated all sorts of implausible root causes and tended to write typical “AI slop” – things that follow the form of a well-written report, but that had no bearing on reality.</p>
+<p>I iterated for a few days, but ultimately I got things to work reasonably well, at least to the point where I was happy with the result.</p>
+<p>The result of this little diversion are a bunch of .md files (subagents and skills) that I contributed to <a href="https://github.com/gadievron/raptor" class="uri">https://github.com/gadievron/raptor</a> - specifically the following parts:</p>
+<p><a href="goog_336902655">https://github.com/gadievron/raptor/blob/main/.claude/agents/crash-analysis-agent.md</a></p>
+<p><a href="goog_336902655">https://github.com/gadievron/raptor/blob/main/.claude/agents/coverage-analysis-generator-agent.md</a></p>
+<p><a href="goog_336902655">https://github.com/gadievron/raptor/blob/main/.claude/agents/function-trace-generator-agent.md</a></p>
+<p><a href="goog_336902655">https://github.com/gadievron/raptor/blob/main/.claude/agents/crash-analyzer-agent.md<br>
+</a></p>
+<p><a href="https://github.com/gadievron/raptor/blob/main/.claude/agents/crash-analyzer-checker-agent.md" class="uri">https://github.com/gadievron/raptor/blob/main/.claude/agents/crash-analyzer-checker-agent.md</a></p>
+<p>and the skills under&nbsp;<a href="https://github.com/gadievron/raptor/tree/main/.claude/skills/crash-analysis" class="uri">https://github.com/gadievron/raptor/tree/main/.claude/skills/crash-analysis</a></p>
+<p>The task itself is not necessarily a natural fit for an LLM: I find that LLMs tend to perform better in situations where their results can be immediately verified. This is not the case here - crash triage fundamentally includes a component of “narrative building”, and it is not super clear how to validate such a narrative.</p>
+<p>There are a few things that I took from my experience in using Claude Code for C++ development in the last year which I applied:</p>
+<ul>
+<li>Since LLMs only perceive the world through text, but their context is a scarce resource, it makes sense to provide them with effective ways of gathering extra data without wasting too much context.</li>
+<li>LLMs will hallucinate arbitrary things but tend to course-correct if their context includes too much data that is obviously in contradiction with their current trajectory.</li>
+</ul>
+<p>In my C++ development, I learnt to provide the LLMs with copious amount of conditionally-compiled logging, and ways of running granular tests, so gathering information about what is happening without totally swamping the context window was possible.</p>
+<p>Anyhow, what does the crash-analysis-agent end up doing?</p>
+<ol type="1">
+<li>It gathers a lot of stuff that provides text-level data about what is going on in the program that crashes: A function-level execution trace, gcov data, an ASAN build, and an rr recording that allows deterministic replay of a particular crashing execution.</li>
+<li>It launches a subagent to then formulate a hypothesis of what is going on. This subagent is instructed to “provide receipts” for each step in the reasoning: Show the precise place where the pointer that ultimately leads to the crashing deref is allocated, show all the modifications, both in the source code <strong>and</strong>&nbsp;in the rr trace. Show all modifications to it, including the pointer values pre/post modification in the rr trace.</li>
+<li>This hypothesis document is then validated by a separate subagent that is instructed to carefully vet each of the steps in the first document, and reject the file if any evidence is missing. On rejection, a rebuttal is written. This rebuttal is then passed to the previous agent again, until a report is generated that the validator accepts.</li>
+<li>The final output is a report that includes specific breakpoints, pointer values, pointer modifications etc. that can be manually verified by a human by stepping through the provided rr trace.</li>
+</ol>
+<p>In some sense, this is “LLM as a judge”, but it appears to me that the usual problem (“generating LLM is convincing enough that the judge LLM waves everything through”) is side-stepped by making the judging LLM focus on the formal correctness of the individual steps.</p>
+<p>I didn’t think much of this, but when I presented this to an audience during the last week, some of the feedback I got was that the technique of “ask the LLM for detailed receipts &amp; have a second LLM validate the receipts” was not necessarily widely known.</p>
+<p>So here we are. If you have a task that is perhaps not verifiable on it’s final output, but involves verifiable substeps, you can greatly boost performance by providing the LLM with tools/skills to “provide receipts” for the substeps - the final output might still be wrong, but it is so with a much decreased probability.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-12-12-ask-your-llm-for-receipts-what-i-learned-teaching-claude-c-crash-triage/</guid>
+  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Understand Neural Nets better, post 5 of N – Code Assistant shootout</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-07-11-understand-neural-nets-better-post-5-of-n-code-assistant-shootout/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In a series of previous blogposts [<a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html?m=1">1</a>, <a href="https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand.html?m=1">2</a>,&nbsp;<a href="https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand_10.html?m=1">3</a>, <a href="https://addxorrol.blogspot.com/2025/05/some-experiments-to-help-me-understand.html?m=1">4</a>] I ran some experiments drawing the boundaries of the polytopes generated by a fully-connected leaky ReLU network while it was getting trained on reproducing an input image.</p>
+<p>As I tried to scale the experiments to larger networks, I noticed a dramatic slowdown in the code, caused by the calculation of a hash of the activation pattern happening on CPU – so each training step would be fast, but then everything would grind to a halt for the visualisation, and for each pixel the code would forward-evaluate the NN (all in all 1024*1024 times), and whenever the prediction was calculated, it’d transfer the activation pattern to CPU and then perform the hashing. This was very slow, and very non-parallel.</p>
+<p>I had contemplated writing some custom CUDA code to speed things up - there’s no reason to store the activation pattern or transfer it, the “right” way to solve the problem is computing a hash on the fly, ideally a hash with a commutative update function so the order in which the different ReLU neurons update the hash doesn’t matter.</p>
+<p>Then again, this is a hobby project, and I don’t have the time to do anything overly smart for the moment. So I decided to - before doing anything sophisticated - I’ll see if I can have one of the two existing coding assistant that I use regularly solve the problem for me.</p>
+<p>So I created two different directories, checked out the same base repo into both, created branches in both, and then queried both Gemini CLI and Claude Code perform the task, using the following prompt:</p>
+<blockquote class="blockquote">
+<pre><code>The Python script in this directory trains a fully connected leaky ReLU network on an input image and tries 
+to reproduce it. It also draws pictures illustrating the boundaries of the polytopes generated by the creases
+that the ReLU creates in input space. Unfortunately, the code to generate the polytope visualisation is slow,
+because it involves 1024*1024 evaluations of the NN forward, and then it needs to hash the activation pattern
+into a hash to uniquely identify what polytope the pixel resides on.
+
+I would like to speed up this computation, by - instead of calculating a hash of the activation pattern at the 
+end - somehow embedding the calculation of a hash into the forward pass on-GPU. This might be doable with 
+PyTorch hooks, but I don't know precisely. 
+
+What I do know is that if I run 
+```
+python3 ./draw-poly-while-training.py  --input ./centered_ring.png --shape [100]*20 --epochs 30 --seed 12345678 --points 5050 --save-interval 10
+``` 
+
+the output looks something like this: 
+```
+(...)
+Input size (MB): 0.01
+Forward/backward pass size (MB): 16.39
+Params size (MB): 0.77
+Estimated Total Size (MB): 17.17
+==========================================================================================
+2025-07-08 15:15:25,811 - polytope_nn - INFO - Epoch 1/2000000 - Train Loss: 3.315190, Val Loss: 0.329414
+2025-07-08 15:15:25,857 - polytope_nn - INFO - Epoch 2/2000000 - Train Loss: 1.045730, Val Loss: 0.065818
+2025-07-08 15:15:25,901 - polytope_nn - INFO - Epoch 3/2000000 - Train Loss: 1.414065, Val Loss: 0.488735
+2025-07-08 15:15:25,948 - polytope_nn - INFO - Epoch 4/2000000 - Train Loss: 0.201550, Val Loss: 0.102159
+2025-07-08 15:15:26,100 - polytope_nn - INFO - Epoch 5/2000000 - Train Loss: 0.198983, Val Loss: 0.050712
+2025-07-08 15:15:26,145 - polytope_nn - INFO - Epoch 6/2000000 - Train Loss: 0.255710, Val Loss: 0.060731
+2025-07-08 15:15:26,189 - polytope_nn - INFO - Epoch 7/2000000 - Train Loss: 0.122960, Val Loss: 0.091274
+2025-07-08 15:15:26,232 - polytope_nn - INFO - Epoch 8/2000000 - Train Loss: 0.180629, Val Loss: 0.053913
+2025-07-08 15:15:26,276 - polytope_nn - INFO - Epoch 9/2000000 - Train Loss: 0.826762, Val Loss: 0.156673
+2025-07-08 15:15:26,320 - polytope_nn - INFO - Epoch 10/2000000 - Train Loss: 0.211313, Val Loss: 0.117810
+2025-07-08 15:16:27,853 - polytope_nn - INFO - Visualization @ epoch 10: 61.53s
+2025-07-08 15:16:27,899 - polytope_nn - INFO - Epoch 11/2000000 - Train Loss: 0.174978, Val Loss: 0.053103
+2025-07-08 15:16:27,943 - polytope_nn - INFO - Epoch 12/2000000 - Train Loss: 0.332561, Val Loss: 0.095801
+2025-07-08 15:16:27,987 - polytope_nn - INFO - Epoch 13/2000000 - Train Loss: 0.192859, Val Loss: 0.064341
+2025-07-08 15:16:28,031 - polytope_nn - INFO - Epoch 14/2000000 - Train Loss: 0.115424, Val Loss: 0.051763
+2025-07-08 15:16:28,076 - polytope_nn - INFO - Epoch 15/2000000 - Train Loss: 0.362009, Val Loss: 0.128609
+2025-07-08 15:16:28,122 - polytope_nn - INFO - Epoch 16/2000000 - Train Loss: 0.117143, Val Loss: 0.058641
+2025-07-08 15:16:28,165 - polytope_nn - INFO - Epoch 17/2000000 - Train Loss: 0.335812, Val Loss: 0.082517
+2025-07-08 15:16:28,211 - polytope_nn - INFO - Epoch 18/2000000 - Train Loss: 0.079342, Val Loss: 0.060753
+2025-07-08 15:16:28,257 - polytope_nn - INFO - Epoch 19/2000000 - Train Loss: 0.104123, Val Loss: 0.047914
+2025-07-08 15:16:28,304 - polytope_nn - INFO - Epoch 20/2000000 - Train Loss: 0.097466, Val Loss: 0.050452
+2025-07-08 15:17:31,553 - polytope_nn - INFO - Visualization @ epoch 20: 63.25s
+```
+
+From this we can see that a single visualisation step takes more than a minute for a network of this size, and 
+profiling shows that most of this time is spent in hashing things on the CPU, not the GPU.
+I would like you to find a way to do the calculation of the hash during the forward pass on the GPU, ideally 
+without storing the activation vector in memory, and instead having a hash function that can be updated
+commutatively so each ReLU unit can update the final hash while it calculates the forward pass.
+
+I want you to:
+
+1) Create a plausible plan for improving and speeding up the code.
+2) Implement that plan.
+3) Re-run the script with the specified command line, and observe if a speedup indeed took place -- e.g. check
+that (a) the visualisation was sped up and (b) the sum of 10 training steps and the visualisation together was
+sped up.
+
+It is frightfully easy to speed up the visualisation step but slow down the training steps so much that 10
+training steps and 1 visualisation step get *slower*.
+
+Please also verify that the image output is the same between the pre-change and post-change version, to ensure
+that the changes do not break anything.</code></pre>
+</blockquote>
+<p>I then allowed both models to churn for a while. Both models provided changes, but Gemini failed to actually verify that the results are the same. Claude one-shotted the problem; Gemini needed the following additional prompt:</p>
+<blockquote class="blockquote">
+<pre><code>I have run your example code, and checked the output. The output images are not identical between the
+pre-change and post-change version, and even the training loss changed. FWIW, none of the polytopes
+are visible in your version. Could you re-check your work, and this time make sure you check whether
+the outputs are the same?</code></pre>
+</blockquote>
+<p>With that extra prodding / prompting, the solution provided by the model worked flawlessly, and was even a tiny bit faster than the Claude version.</p>
+<p>Let’s look at the code that both models generated: The <a href="https://github.com/thomasdullien/Polytope-viz-nn/compare/main...gemini-forward-hook">Gemini branch</a> and the <a href="https://github.com/thomasdullien/Polytope-viz-nn/compare/main...claude-forward-hook">Claude branch</a>. Reading the changes, a few things become clear:</p>
+<ol type="1">
+<li>Gemini shot itself in the foot on the RNG by generating a bunch of random hash coefficients, and that messed up the state of the RNG, so the training runs were no longer comparable pre/post change.</li>
+<li>Gemini is using torch.matmul for the hash computation, whereas Claude is computing the hash as torch.sum( A * B ).</li>
+<li>Claude has broken up the code in more smaller functions, whereas Gemini didn’t. Claude’s code is mildly more readable, Gemini’s is the more minimal change.</li>
+</ol>
+<p>Interesting stuff. Neither solution is quite what I had in mind, but they are good enough for the moment, and provide a pretty significant speedup over the (also vibe-coded) stuff that I started out with. This is the first time for me that a coding assistant helped me optimize code in a nontrivial manner, and that’s … certainly something.</p>
+<p>Anyhow, with these optimizations I can now run my data visualisation movie generation on slightly larger NNs with millions of parameters, so more studying ahead. I now need to figure out how to upload YouTube videos programmatically, but in the meantime, here is a video of training a 100-neuron, 10 layer deep network on the “circle drawing” task from my previous posts. Vibe coding randomly changed the color of my lines, but hey, that’s ok.</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="172" src="https://www.youtube.com/embed/ZPO9swx3ngA" width="460" youtube-src-id="ZPO9swx3ngA"></iframe>
+</div>
+<p>As per usual, there are more questions than answers in this video. The thing that puzzles me most is the relative “instability” of the training in later epochs. This is visible in “flickers” where seemingly randomly the SGD step hits on a vastly higher loss, with parts of the screen turning black and loss spiking, and then the training needs to recover. Interestingly, the geometry of the polytopes doesn’t change a lot in these situations, but the linear function on many of them changes at once, in a way that is very detrimental to overall performance. Once programmatic uploading works, I’ll upload many more videos, because one of the intriguing observations I have is the following:</p>
+<p>When training diverges (for larger and deeper nets), the divergence starts by first messing up the linear functions, and only after they are gloriously messed up, the geometry of the polytopes starts to go haywire, too.</p>
+<p>Until then!</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-07-11-understand-neural-nets-better-post-5-of-n-code-assistant-shootout/</guid>
+  <pubDate>Thu, 10 Jul 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>A non-anthropomorphized view of LLMs</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-07-06-a-non-anthropomorphized-view-of-llms/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In many discussions where questions of “alignment” or “AI safety” crop up, I am baffled by seriously intelligent people imbuing almost magical human-like powers to something that - in my mind - is just MatMul with interspersed nonlinearities.</p>
+<p>In one of these discussions, somebody correctly called me out on the simplistic nature of this argument - “a brain is just some proteins and currents”. I felt like I should explain my argument a bit more, because it feels less simplistic to me:</p>
+<section id="the-space-of-words" class="level3">
+<h3 class="anchored" data-anchor-id="the-space-of-words">The space of words</h3>
+<p>The tokenization and embedding step maps individual words (or tokens) to some \^n\ vectors. So let us imagine for a second that we have \^n\ in front of us. A piece of text is then a path through this space - going from word to word to word, tracing a (possibly convoluted) line.</p>
+<p>Imagine now that you label each of the “words” that form the path with a number: The last word with 1, counting forward until you hit the first word or the maximum context length \c\. If you’ve ever played the game “Snake”, picture something similar, but played in very high-dimensional space - you’re moving forward through space with the tail getting truncated off.</p>
+<p>The LLM takes your previous path into account, calculates probabilities for the next point to go to, and then makes a random pick into the next point according to these probabilities. An LLM instantiated with a fixed random seed is a mapping of the form \(<sup>n)</sup>c (<sup>n)</sup>c\.</p>
+<p>In my mind, the paths generated by these mappings look a lot like <a href="https://en.m.wikipedia.org/wiki/Attractor">strange attractors</a> in dynamical systems - complicated, convoluted paths that are structured-ish.</p>
+</section>
+<section id="learning-the-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="learning-the-mapping">Learning the mapping</h3>
+<p>We obtain this mapping by training it to mimic human text. For this, we use approximately all human writing we can obtain, plus corpora written by human experts on a particular topic, plus some automatically generated pieces of text in domains where we can automatically generate and validate them.</p>
+</section>
+<section id="paths-to-avoid" class="level3">
+<h3 class="anchored" data-anchor-id="paths-to-avoid">Paths to avoid</h3>
+<p>There are certain language sequences we wish to avoid - because the sequences these models generate try to mimic human speech in all it’s empirical structure, but we feel that some of the things that humans have empirically written are very undesirable to be generated. We also feel that a variety of other paths should ideally not be generated, if - when interpreted by either humans or other computer systems - undesirable results arise.</p>
+<p>We can’t specify strictly in a mathematical sense which paths we would prefer not to generate, but we can provide examples and counterexamples, and we try to hence nudge the complicated learnt distribution away from them.</p>
+</section>
+<section id="alignment-for-llms" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-for-llms">“Alignment” for LLMs</h3>
+<p>Alignment and safety for LLMs mean that <strong>we should be able to quantify and bound the probability with which certain undesirable sequences are generated.</strong>&nbsp;The trouble is that we largely fail at describing “undesirable” except by example, which makes calculating bounds difficult.</p>
+<p>For a given LLM (without random seed) and sequence, it is trivial to calculate the probability of the sequence to be generated. So if we had a way of somehow summing or integrating over these probabilities, we could say with certainty “this model will generate an undesirable sequence once every N model evaluations”. We can’t, currently, and that sucks, but at the heart, this is the mathematical and computational problem we’d need to solve.</p>
+</section>
+<section id="the-surprising-utility-of-llms" class="level3">
+<h3 class="anchored" data-anchor-id="the-surprising-utility-of-llms">The surprising utility of LLMs</h3>
+<p>LLMs solve a large number of problems that could previously not be solved algorithmically. NLP (as the field was a few years ago) has largely been solved.</p>
+<p>I can write a request in plain English to summarize a document for me and put some key datapoints from the document in a structured JSON format, and modern models will just do that. I can ask a model to generate a children’s book story involving raceboats and generate illustrations, and the model will generate something that is passable. And much more, all of which would have seemed like absolute science fiction 5-6 years ago.</p>
+<p>We’re on a pretty steep improvement curve, so I expect the number of currently-intractable problems that these models can solve to keep increasing for a while.</p>
+</section>
+<section id="where-anthropomorphization-loses-me" class="level3">
+<h3 class="anchored" data-anchor-id="where-anthropomorphization-loses-me">Where&nbsp;anthropomorphization loses me</h3>
+<p>The moment that people ascribe properties such as “consciousness” or “ethics” or “values” or “morals” to these learnt mappings is where I tend to get lost. We are speaking about a big recurrence equation that produces a new word, and that stops producing words if we don’t crank the shaft.</p>
+<p>To me, wondering if this contraption will “wake up” is similarly bewildering as if I was to ask a computational meteorologist if he isn’t afraid of his meteorological numerical calculation will “wake up”.</p>
+<p>I am baffled that the AI discussions seem to never move away from treating a function to generate sequences of words as something that resembles a human. Statements such as “an AI agent could become an insider threat so it needs monitoring” are simultaneously unsurprising (you have a randomized sequence generator fed into your shell, literally <strong>anything</strong>&nbsp;can happen!) and baffling (you talk as if you believe the dice you play with had a mind of their own and could decide to conspire against you).</p>
+<p>Instead of saying “we cannot ensure that no harmful sequences will be generated by our function, partially because we don’t know how to specify and enumerate harmful sequences”, we talk about “behaviors”, “ethical constraints”, and “harmful actions in pursuit of their goals”. All of these are anthropocentric concepts that - in my mind - do not apply to functions or other mathematical objects. And using them muddles the discussion, and our thinking about what we’re doing when we create, analyze, deploy and monitor LLMs.</p>
+<p>This muddles the public discussion. We have many historical examples of humanity ascribing bad random events to “the wrath of god(s)” (earthquakes, famines, etc.), “evil spirits” and so forth. The fact that intelligent highly educated researchers talk about these mathematical objects in anthropomorphic terms makes the technology seem mysterious, scary, and magical.</p>
+<p>We should think in terms of “this is a function to generate sequences” and “by providing prefixes we can steer the sequence generation around in the space of words and change the probabilities for output sequences”. And for every possible undesirable output sequence of a length smaller than \c\, we can pick a context that maximizes the probability of this undesirable output sequence.</p>
+<p>A much clearer formulation, which helps more clearly articulate the problems to solve.</p>
+</section>
+<section id="why-many-ai-luminaries-tend-to-anthropomorphize" class="level3">
+<h3 class="anchored" data-anchor-id="why-many-ai-luminaries-tend-to-anthropomorphize">Why many AI luminaries tend to anthropomorphize</h3>
+<p>Perhaps I am fighting windmills, or rather a self-selection bias: A fair number of current AI luminaries have self-selected by their belief that they might be the ones getting to AGI - “creating a god” so to speak, the creation of something like life, as good as or better than humans. You are more likely to choose this career path if you believe that it is feasible, and that current approaches might get you there. Possibly I am asking people to “please let go of the belief that you based your life around” when I am asking for an end to anthropomorphization of LLMs, which won’t fly.</p>
+</section>
+<section id="why-i-think-human-consciousness-isnt-comparable-to-an-llm" class="level3">
+<h3 class="anchored" data-anchor-id="why-i-think-human-consciousness-isnt-comparable-to-an-llm">Why I think human consciousness isn’t comparable to an LLM</h3>
+<p>The following is uncomfortably philosophical, but: In my worldview, humans are dramatically different things than a function \(<sup>n)</sup>c (<sup>n)</sup>c\. For hundreds of millions of years, nature generated new versions, and only a small number of these versions survived. Human thought is a poorly-understood process, involving enormously many neurons, extremely high-bandwidth input, an extremely complicated cocktail of hormones, constant monitoring of energy levels, and millions of years of harsh selection pressure.</p>
+<p>We understand essentially nothing about it. In contrast to an LLM, given a human and a sequence of words, I cannot begin putting a probability on “will this human generate this sequence”.&nbsp;</p>
+<p>To repeat myself: To me, considering that any human concept such as ethics, will to survive, or fear, apply to an LLM appears similarly strange as if we were discussing the feelings of a numerical meteorology simulation.</p>
+</section>
+<section id="the-real-issues" class="level3">
+<h3 class="anchored" data-anchor-id="the-real-issues">The real issues</h3>
+<p>The function class represented by modern LLMs are very useful. Even if we never get anywhere close to AGI and just deploy the current state of technology everywhere where it might be useful, we will get a dramatically different world. LLMs might end up being similarly impactful as electrification.</p>
+<p>My grandfather lived from 1904 to 1981, a period which encompassed moving from gas lamps to electric, the replacement of horse carriages by cars, nuclear power, transistors, all the way to computers. It also spanned two world wars, the rise of Communism and Stalinism, almost the entire lifetime of the USSR and GDR etc. The world on his birth looked nothing like the world when he died.</p>
+<p>Navigating the dramatic changes of the next few decades while trying to avoid world wars and murderous ideologies is difficult enough without muddying our thinking.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-07-06-a-non-anthropomorphized-view-of-llms/</guid>
+  <pubDate>Sat, 05 Jul 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Some experiments to help me understand Neural Nets better, post 4 of N</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-05-22-some-experiments-to-help-me-understand-neural-nets-better-post-4-of-n/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>After the previous blog posts <a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html?m=1">here</a>, <a href="https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand.html?m=1">here</a>, and <a href="https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand_10.html?m=1">here</a>, a friend of mine pointed me to some literature to read, and I will do so now :-).</p>
+<p>The papers on my reading list are:</p>
+<p>1.&nbsp;https://proceedings.mlr.press/v80/balestriero18b.html - Randall Balestrieros paper on DNNs as splines.<br>
+2.&nbsp;https://arxiv.org/abs/1906.00904 - ReLU networks have surprisingly few activation patterns (2019)<br>
+3.&nbsp;https://arxiv.org/abs/2305.09145 - Deep ReLU networks have surprisingly simple polytopes (2023)<br>
+4.&nbsp;https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2023.1274831/full</p>
+<p>I’ll blog more once I get around to reading them all.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-05-22-some-experiments-to-help-me-understand-neural-nets-better-post-4-of-n/</guid>
+  <pubDate>Wed, 21 May 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Some experiments to help me understand Neural Nets better, post 3 of N</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-04-10-some-experiments-to-help-me-understand-neural-nets-better-post-3-of-n/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>What is this? After my first post on the topic, 9 months elapsed before I posted again, and now I am posting within days of the last post?</p>
+<p>Anyhow, <a href="https://addxorrol.blogspot.com/2025/04/some-experiments-to-help-me-understand.html">after my last</a>&nbsp;post I could not resist and started running some experiments trying to see whether I could induce “overfitting” in the neural networks I had been training - trying to get a heavily overparametrized neural network to just “memorize” the training points so it generalizes poorly.</p>
+<p>In the experiments I ran in previous posts, one of the key advantages is that I know the “true distribution” from which we are drawing our training data – the input image. An overfit network would hence find ways to color the points in the training data correctly, but somehow not do so by drawing a black ring on white background (so it would be correct on the training data but fail to generalize).</p>
+<p>So the experiment I kicked off was the following: Start with a network that has many times more parameters than we have training points: Since we start with 5000 training points, I picked 30 layers of 30 neurons for a total parameter count of approximately 27000 parameters. If von Neumann said he can draw an elephant with 4 parameters and make it wriggle it’s trunk with 5, he’d certainly manage to fit 5000 training points with 27000 parameters?</p>
+<p>Anyhow, to my great surprise, there was no hint of overfitting:</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/lnOXO-gW2U0" width="475" youtube-src-id="lnOXO-gW2U0"></iframe>
+</div>
+<p>The network very clearly learns to draw a circle instead of fitting individual points. That is somewhat surprising, but perhaps this is just an artifact of our training points being relatively “dense” in the space, 5000 training points out of 1024*1024 is still 0.4%, that’s a good chunk of the total space.</p>
+<p>As a next step, I trained the same network, but with ever-reduced quantities of training data: 2500 points, 1250 points, 625 points, and 312 points. Surely training on 312 data points using 27000 parameters should generate clear signs of overfitting?</p>
+<p>At 2500 points, while there is a noticeable slowdown in the training process, the underlying concept seems to be learnt just fine:</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/1GQSuSbbo7c" width="449" youtube-src-id="1GQSuSbbo7c"></iframe>
+</div>
+<p>As we drop much lower, to 625 points, we can see how the network is struggling much more to learn the concept, but … it still seems to have a strong bias toward creating a geometric shape resembling the ring instead of overfitting on individual points?</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/9obja9k-3v0" width="436" youtube-src-id="9obja9k-3v0"></iframe>
+</div>
+<p>It appears that the learning process is slowed down - by epoch 6000 the network hasn’t managed to reproduce the entire circle yet - and training seems to be less stable - but it looks as if the network is moving into the right direction. What happens if we halve the training points once more?</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/o0ETVQYmjnk" width="414" youtube-src-id="o0ETVQYmjnk"></iframe>
+</div>
+<p>It’s a bit of a mystery - I would have expected that by now we’re clearly in a regime where the network should try fit individual points, we gave it just 0.02% of the points in the space. The network is clearly struggling to learn, and by epoch 6000 it is far from “ready” – but it’s certainly working towards a ring shape.</p>
+<p>These experiments raise a number of questions for me:</p>
+<ol type="1">
+<li>It seems clear to me that the networks have some form of baked-in tendency to form contiguous areas - perhaps even a geometric shape - and the data needs to become very very sparse in order for true overfitting to occur. It’s really unclear to me why we see the emergence of shapes here – it would certainly be easy for the network to just pick the 312 polytopes in which the training points reside, and their immediate neighbors, and then have a steep linear function with big parameters to color just the individual dots black. But that’s not what is happening here; there’s some mechanism or process that leads to the emergence of a shape.</li>
+</ol>
+<p>2. It almost seems like there is a trade-off – if you have less data, you need to train longer, perhaps much longer. But it’s really not clear to me that we will not arrive at comparatively good approximations even with 312 data points.</p>
+<p>As a next step, I am re-running these experiments with 20000 epochs instead of 6000, to see if the network trained on very sparse training data catches up with the networks that have more data over time.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-04-10-some-experiments-to-help-me-understand-neural-nets-better-post-3-of-n/</guid>
+  <pubDate>Wed, 09 Apr 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Some experiments to help me understand Neural Nets better, post 2 of N</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-04-05-some-experiments-to-help-me-understand-neural-nets-better-post-2-of-n/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In this post, I will explain my current thinking about neural networks. In a <a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html">previous post</a> I explained the intuition behind my “origami view of NNs” (also called the “polytope lens” in some circles). In this post, I will go a little bit into the mathematical details of this.</p>
+<p>The standard textbook explanation of a layer of a neural network looks something like this:&nbsp;</p>
+<p>\ ( x + b )\</p>
+<p>where \: \ is a nonlinearity (either the sigmoid or the ReLU or something like it), \\ is the matrix of weights attached to the edges coming into the neurons, and \b\ is the vector of “biases”. Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as “matrix multiplications alternating with applying a nonlinearity”.</p>
+<p>I really don’t like to think about NNs with nonlinearities other than ReLU and leaky ReLU - perhaps over time I will have to accept that these are a thing, but for now all NNs that I think about are either ReLU or leaky ReLU. For the moment, we also assume that the network outputs a real vector in the end, so it is not (yet) a classifier.</p>
+<p>Assume we have a network with \k\ layers, and the number of neurons in each layer are \n_1, , n_k\. The network maps between real vector spaces (or an approximation thereof) of dimension \i\ and \o\.</p>
+\<br>
+&nbsp; &nbsp; NN : ^i ^o<br>
+\<br>
+I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector \\ gets augmented by appending a 1, and the bias vector \b\ gets appended to \\:<br>
+\<br>
+&nbsp; &nbsp; W’ = [b], x = [
+<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Barray%7D%7Bc%7D%5Coverline%7Bx%7D%5C%5C1%5Cend%7Barray%7D%5Cright%5C%5D">
+<p>\</p>
+<p>Instead of \(x + b)\ we can write \(W’x)\.<br>
+In our case, \\ is always ReLU or leaky ReLU, so a “1” will be mapped to a “1” again. For reasons of being able to compose things nicely later, I would also like the output of \(W’x)\ to have a 1 as last component, like our input vector \x\. To achieve this, I need to append a row of all zeroes terminated in a 1 to \W’\. Finally we have:</p>
+\<br>
+&nbsp; &nbsp; W = [
+<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Barray%7D%7Bcc%7D%5Coverline%7BW%7D&amp;%20b%5C%5C0,%20%5Cdots%20&amp;%201%5Cend%7Barray%7D">
+], x = [
+<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Barray%7D%7Bc%7D%5Coverline%7Bx%7D%5C%5C1%5Cend%7Barray%7D%5Cright%5C%5D">
+<p>\</p>
+<p>The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point \x_1\. If you evaluate the NN on \x_1\, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given \x_1\, there will be \k\ boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either \0\ or \1\ in the ReLU case, or \0.01\ and \1\ in the leaky ReLU case.</p>
+<p>We call this function \a\. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:</p>
+<p>\<br>
+&nbsp; &nbsp; a_{l, n} : ^i \ 0, 1 \ <br>
+\<br>
+and</p>
+<p>\<br>
+&nbsp; &nbsp; a_{l, n} : ^i \ 0.01, 1 \ <br>
+\<br>
+This gives us a very linear-algebra-ish expression for the entire network:</p>
+<p>\<br>
+&nbsp; &nbsp; NN(x) = W_1 A_1 W_k A_k x = _{i=0}^k (W_i A_i)x<br>
+\</p>
+<p>Where the \A_k\ are of the form</p>
+\<br>
+&nbsp; &nbsp; A_k = (
+<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Barray%7D%7Bcccc%7D%20a%5C_%7Bk,%201%7D(x)%20&amp;%20%5Cdots%20&amp;%200%20&amp;%200%5C%5C%20%5Cdots%20&amp;%20%5Cdots%20&amp;%20%5Cdots%20&amp;%20%5Cdots%20%5C%5C%200%20&amp;%20%5Cdots%20&amp;%20a%5C_%7Bk,%20n%5C_k%7D(x)%20&amp;%200%5C%5C%200%20&amp;%200%20&amp;%200%20&amp;%201%5Cend%7Barray%7D">
+<p>)<br>
+\</p>
+<p>So we can see now very clearly that the moment that the activation pattern is determined, the entire function becomes linear, and just a series of matrix multiplications where every 2nd matrix is a diagonal matrix with the image of the activation pattern on the diagonal.</p>
+<p>This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a “polytope identifier” – for any input point \x\ I can run it through the network, and if a second point \x’\ has the same pattern, I know it lives on the same polytope.</p>
+<p>So from this I can take the sort of movies for single-layer NNs that were created in <a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html">part 1</a>&nbsp;- where we can take an arbitrary 2-dimensional image as the unknown distribution that we wish to learn and then visualize the training dynamics:&nbsp;Show how the input space is cut up into different polytopes on which the function is then linearly approximated, and show how this partition and approximation evolves through the training process for differently-shaped networks.</p>
+<p>We take input images of size 1024x1024, so one megabyte of byte-sized values, and sample 5000 data points from them - a small fraction, about 0.4% of the overall points in the image. We specify a shape for the MLP, and train it for 6000 steps, visualizing progress.</p>
+<p>For simplicity, we try to learn a black ring on white ground, with sharply-delineated edges - first with a network that has 14 neurons per layer, and is 6 layers deep.&nbsp;</p>
+<p>On the left-hand side, we see the evaluated NN with the boundaries of the polytopes that it has generated to split the input space. In the center, we only see the output of the NN - what the NN has “learnt” to reproduce so far. And on the right hand side we see the original image, with the tiny, barely perceptible red dots the 5000 training points, and the blue dots a validation set of 1000 points.&nbsp;</p>
+<p>Here is a movie of the dynamics of the training run:</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/-qJatoCWZGE" width="483" youtube-src-id="-qJatoCWZGE"></iframe>
+</div>
+<p>This is pretty neat, how about a differently-shaped NN? What happens if we force the NN through a 2-neuron bottleneck during the training process?</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/Gv8Onf_c5vs" width="485" youtube-src-id="Gv8Onf_c5vs"></iframe>
+</div>
+<p>This last network has 10 layers of 10 neurons, then one layer of 2 neurons, then another 3 layers of 10 neurons. By number of parameters it is vaguely comparable to the other network, but it exhibits noticeably different training dynamics.</p>
+<p>What happens if we dramatically overparametrize a network? Will it overfit our underlying data, and find a way to carve up the input space to reduce the error on the training set without reproducing a circle?</p>
+<p>Let’s try - how about a network with 20 neurons, 40 layers deep? That should use something like 20k floating point parameters in order to learn 5000 data points, so perhaps it will overfit?</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/K_l__mu2r3M" width="471" youtube-src-id="K_l__mu2r3M"></iframe>
+</div>
+<p>Turns out this example doesn’t, but it offers particularly rich dynamics as we watch it: Around epoch 1000 we can see how the network seems to have the general shape of the circle figured out, and most polytope boundaries seem to migrate to this circle. The network wobbles a bit but seems to make headway. By epoch 2000 we think we have seen it all, and the network will just consolidate around the circle. Between epoch 3000 and 4000 something breaks, loss skyrockets, and it seems like the network is disintegrating and training is diverging. By epoch 4000 it has re-stabilized, but in a very different configuration for the input space partition. This video ends around epoch 5500.</p>
+<p>This is quite fascinating. There is no sign of overfitting, but we can see how the as the network gets deeper, training gets less stable: The circle seems to wobble much more, and we have these strange catastrophic-seeming phase changes after which the network has to re-stabilize. It also appears as if the network accurately captures the “circle” shape in spite of having only relatively few data points and more than enough capacity to overfit on them.</p>
+<p>I will keep digging into this whenever time permits, I hope this was entertaining and/or informative. My next quest will be building a tool that - for a given point in input space - extracts a system of linear inequations that describe the polytope that this point lives on. Please do not hesitate to reach out if you ever wish to discuss any of this!</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-04-05-some-experiments-to-help-me-understand-neural-nets-better-post-2-of-n/</guid>
+  <pubDate>Fri, 04 Apr 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>The German debt brake is stupid!</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2025-03-02-the-german-debt-brake-is-stupid/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Welcome to one of my political posts. This blog post should rightfully be titled “the German debt brake is stupid, and if you support it, so are you (at least in the domain of economics)”. Given that a nontrivial number of Germans agree with the debt brake, and given that there is a limit on the sensible number of characters in the title, I chose a shorter title - for brevity and to reduce offense. I nonetheless think that support for the debt brake, and supporters of the debt brake, are stupid.</p>
+<p>In the following, I will list the reasons why I think the debt brake is stupid, and talk about a few arguments I have heard in favor of the debt brake, and why I don’t buy any of them.</p>
+<p><strong>Reason 1: The debt brake is uniquely German, and I think the odds that Germany has somehow uncovered a deeper economic truth than anyone else is not high.</strong></p>
+<p>If you engage with economists a bit, you’ll hear non-German economists make statements such as “there is economics, and there is German economics, and they have little in common” or “the problem with German economics is that it’s really a branch of moral philosophy and not an empirical science”. Pretty much the entire world stares in bewilderment at the debt brake law, and I have yet to find a non-German economist of any repute that says the German debt brake is a sensible construct.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/German_balanced_budget_amendment">Wikipedia page</a> is pretty blatant in showing that pretty much the only group supporting the debt brake are … 48% of a sample of 187 German university professors for economics, in a poll conducted by an economic research think tank historically associated with the debt brake.</p>
+<p>Now, I am not generally someone that blindly advocates for going with the mainstream majority opinion, but if the path you have chosen is described by pretty much the entire world as bizarre, unempirical, and based on moral vs.&nbsp;scientific judgement, one should possibly interrogate one’s beliefs carefully.</p>
+<p>If the German debt brake is a sensible construct, then pretty much every other country in the world is wrong by not having it, and the German government has enacted something unique that should convey a tangible advantage. It should also lead to other countries looking at these advantages and thinking about enacting their own, similar, legislation.</p>
+<p>The closest equivalent to the German debt brake is the Swiss debt brake - but Switzerland has a lot of basis-democratic institutions that allow a democratic majority to change the constitution; in particular, a simple double-majority - majority of voters in the majority of cantons - is sufficient to remove the debt brake again. Switzerland can still act in times of crisis provided most voters in most cantons want to.</p>
+<p>Germany, with the 2/3rds parliamentary majority required for a constitutional change, cannot. As such, the German debt brake is the most stringent and least flexible such rule in the world.</p>
+<p>I don’t see any evidence that the debt brake is providing any benefits to either Germans or the world. I see no other country itching to implement a similarly harsh law. Do we really believe that Germany has uncovered a deeper economic truth nobody else can see?</p>
+<p><strong>Reason 2: The debt brake is anti-market, and prevents a mutually beneficial market activity</strong></p>
+<p>While I am politically center-left, I am fiercely pro-market. I think markets are splendid allocation instruments, decentralized decision-making systems, information processors, and by-and-large the primary reason why the West out-competed the USSR when it came to producing goods. Markets allow the many actors in the economy to find ways how they can obtain mutual advantage by trading with each other, and interfering with markets should be done carefully, usually to correct some form of severe market failure (natural monopolies, tragedy-of-the-common, market for lemons etc. – these are well-documented).</p>
+<p>The market for government debt is a market like any other. Investors that believe that the government provides the best risk-adjusted return when compared to all other investment opportunities wish to lend the government money to invest it and provide the return. The government pays interest rate to these investors, based on the risk-free rate plus a risk premium.</p>
+<p>Capital markets exist in order to facilitate decentralized resource allocation. If investors think that the best risk-adjusted returns are to be had by loaning the government money to invest in infrastructure or spend on other things, they should be allowed to offer lower and lower risk premia.</p>
+<p>The debt brake interferes in this market by artificially constraining the government demand for debt. Even if investors were willing to pay the German government money to please please invest it in the broader economy, the German government wouldn’t be allowed to do it.</p>
+<p>In some sense, this is a deep intervention in the natural signaling of debt markets, and the flow of goods. It is unclear what market failure is being addressed here.&nbsp;</p>
+<p><strong>Reason 3: The debt brake prevents investments with positive expected value</strong></p>
+<p>Assuming an opportunity arises where the government can invest sensibly in basic research or other infrastructure investments with strongly positive expected value for GDP growth and hence governmental income. Why should an arbitrary debt brake prohibit investments that are going to be net good for the whole of society?</p>
+<p><strong>Reason 4: The debt brake is partially responsible for the poor handling of the migration spike in 2015</strong></p>
+<p>Former Chancellor Merkel is often criticised for her “Wir schaffen das” (“We can do it”) during the 2015 migration crisis. My main criticism, <a href="https://x.com/halvarflake/status/649884887521067008">even back then</a>, was that a sudden influx of young refugees has the potential for providing a demographic dividend, *provided* one manages to integrate the refugees into the society, the work force, and the greater economy rapidly. This necessitates investment, though: German language lessons, housing in economically non-deprived areas, German culture lessons, and much more – and that sticking to the debt brake in an exceptional situation such as the 2015 migrant crisis is a terrible idea, because a sudden influx of refugees can have a destabilizing and economically harmful effect if the integration is botched. Successfully integrated people pay taxes and strengthen society, failure of integration leads to unemployment, potentially crime, and social disorder.</p>
+<p>My view is that Merkel dropped the entire weight of the integration work on German civil society (which performed as best as they could, and admirably) because she was entirely committed to a stupid and arbitrary rule. I also ascribe some of the strength of Germany’s far right on the disappointment that came from this mishandling of a crisis-that-was-also-an-opportunity.</p>
+<p><strong>Reason 5: The debt brake is based on numbers that economists agree are near-impossible to estimate correctly</strong></p>
+<p>It is extremely challenging to estimate the “<a href="https://en.wikipedia.org/wiki/Deficit_spending#Structural_and_cyclical_deficit">structural deficit</a>” of a given government, and most economists agree that there’s no proper objective measurement of it, particularly when not done in retrospect. A law that prohibits governments from acting based on an unknowable quantity appears to be a bad law to me.</p>
+<p><strong>Reason 6: The debt brake is fundamentally based on a fear that politicians act too much in their own interest - but does not provide a democratic remedy</strong></p>
+<hr>
+<p>The underlying assumption of the debt brake is that politicians will act with their own best interest in mind, running long-term structural deficits that eventually bankrupt a country. In some sense, the notion is that “elected representatives cannot be trusted to handle the purse string, because they will use it to bribe the electorate to re-elect them”.</p>
+<p>We can discuss the extent to which this is true, but in the end a democracy should adhere to the sovereign, which is the voters. If we are afraid of a political caste abusing their position as representatives to pilfer the public’s coffers, we should give the public more direct voting rights in budgetary matters, not artificially constrain what may be legitimate and good investments.</p>
+<p>There is a deep anti-democratic undercurrent in the debt brake discussion: Either that the politicians cannot be trusted to behave in a fiscally responsible manner, or that the voters cannot be trusted to behave in a fiscally responsible manner, or that the view of politicians, voters and markets about what constitutes fiscal responsibility are somehow incorrect.</p>
+<p><strong>Reason 7: A German debt brake would be terrible policies for any business, why is it a good idea for a country?</strong></p>
+<hr>
+<p>Imagine for a second a company would pass bylaws that prevent issuing any additional debt, only to be bypassable by a shareholder meeting where 2/3rds of all shareholders agree that the debt can be issued. This would essentially give minority shareholders a fantastic way of taking the company hostage and demand concessions because <strong>taking on debt is a standard part of doing business</strong>. If we don’t think that a majority of elected politicians can be trusted to not abuse the purse strings to extract benefits for themselves, why do we think it’s a good idea to give a smaller group of elected politicians the right to block the governments ability to react in a crisis?</p>
+<p><strong>Reason 8: A lot of debt-brake advocacy is based in the theory of “starving the beast”</strong></p>
+<p>Debt-brake advocates are often simultaneous advocates of lower taxes. The theory is that by lowering taxes (and hence revenues) while creating a hard fiscal wall (the debt brake) one can force the government to cut popular programs to shrink the government - in other situations, cutting popular programs would be difficult as voters would not support it.</p>
+<p>This idea was called “<a href="https://en.wikipedia.org/wiki/Starve_the_beast">starving the beast</a>” among US conservatives in the past. There’s plenty of criticism of the approach, and all empirical evidence points to it being a terrible idea. It’s undemocratic, too, as one is trying to create a situation of crisis to achieve a goal that would - assuming no crisis and democracy - not achievable.</p>
+<p><strong>Reason 9: Germany has let it’s infrastructure decay to a point where the association of German industry is begging for infrastructure investments</strong></p>
+<p>The BDI is hardly a left-leaning tax-and-spend-happy group. They’re historically very conservative, anti-union etc. - yet in recent years the decay of German infrastructure, from roads to bridges to the train system, has sufficiently unsettled them that we now have an alliance of German Unions and the German Employer Association call for much-needed infrastructure investments and modernisation.</p>
+<p>The empirical evidence seems to be “when presented with a debt brake, politicians make necessary investments, and instead prefer to hollow out existing infrastructure”.</p>
+<p><strong>Reason 10: Europe needs rearmament now, which requires long-time commitments to defense spending, but also investment in R&amp;D etc. </strong></p>
+<p>The post-1945 rules-based order has been dying, first slowly in the GWOT, then it convulsed with the first Trump term; it looked like it might survive when Biden got elected, but with the second Trump term it is clear that it is dead. Europeans have for 20 years ignored that this is coming, in spite of everybody that made regular trips to Washington DC having seen it. The debt brake now risks paralyzing the biggest Eurozone economy by handing control over increased defense spending to radical fringe parties that are financed and supported by hostile adversaries.</p>
+<p>Imagine a German parliament where the AfD and BSW jointly hold 1/3rd of the seats, and a war breaks out. Do we really want an adversary to be able to decide how much debt we can issue for national defense?</p>
+<p><strong>But the debt brake reassures investors and hence drives down Germany’s interest rate payments!</strong></p>
+<p>Now, this is probably the only argument I have heard in favor of the debt brake that may merit some deeper discussion or investigation. There is an argument to be made that if investors perceive the risk of a default or the risk of inflation to be lower, they will demand a lesser coupon on the debt they provide. And I’m willing to entertain that thought. Something either I or someone that reads it should do is:</p>
+<ol type="1">
+<li>Calculate the risk premium that Germany had to pay over the risk-free rate in the past.<br>
+</li>
+<li>Observe to what extent the introduction of the debt brake, or the introduction of the COVID spending bills etc. impacted the spread between the risk-free rate and the yield on German government debt.</li>
+</ol>
+<p>There are some complications with this (some people argue that the yield on Bunds *is* the risk-free rate, or at least the closest approximation thereof), and one would still have to quantify what GDP shortfall was caused by excessive austerity, so the outcome of this would be a pretty broad spectrum of estimates. But I will concede that this is worth thinking about and investigating.</p>
+<p>At the same time, we are in a very special situation: The world order we all grew up in is largely over. The 1990s belief that we will all just trade, that big countries don’t get to invade &amp; pillage small countries, and that Europe can just disarm because the world is peaceful now is dead, and only a fool would cling to it.</p>
+<p>I know that people would like to see a more efficient administration, and a leaner budget. These are good goals, and should be pursued - but not by hemming in your own government to be unable to react to crises, be captured by an aggressive minority, and reduce democratic choice.</p>
+<p>Apologies for this rant, but given the fact that Europe has squandered the last 20 years, and that I perceive the German approach to debt and austerity to be a huge factor in this, it is hard for me to not show some of my frustration.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2025-03-02-the-german-debt-brake-is-stupid/</guid>
+  <pubDate>Sat, 01 Mar 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>What I want for Christmas for the EU startup ecosystem</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2024-12-05-what-i-want-for-christmas-for-the-eu-startup-ecosystem/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Hey all,</p>
+<p>I have written about the various drags on the European tech industry <a href="https://addxorrol.blogspot.com/2023/12/a-list-of-factors-that-acted-as-drag-on.html?m=1">in the past</a>, and recently been involved in discussions on both X and BlueSky about what Europe needs.</p>
+<p>In this post, I will not make a wishlist of what concrete policy reforms I want, but rather start “product centric” – e.g.&nbsp;what “user experience” would I want as a founder? Once it is clear what experience you want as a founder, it becomes easier to reverse-engineer what policy changes will be needed.</p>
+<p>What would Europe need to make starting a company smoother, easier, and better?</p>
+<p>Let’s jointly imagine a bit what the world could look like.</p>
+<p>Imagine a website where the following tasks can be performed:</p>
+<ol type="1">
+<li>Incorporation of a limited liability company with shares. The website offers a number of standardized company bylaws that cover the basics, and allows the incorporation of a limited liability company on-line (after identity verification etc.).<br>
+</li>
+<li>Management of simple early-stage funding rounds on-line: Standardized SAFE-like instruments, or even a standardized Series A agreement, and the ability to sign these instruments on-line, and verify receipt of funds.<br>
+</li>
+<li>Management of the cap table (at least up to and including the Series A).<br>
+</li>
+<li>Ability to employ anyone in the Eurozone, and run their payroll, social security contributions, and employer-side healthcare payments. Possibly integrated with online payment.</li>
+<li>Ability to grant employee shares and manage the share grants integrated with the above, with the share grants taxed in a reasonable way (e.g.&nbsp;only tax them on liquidity event, accept the shares themselves as tax while they are illiquid, or something similar to the US where you can have a lightweight 409a valuation to assign a value to the shares).<br>
+</li>
+<li>Integration with a basic accounting workflow that can be managed either personally or by an external accountant, with the ability to file simplified basic taxes provided overall revenue is below a certain threshold.</li>
+<li>Ways of dealing with all the other paperwork involved in running a company on-line.</li>
+</ol>
+<p>This is a strange mixture of Carta, Rippling, Docusign, Cloud Atlas, a Notary, and Intuit – but it would make the process of starting and running a company much less daunting and costly.</p>
+<p>Ideally, I could sign up to the site, verify my identity, incorporate a basic company with standardized bylaws, raise seed funding, employ people, run their payroll, and file basic taxes and paperwork.</p>
+<p>In the above dream, what am I missing?</p>
+<p>My suspicion is that building and running such a website would actually be not difficult (if the political will in Europe existed), and would have a measurable impact on company formation and GDP. If we want economic growth like the US, Europe needs to become a place where building and growing a business is easier and has less friction than in the US.</p>
+<p>So assuming the gaps that I am missing are filled in, the next step is asking: What policy reforms are necessary to reach this ideal?</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2024-12-05-what-i-want-for-christmas-for-the-eu-startup-ecosystem/</guid>
+  <pubDate>Wed, 04 Dec 2024 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Someone is wrong on the internet (AGI Doom edition)</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2024-07-10-someone-is-wrong-on-the-internet-agi-doom-edition/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The last few years have seen a wave of hysteria about LLMs becoming conscious and then suddenly attempting to kill humanity. This hysteria, often expressed in scientific-sounding pseudo-bayesian language typical of the „lesswrong“ forums, has seeped into the media and from there into politics, where it has influenced legislation.</p>
+<p>This hysteria arises from the claim that there is an existential risk to humanity posed by the sudden emergence of an AGI that then proceeds to wipe out humanity through a rapid series of steps that cannot be prevented.</p>
+<p>Much of it is entirely wrong, and I will try to collect my views on the topic in this article - focusing on the „fast takeoff scenario“.</p>
+<p>I had encountered strange forms of seemingly irrational views about AI progress before, and I made some critical tweets about the messianic tech-pseudo-religion I dubbed “Kurzweilianism” in <a href="https://twitter.com/halvarflake/status/501498993135071233?s=20">2014</a>, <a href="https://twitter.com/halvarflake/status/783263540228550656?s=20">2016</a> and <a href="https://twitter.com/halvarflake/status/844281698464534528?s=20">2017</a>&nbsp;- my objection at the time was that believing in an exponential speed-up of all forms of technological progress looked too much like a traditional messianic religion, e.g.&nbsp;“the end days are coming, if we are good and sacrifice the right things, God will bring us to paradise, if not He will destroy us”, dressed in techno-garb. I could never quite understand why people chose to believe Kurzweil, who, in my view, has largely had an <a href="https://danluu.com/futurist-predictions/">abysmal track record</a> predicting the future.</p>
+<p>Apparently, the Kurzweilian ideas have mutated over time, and seem to have taken root in a group of folks associated with a forum called “LessWrong”, a more high-brow version of 4chan where mostly young men try to impress each other by their command of mathematical vocabulary (not of actual math). One of the founders of this forum, Eliezer Yudkowsky, has become one of the most outspoken proponents of the hypothesis that “the end is nigh”.</p>
+<p>I have heard a lot of of secondary reporting about the claims that are advocated, and none of them ever made any sense to me - but I am also a proponent of reading original sources to form an opinion. This blog post is like a blog-post-version of a (nonexistent) YouTube reaction video of me reading original sources and commenting on them.</p>
+<p>I will begin with the interview published at&nbsp;<a href="https://intelligence.org/2023/03/14/yudkowsky-on-agi-risk-on-the-bankless-podcast/" class="uri">https://intelligence.org/2023/03/14/yudkowsky-on-agi-risk-on-the-bankless-podcast/</a>.&nbsp;</p>
+<p>The proposed sequence of events that would lead to humanity being killed by an AGI is approximately the following:</p>
+<ol type="1">
+<li>Assume that humanity manages to build an AGI, which is a computational system that for any decision “outperforms” the best decision of humans. The examples used are all zero-sum games with fixed rule sets (chess etc.).<br>
+</li>
+<li>After managing this, humanity sets this AGI to work on improving itself, e.g.&nbsp;writing a better AGI.<br>
+</li>
+<li>This is somehow successful and the AGI obtains an “immense technological advantage”.</li>
+<li>The AGI also decides that it is in conflict with humanity.</li>
+<li>The AGI then coaxes a bunch of humans to carry out physical actions that enable it to then build something that kills all of humanity, in case of this interview via a “diamondoid bacteria that replicates using carbon, hydrogen, oxygen, nitrogen, and sunlight”, that then kills all of humanity.</li>
+</ol>
+<p>This is a fun work of fiction, but it is not even science fiction. In the following, a few thoughts:</p>
+<section id="incorrectness-and-incompleteness-of-human-writing" class="level2">
+<h2 class="anchored" data-anchor-id="incorrectness-and-incompleteness-of-human-writing">Incorrectness and incompleteness of human writing</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+</section>
+<section id="human-writing-is-full-of-lies-that-are-difficult-to-disprove-theoretically" class="level3">
+<h3 class="anchored" data-anchor-id="human-writing-is-full-of-lies-that-are-difficult-to-disprove-theoretically">Human writing is full of lies that are difficult to disprove theoretically</h3>
+<p>As a mathematician with an applied bent, I once got drunk with another mathematician, a stack of coins, and a pair of pliers and some tape. The goal of the session was „how can we deform an existing coin as to create a coin with a bias significant enough to measure“. Biased coins are a staple of probability theory exercises, and exist in writing in large quantities (much more than loaded dice).</p>
+<p>It turns out that it is very complicated and very difficult to modify an existing coin to exhibit even a reliable 0.52:0.48 bias. Modifying the shape needs to be done so aggressively that the resulting object no longer resembles a coin, and gluing two discs of uneven weight together so that they achieve nontrivial bias creates an object that has a very hard time balancing on its edge.</p>
+<p>An AI model trained on human text will never be able to understand the difficulties in making a biased coin. It needs to be equipped with actual sensing, and it will need to perform actual real experiments. For an AI, a thought experiment and a real experiment are indistinguishable.</p>
+<p>As a result, any world model that is learnt through the analysis of text is going to be a very poor approximation of reality.&nbsp;</p>
+</section>
+<section id="practical-world-knowledge-is-rarely-put-in-writing" class="level3">
+<h3 class="anchored" data-anchor-id="practical-world-knowledge-is-rarely-put-in-writing">Practical world-knowledge is rarely put in writing</h3>
+<p>Pretty much all economies and organisations that are any good at producing something tangible have an (explicit or implicit) system of apprenticeship. The majority of important practical tasks cannot be learnt from a written description. There has never been a chef that became a good chef by reading sufficiently many cookbooks, or a woodworker that became a good woodworker by reading a lot about woodworking.</p>
+<p>Any skill that affects the real world has a significant amount of real-world trial-and-error involved. And almost all skills that affect the real world involve large quantities of knowledge that has never been written down, but which is nonetheless essential to performing the task.</p>
+<p>The inaccuracy and incompleteness of written language to describe the world leads to the next point:</p>
+</section>
+</section>
+<section id="no-progress-without-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="no-progress-without-experiments">No progress without experiments</h2>
+<section id="no-superintelligence-can-reason-itself-to-progress-without-doing-basic-science" class="level3">
+<h3 class="anchored" data-anchor-id="no-superintelligence-can-reason-itself-to-progress-without-doing-basic-science">No superintelligence can reason itself to progress without doing basic science</h3>
+<p>One of the most bizarre assumptions in the fast takeoff scenarios is that somehow once a super-intelligence has been achieved, it will be able to create all sorts of novel inventions with fantastic capabilities, simply by reasoning about them abstractly, and without performing any basic science (e.g.&nbsp;real-world experiments that validate hypotheses or check consistency of a theory or simulation with reality).</p>
+<p>Perhaps this is unsurprising, as few people involved in the LessWrong forums and X-Risk discussions seem to have any experience in manufacturing or actual materials science or even basic woodworking.</p>
+<p>The reality, though, is that while we have made great strides in areas such as computational fluid dynamics (CFD), crash test simulation etc. in recent decades, obviating the need for many physical experiments in certain areas, reality does not seem to support the thesis that technological innovations are feasible „on paper“ without extensive and painstaking experimental science.</p>
+<p>Concrete examples:</p>
+<ol type="1">
+<li>To this day, CFD simulations of the air resistance that a train is exposed to when hit by wind at an angle need to be experimentally validated - simulations have the tendency to get important details wrong.</li>
+<li>It is safe to assume that the state-supported hackers of the PRCs intelligence services have stolen every last document that was ever put into a computer at all the major chipmakers. Having all this knowledge, and the ability to direct a lot of manpower at analyzing these documents, have not yielded the knowledge necessary to make cutting-edge chips. What is missing is process knowledge, e.g.&nbsp;the details of how to actually make the chips.</li>
+<li>Producing ballpoint pen tips is hard. There are few nations that can reliably produce cheap, high-quality ballpoint pen tips. China famously celebrated in 2017 that they reached that level of manufacturing excellence.</li>
+</ol>
+<p>Producing anything real requires a painstaking process of theory/hypothesis formation, experiment design, experiment execution, and slow iterative improvement. Many physical and chemical processes cannot be accelerated artificially. There is a reason why it takes 5-8 weeks or longer to make a wafer of chips.</p>
+<p>The success of of systems such as AlphaGo depend on the fact that all the rules of the game of Go are fixed in time, and known, and the fact that evaluating the quality of a position is cheap and many different future games can be simulated cheaply and efficiently.</p>
+<p>None of this is true for reality:&nbsp;</p>
+<ol type="1">
+<li>Simulating reality accurately and cheaply is not a thing. We cannot simulate even simple parts of reality to a high degree of accuracy (think of a water faucet with turbulent flow splashing into a sink).&nbsp;</li>
+<li>The rules for reality are not known in advance. Humanity has created some good approximations of many rules, but both humanity and a superintelligence still need to create new approximations of the rules by careful experimentation and step-wise refinement.</li>
+<li>The rules for adversarial and competitive games (such as a conflict with humanity) are not stable in time.</li>
+<li>Evaluating any experiment in reality has significant cost, particularly to an AI.</li>
+</ol>
+<p>A thought experiment I often use for this is:&nbsp;</p>
+<p>Let us assume that scaling is all you need for greater intelligence. If that is the case, Orcas or Sperm Whales are already much more intelligent than the most intelligent human, so perhaps an Orca or a Sperm Whale is already a superintelligence. Now imagine an Orca or Sperm Whale equipped with all written knowledge of humanity and a keyboard with which to email people. How quickly could this Orca or Sperm Whale devise and execute a plot to kill all of humanity?</p>
+<p>People that focus on fast takeoff scenarios seem to think that humanity has achieved the place it has by virtue of intelligence alone. Personally, I think there are at least three things that came together: Bipedalism with opposable thumbs, an environment where you can have fire, and intelligence.</p>
+<p>If we lacked any of the three, we would not have built any of our tech. Orcas and Sperm Whales lack thumbs and fire, and you can’t think yourself to world domination.</p>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1"></h3>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2"></h3>
+</section>
+<section id="superintelligence-will-also-be-bound-by-fundamental-information-theoretic-limits" class="level3">
+<h3 class="anchored" data-anchor-id="superintelligence-will-also-be-bound-by-fundamental-information-theoretic-limits">Superintelligence will also be bound by fundamental information-theoretic limits</h3>
+<p>The assumption that superintelligences can somehow simulate reality to arbitrary degrees of precision runs counter to what we know about thermodynamics, computational irreducibility, and information theory.</p>
+<p>A lot of the narratives seem to assume that a superintelligence will somehow free itself from constraints like „cost of compute“, „cost of storing information“, „cost of acquiring information“ etc. - but if I assume that I assume an omniscient being with infinite calculation powers and deterministically computational physics, I can build a hardcore version of <a href="https://en.m.wikipedia.org/wiki/Maxwell%27s_demon">Maxwells Demon</a> that incinerates half of the earth by playing extremely clever billards with all atoms in the atmosphere. No diamandoid bacteria (whatever that was supposed to mean) necessary.</p>
+<p>The reason we cannot build Maxwells Demon, and no perpetuum mobile, is that there is a relationship between information theory and thermodynamics, and nobody, including no superintelligence, will be able to break it.</p>
+<p>Irrespective of whether you are a believer or an atheist, you cannot accidentally create capital-G God, even if you can build a program that beats all primates on earth at chess. Cue reference to the Landauer principle here.</p>
+<p><span style="font-size: 18.719999px; font-weight: 700;">Conflicts (such as an attempt to kill humanity) have no zero-risk moves</span></p>
+<p>Traditional wargaming makes extensive use of random numbers - units have a kill probability (usually determined empirically), and using random numbers to model random events is part and parcel for real-world wargaming. This means that a move “not working”, something going horrendously wrong is the norm in any conflict. There are usually no gainful zero-risk moves; e.g.&nbsp;every move you make does open an opportunity for the opponent.</p>
+<p>I find it somewhat baffling that in all the X-risk scenarios, the superintelligence somehow finds a sequence of zero-risk or near-zero risk moves that somehow yield the desired outcome, without humanity finding even a shred of evidence before it happens.</p>
+<p>A more realistic scenario (if we take the far-fetched and unrealistic idea of an actual synthetic superintelligence that decides on causing humans harm for granted) involves that AI making moves that incur risk to the AI based on highly uncertain data. A conflict would therefore not be brief, and have multiple interaction points between humanity and the superintelligence.</p>
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3"></h3>
+</section>
+<section id="next-token-prediction-cannot-handle-kuhnian-paradigm-shifts" class="level3">
+<h3 class="anchored" data-anchor-id="next-token-prediction-cannot-handle-kuhnian-paradigm-shifts">Next-token prediction cannot handle Kuhnian paradigm shifts</h3>
+<p>Some folks have argued that next-token prediction will lead to superintelligence. I do not buy it, largely because it is unclear to me how predicting the next token would deal with Kuhnian paradigm shifts. Science proceeds in fits and bursts; and usually you stay within a creaky paradigm until there is a „scientific revolution“ of sorts. The scientific revolution necessarily changes the way that language is produced — e.g.&nbsp;a corpus of all of human writing prior to a scientific revolution is not a good representation of the language used after a scientific revolution - but the LLM will be trained to mimic the distribution of the training corpus. People point to in-context learning and argue that LLMs can incorporate new knowledge, but I am not convinced of that yet - the fact that all current models fail at generating a sequence of words that - when cut into 2-tuples - occur rarely or never in the training corpus shows that ICL is extremely limited in the way that it can adjust the distribution of LLM outputs.</p>
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4"></h3>
+</section>
+<section id="enough-for-today.-touch-some-grass-build-some-stuff" class="level3">
+<h3 class="anchored" data-anchor-id="enough-for-today.-touch-some-grass-build-some-stuff">Enough for today. Touch some grass, build some stuff</h3>
+<p>In theory, theory equals practice. In practice it doesn’t. Stepping out of the theoretical realm of software (where generations of EE and chip engineers sacrificed their lives to give software engineers an environment where theory is close to practice most of the time) into real-world things that involve dust, sun, radiation, and equipment chatter is a sobering experience that we should all do more often. It’s easy to devolve into scholasticism if you’re not building anything.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2024-07-10-someone-is-wrong-on-the-internet-agi-doom-edition/</guid>
+  <pubDate>Tue, 09 Jul 2024 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Some experiments to help me understand Neural Nets better, post 1 of N</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2024-07-04-some-experiments-to-help-me-understand-neural-nets-better-post-1-of-n/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>While I have been a sceptic of using ML and AI in adversarial (security) scenarios forever, I also quite like the fact that AI/ML has become important, if only to make me feel like my Math MSc (and abortive Math PhD) were not a waste of time.</p>
+<p>I am a big proponent of “bottom-up” mathematics: Playing with a large number of examples to inform conjectures to be dealt with later. I tend to run through many experiments to build intuition; partly because I have crippling weaknesses when operating purely formally, partly because most of my mathematics is somewhat “geometric intuition” based – e.g.&nbsp;I rely a lot on my geometric intuition for understanding problems and statements.</p>
+<p>For a couple years I’ve wanted to build myself a better intuition about what deep neural networks actually “do”. There are folks in the community that say “we cannot understand them”, and folks that say “we believe in mechanistic interpretability, and we have found the neuron to recognize dogs”; I never found either statement to be particularly convincing.</p>
+<p>As a result, earlier this year, I finally found time to take a pen, pencil, and wastebasket and began thinking a bit about what happens when you send data through a neural network consisting of ReLU units. Why only ReLUs? Well, my conjecture is that ReLUs are as good as anything, and they are both reasonably easy to understand and actually used in practical ML applications. They are also among the “simplest examples” to work with, and I am a big fan of trying the simple examples first.</p>
+<p>This blog post shares some of my experiments and insights; I called it the “paper plane or origami perspective to deep learning”. I subsequently found out that there are a few people that have written about these concepts under the name “<a href="https://www.lesswrong.com/posts/eDicGjD9yte6FLSie/interpreting-neural-networks-through-the-polytope-lens">the polytope lens</a>”, although this seems to be a fringe notion in the wider interpretability community (which I find strange, because - unsurprisingly - I am pretty convinced this is the right way to think about NNs).</p>
+<p>Let’s get started. In order to build intuition, we’re going to work with a NN that is supposed to learn a function from R^2 to R - essentially learning a grayscale image. This has several advantages:</p>
+<ol type="1">
+<li>We can intuitively understand what the NN is learning.<br>
+</li>
+<li>We can simulate training error and generalisation errors by taking very high-resolution images and training on low-resolution samples.<br>
+</li>
+<li>We stay within the realm of low-dimensional geometry for now, which is something most of us have an intuitive understanding of. High dimensions will create all sorts of complications soon enough.</li>
+</ol>
+<p>Let’s begin by understanding a 2-dimensional ReLU neuron - essentially the function f(x, y) = max( ax + by + c, 0) for various values of a, b, and c.&nbsp;</p>
+<p>This will look a bit like a sheet of paper with a crease in it:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrSyPkYgdbN-IjKUaNONs0Rpuy8qjUNpDnOqDfH6Lgm43GLQQPGsUJUygbos4zZ1cqZWlvQoNs6JUHRjNelkhyTKLvm1IV-Vqkzq6vU8t6kV8bt2xcpH1wthwdqilaVid_LyL8JPtZLkIgiCQKAREI6T7T8nas7_O2n9HGp01QFZKeHV-YkTXx/s1000/rotate_relu.gif" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrSyPkYgdbN-IjKUaNONs0Rpuy8qjUNpDnOqDfH6Lgm43GLQQPGsUJUygbos4zZ1cqZWlvQoNs6JUHRjNelkhyTKLvm1IV-Vqkzq6vU8t6kV8bt2xcpH1wthwdqilaVid_LyL8JPtZLkIgiCQKAREI6T7T8nas7_O2n9HGp01QFZKeHV-YkTXx/s320/rotate_relu.gif" data-border="0" data-original-height="700" data-original-width="1000" width="320" height="224"></a></p>
+<p>How does this function change if we vary the parameters a, b, or c? Let’s begin by varying a:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfc5f4pV_J2QsTuvJXwHwIb1T6fShqsU4e3i8z8ItBid85maBmUXZQvJIVdZMs2I-N15gZE79R4ybg5AGA9NRT_yfftsOoN7Zzze1lMOrkAJ6ye0dj9dK8us04UmrswnrsF3TJYhYIVUUTkBMB6zPUpZamtIMYQbiAxInrLuTT4Ewe5sEfhP21/s1000/vary_a.gif" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfc5f4pV_J2QsTuvJXwHwIb1T6fShqsU4e3i8z8ItBid85maBmUXZQvJIVdZMs2I-N15gZE79R4ybg5AGA9NRT_yfftsOoN7Zzze1lMOrkAJ6ye0dj9dK8us04UmrswnrsF3TJYhYIVUUTkBMB6zPUpZamtIMYQbiAxInrLuTT4Ewe5sEfhP21/s320/vary_a.gif" data-border="0" data-original-height="700" data-original-width="1000" width="320" height="224"></a></p>
+<p>Now let’s have a look at varying b:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOTXj_HIdOK5D06326I_XxNO10jYwEKUv8QG-eWPzTyLnLzozEEm_p0bmmumRH5GwVyj4z8aqfIHGei6VEMR-Pj0J8OjE_DSKmAdivFpwYxB2_XKP48Trg7KjHeZQFC7sBbyxYIgcaoMx1CqQ8ID0nG7d66xGC-Y-jRQ5eaPNkl7zFgsl2a2y2/s1000/vary_b.gif" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOTXj_HIdOK5D06326I_XxNO10jYwEKUv8QG-eWPzTyLnLzozEEm_p0bmmumRH5GwVyj4z8aqfIHGei6VEMR-Pj0J8OjE_DSKmAdivFpwYxB2_XKP48Trg7KjHeZQFC7sBbyxYIgcaoMx1CqQ8ID0nG7d66xGC-Y-jRQ5eaPNkl7zFgsl2a2y2/s320/vary_b.gif" data-border="0" data-original-height="700" data-original-width="1000" width="320" height="224"></a></p>
+<p>And finally let’s have a look at varying c:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1fOwkO2g_m1fsn9sFb5sCO8L46G4zQBP3A1Wi4ZRyk4jPk8uYi-QgkvQEjBcsknBnyj86ZKVjyh9Vd5mQXkUWeeDnfpN1HiuMzQVIfOepbhnTBW-wESSThKEdtfq36Glwty2dANxzTQVQIvyBSWirmc8nSt3XRvMP4BzNzraLfuahA2zWr7Qj/s1000/vary_c.gif" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1fOwkO2g_m1fsn9sFb5sCO8L46G4zQBP3A1Wi4ZRyk4jPk8uYi-QgkvQEjBcsknBnyj86ZKVjyh9Vd5mQXkUWeeDnfpN1HiuMzQVIfOepbhnTBW-wESSThKEdtfq36Glwty2dANxzTQVQIvyBSWirmc8nSt3XRvMP4BzNzraLfuahA2zWr7Qj/s320/vary_c.gif" data-border="0" data-original-height="700" data-original-width="1000" width="320" height="224"></a></p>
+<p>So the parameters a, b, c really just decide “in which way” the plane should be folded / creased, and the steepness and orientation of the non-flat part. It divides the plane into halfspaces; the resulting function is 0 on one half-plane and linear (respectively affine) on the other.</p>
+<p>As a next step, let’s imagine a single-layer ReLU network that takes the (x,y) coordinates of the plane, and then feeds it into 10 different ReLU neurons, and then combines the result by summing them using individual weights.</p>
+<p>The resulting network will have 3 parameters to learn for each neuron: a, b, and c.&nbsp;Each “neuron” will represent a separate copy of the plane that will then be combined (linearly, additively, with a weight) into the output function. The training process will move the “creases” in the paper around until the result approximates the desired output well.</p>
+<p>Let’s draw that process when trying to learn the picture of a circle: The original is here:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjedvBqydU2Y5cRMPz4imvTPsLmhMUSvav_jIC_DWkRlpB83mJZiwcm-0-SqMhYjnNeAbKiLgp7eKW3HhiXmCkKRbT6GP7efTDatmhI5wb_CLeOtzqu35M6LuIjWC2UHPp8Vm_ktHVO_J62Tkeh3ybTZHYqdnNyRrzmGlOqjLM6TZbS4JxqXa5W/s300/black_circle.png" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjedvBqydU2Y5cRMPz4imvTPsLmhMUSvav_jIC_DWkRlpB83mJZiwcm-0-SqMhYjnNeAbKiLgp7eKW3HhiXmCkKRbT6GP7efTDatmhI5wb_CLeOtzqu35M6LuIjWC2UHPp8Vm_ktHVO_J62Tkeh3ybTZHYqdnNyRrzmGlOqjLM6TZbS4JxqXa5W/s1600/black_circle.png" data-border="0" data-original-height="300" data-original-width="300" width="300" height="300"></a></p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/6riB4lUeFgk" width="472" youtube-src-id="6riB4lUeFgk"></iframe>
+</div>
+<p>This shows us how the network tries to incrementally move the creases around so that on each of the convex areas that are created by the creases, it can choose a different affine function (with the condition that on the “creases” the functions will take on the same value).</p>
+<p>Let’s do another movie, this time with a higher number of first-layer neurons - 500. And let’s see how well we will end up approximating the circle.</p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="266" src="https://www.youtube.com/embed/wXObmk7XssM" width="449" youtube-src-id="wXObmk7XssM"></iframe>
+</div>
+<p>Aside from being mesmerizing to watch, this is also kinda intriguing and raises a bunch of questions:</p>
+<ol type="1">
+<li>I don’t understand enough about Adam as an optimizer to understand where the very visible “pulse” in the optimization process is coming from. What’s going on here?</li>
+<li>I am pretty surprised by the fact that so many creases end up being extremely similar – what would cause them to bundle up into groups in the way they do? The circle is completely rotation invariant, but visually the creases seem to bunch into groups much more than random distribution would suggest. Why?</li>
+<li>It’s somewhat surprising how difficult it appears to be to learn a “sharp” edge, the edge between white and black in the above diagram is surprisingly soft. I had expected it to be easier to learn to have a narrow polytope with very large a/b constants to create a sharp edge, somehow this is difficult? Is this regularization preventing the emergence of sharp edges (by keeping weights bounded)?</li>
+</ol>
+<p>Clearly, there’s work to do. For now, some entertainment: Training the same 500-neuron single-layer network to learn to reproduce a picture of me with a face full of zinc sunscreen:</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj35JlJUccAb6YLfUIiSUIl8Z6nSmzVJctPD_GBlML_dMuZYO17FmTOjuloDTMl812RtavP8ji7nFhSGD0N_K6aFnbIx_KQ89z55jFc5Yzg1AR_9vDDCz4KngaFg9aAc0KKnANvE5QNyLZQxljump5cAcHNaoP2G4VN_ZkG77U_DoJ_JeZHU3R0/s300/thomas-sunscreen-300.png" data-imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj35JlJUccAb6YLfUIiSUIl8Z6nSmzVJctPD_GBlML_dMuZYO17FmTOjuloDTMl812RtavP8ji7nFhSGD0N_K6aFnbIx_KQ89z55jFc5Yzg1AR_9vDDCz4KngaFg9aAc0KKnANvE5QNyLZQxljump5cAcHNaoP2G4VN_ZkG77U_DoJ_JeZHU3R0/w156-h156/thomas-sunscreen-300.png" data-border="0" data-original-height="300" data-original-width="300" width="156" height="156"></a></p>
+<div class="video-embed">
+<iframe allowfullscreen="" class="BLOG_video_class" height="183" src="https://www.youtube.com/embed/Cxs52dVc1b4" width="418" youtube-src-id="Cxs52dVc1b4"></iframe>
+</div>
+<p>It’s interesting (perhaps unsurprising) that the reproduced image feels visually like folded paper.</p>
+<p>Anyhow, this was the first installment. I’ll write more about this stuff as I play and understand more.<br>
+Steps I’ll explain in the near future:</p>
+<ol type="1">
+<li>What happens as you deepen your network structure?</li>
+<li>What happens if you train a network on categorical data and cross-entropy instead of a continuous output with MSE?</li>
+<li>What can we learn about generalization, overfitting, and overparametrization from these experiments?</li>
+</ol>
+<p>See you soon.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2024-07-04-some-experiments-to-help-me-understand-neural-nets-better-post-1-of-n/</guid>
+  <pubDate>Wed, 03 Jul 2024 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>The end of my Elastic/optimyze journey …</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2024-01-31-the-end-of-my-elastic-optimyze-journey/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Hey all,</p>
+<p>== tl;dr ==</p>
+<p>Today is my last day at Elastic. I’ll take an extended break and focus on rest, family, health, writing, a bit of startup mentoring/investing, and some research - at least for a while.</p>
+<p>I’m thankful for my great colleagues and my leadership at Elastic - y’all are stellar, even if I was often grumbly about some technical or architectural issues. I’ll also miss the ex-optimyze team a lot; you were the best team anyone doing technically sophisticated work could wish for - great individuals, but in sum greater than the parts. I think the future for the tech we built is bright, particularly in light of the recent Otel events :)</p>
+<p>========</p>
+<p>Extended Version:</p>
+<p>Today is my last day at Elastic, and with that, the last day of my journey with optimyze. I am leaving with a heavy heart, and complicated emotions. The 5 years of optimyze (3 years optimyze, 2 years optimyze-integration-into-Elastic) were intense - moderately intense on the work front, but extremely intense on the life front. Fate somehow managed to cram a lot of the ups and downs of midlife into a very small number of years.</p>
+<p>A timeline:</p>
+<ol type="1">
+<li>I left Google on the 31st of December 2018, and started optimyze.cloud in February 2019. I was highly motivated by the idea of building a company that aligns my ecological, economic, and technical interests. I visited the RSA conference in SF in spring 2019 to network and get people interested in our “cut-of-savings” consulting approach. I met Corey Quinn for coffee, and to this day much appreciate all the sage advice he had (even if I had to ignore some and learn the hard lesson myself).</li>
+<li>In May 2019, I was elated to (finally!) become a father for the first time.</li>
+<li>During 2019, my co-founder Sean and me mostly spent our time trying to get our “cut-of-savings” consulting business of the ground, only to be thwarted by the unfortunate combination that (a) companies nimble enough to do it were too small to make it worth it, and (b) companies big enough to make it worth it couldn’t figure out how to make the contract work from a legal and accounting perspective.<br>
+We did a few small gigs with friendly startups, and realized in late summer that a zero-instrumentation, multi-runtime, fleet-wide profiler was sorely missing as a product. We also realized that with BOLT making progress, there’d be real value in being a SaaS that sits on profiling data from different verticals. Hence the vision for optimyze.cloud as a product company was born.</li>
+<li>By late 2019, we had a prototype for unwinding C/C++ stacks using .eh_frame, and Python code, both from eBPF. We knew we could be really zero-friction in deployment, which made us very happy and excited.</li>
+<li>We decided to raise funding, and did so over the winter months - with the funding wire transfer finally hitting our (Silicon Valley Bank) account some time in early 2020. We started building, and hiring what would turn out the best team I’ve ever worked on.</li>
+<li>We had a working UI and product by late fall 2020, and the first in-prod deployments around the same time. One particular part of the stack was too slow (a particular query that we knew we’d need to move to a distributed K/V store, but hadn’t done yet), and we spent the next few months rebuilding that part of the stack to use Scylla.</li>
+<li>We made some very bad calls on the investor relations front, I foolishly stumbled into a premature, fumbled, and retrospectively idiotic fundraise, into the middle of which my second child was born and the first acquisition offers came in.</li>
+<li>We launched Prodfiler in August 2021, to great acclaim and success. People loved the product, they loved the frictionless deployment, they loved the fact that all their stack traces were symbolized out of the box etc. - the product experience was great.</li>
+<li>In mid-October, we were acquired by Elastic with the closing date November 1st. My mother had a hip surgery from which complications arose, which led to her being transferred into an ICU.<br>
+The day the deal closed, my mother fell into a coma, and she would never wake up again. I spent the next weeks shuttling back and forth between Zurich (where my wife and my two kids were) and Essen, Germany, to spend time bedside in the ICU.<br>
+My mother died in the morning hours of Jan 1st 2022, a few hours after the fireworks.</li>
+<li>My elderly father needed a lot of help dealing with the aftermath; at the same time the transition into the Elastic tech stack was technically challenging to pull off.</li>
+<li>In Summer 2022, my father stumbled after a small leg surgery, fell, and hit his head; after some complications in the German medical system, it became clear that the injury had induced dementia. We transferred him to a specialist hospital in Berlin and ultimately to a care home close to my brother’s family. Since then, I’ve been shuttling back and forth to see him often.</li>
+<li>After two years of hard work at Elastic, we finally managed to launch our product again in fall 2023.</li>
+</ol>
+<p>So the entire thing was 5 years, in which I had two children, started a company, hired the best team I’ve known, launched a product I was (and am) immensely proud of, then lost my mother, most of my father … and “reluctantly let go” of the company and product.</p>
+<p>The sheer forces at play when you cram so much momentum into such a short time-frame will strain everybody; and they will strain everybody’s support system. I’m extremely grateful for my entire support system, in particular my brother. I don’t know how I would’ve fared without him, but I hope my kids will have as good a relationship with each other as I do with my brother.</p>
+<p>I’m also grateful to the folks at Elastic and the optimyze team, who were extremely supportive and understanding as I was dealing with complications outside of work.</p>
+<p>I’m proud that we managed to build, I am also proud that we managed to port it to the Elastic stack and re-launch it. Even after more than 2 years focused on porting the back-end, our profiler remains ahead of the competition. I’m optimistic about what Elastic and the team can build on top of our technology, in particular with OTel profiling moving toward reality.</p>
+<p>At the same time, I am pretty spent. My productivity is nowhere near where I expect it to be (it never is - I have difficulty accepting that I am a finite human - but the gap is bigger than usual), and this leads to me having difficulty switching off: When I feel like I am not getting the things I want to get done done, my brain wants to compensate by working more - which is rarely the right step.</p>
+<p>So, with a heavy heart, I decided that I will take an extended break. It’s been intense, and emotional, and I need some time to rest and recover, and accompany my father on his last few steps into the darkness (or light?). 2019 and 2020 were among the happiest years of my life, the last chunk of 2021 and most of 2022 the most difficult parts of my life. 2023 was trending up, and I expect things to continue trending up for the foreseeable future.</p>
+<p>I have planned to do a bit of writing (I think having done two companies, one bootstrapped and one with VC money, gives me a few things I’d like to pass on), perhaps a bit of angel investing or VC scouting, perhaps a bit of consulting where things of particular interest arise - but mostly, I intend to stretch, breathe, be there for my kids, and get a clear view of the horizon.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2024-01-31-the-end-of-my-elastic-optimyze-journey/</guid>
+  <pubDate>Tue, 30 Jan 2024 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>A list of factors that act(ed) as drag on the European Tech/Startup scene</title>
+  <dc:creator>Thomas Dullien</dc:creator>
+  <link>https://thomasdullien.github.io/posts/2023-12-11-a-list-of-factors-that-act-ed-as-drag-on-the-european-tech-startup-scene/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This post is an adaption of a Twitter thread where I listed the various factors that in my experience led to a divergence of the trajectories of the US tech industry around Silicon Valley (SV) and the tech industry in Europe. Not all of these factors are current (some of the cultural ones are less pronounced today than they used to be), and some of them could be relatively easily fixable.</p>
+<p>I’ll add a separate post on policy suggestions at a later point.</p>
+<p>I should also note that there’s many great things about Europe – I still live here, I’d build my next company here, and I don’t think I’d ever want to migrate to SV. I’ll also write about the advantages in the future.</p>
+<p>Now, on to the list, which was spawned by a thread with <span class="citation" data-cites="martin">@martin</span>_casado and <span class="citation" data-cites="bgurley">@bgurley</span> on the website previously known as Twitter.</p>
+<ol type="1">
+<li><strong>Cultural factors</strong>: When I was growing up in the 90s, there was significant uncertainty in the labor market, and one way to achieve economic security was seeking a government job. In many European countries, running a limited liability construct into insolvency effectively bans you from running another one in the foreseeable future. The mentality of “start a company in your 20s, and if you fail, you can either try again or get a job” wasn’t a thing. So we are operating from a risk-averse base, due to a labor market with then-sluggish job creation and strong incumbent effects. (Bert Hubert has written a <a href="https://berthub.eu/articles/posts/is-europe-just-not-good-at-innovating/">more extensive article on the cultural factors here</a>).</li>
+<li><strong>A terrifyingly fragmented market</strong>, along legal, linguistic, and cultural lines. Imagine every US state had its own language, defense budget, legal system, tax system, culture, employment law etc. - in the US, you build a product and you tap into a market of 340m people. The biggest market in Europe is Germany at 80m, not even a quarter of the size. Then France (65m), Italy (59m), Spain (47m), and then things fragment into a long tail. By the time you hit 340m customers, you’re operating in 9-10 countries, 7+ languages and legal systems etc.</li>
+<li>Equally <strong>fragmented capital markets</strong> that are individually much smaller. Take the US stock market and cut it into 10+ pieces. This has knock-on effects for IPOs: IPOs, when they happen, tend to be much smaller. Raising large amounts of capital is more difficult, while big wins are smaller. This has terrible knock-on effects all the way down to seedstage VCs: If the power law home run you’re angling for is 1/10th the size of the home run in the US, early stage investors need to be way more risk averse. You can see this even today where most European VC funds will offer less money at worse terms than their US counterparts. It was much worse in 2006-2007, when the Samwers were almost the only game in town for VC in the EU.<br>
+Smaller IPOs also mean that it is comparatively much more attractive to sell to an existing (US-based) giant.</li>
+<li>The <strong>absence of a DARPA</strong> to shoulder fundamental research risks in technology. Different stages of R&amp;D require different investors. The government is in the strange situation that they can indirectly benefit from investments without having an ownership stake because it gets to tax GDP. That means at the extremely high risk end of R&amp;D, fundamental research, it can afford to just finance many many long shots blindly and (comparatively) simply, as it doesn’t need to track ownership. So how do you fund fundamental R&amp;D without it devolving into scholasticism? Interestingly, the most basic test (“can I use this to cause some damage”) is already helpful. Europe’s defense sector has never since WW2 grasped it’s role in advancing technology, and it’s terribly fragmented, underfunded, and can’t do much research. DARPA has financed the early-stage development of many enabling technologies. Having a guaranteed customer (DoD) for high risk research has enabled better and higher risk-taking, and had large downstream effects.</li>
+<li><strong>Terrible legislation with regards to employee stock options</strong>. People talk about how many big companies in Europe are family-owned as if that is something good. It’s also a symptom of legal systems that make (or made) it terribly difficult to give lots of equity to early employees. This is slowly changes through concerted lobbying, but it is still difficult in most jurisdictions, and not unified at all.</li>
+<li>The way the EU is constructed where <strong>the EU gives a directive and each country implements it’s own flavor</strong> is worst-case for legal complexity. Imagine if every state got to re-implement its own flavor of each federal law.</li>
+<li><strong>Founder Brain Drain</strong>. Why would an ambitious founder not go to where the markets are bigger, capital is easier to raise on better terms, and incentivizing early employees is easier?</li>
+<li><strong>Ecosystem effects permit risk-taking by employees in SV</strong>. SV has such strong demand for talent that an employee can “take risks” on early stage startups because the next job is easy to get. If you live in a place with just 1-2 big employers, leaving with intent to return is riskier.</li>
+<li><strong>Network effects and path dependence</strong>. The fragmentation of the market led to smaller players in search and ads that then sold to larger US-based players. Without the deep revenue streams, no European player had the capital or expertise to go into cloud. As a result, there is no European player with enough compute, or datasets, or capital to effectively compete in cloud or AI. China has homegrown players, even Russia has to some extent, Europe’s closest equivalent are OVH and Hetzner, which sell on price, not on higher-level services.</li>
+<li><strong>GDPR after effects</strong>: EUparl saw that in situations where US states are fragmented they can act as a standards body, and there’s a weird effect of “if we cannot be relevant through tech, we can still be relevant through shaping the legal landscape”, and that’s what leads to this terrible idea of “Europe as regulatory superpower”, where it is more important for members of EUparl to have done “something” than having done “something right” - a mentality that seems to prefer bad regulation over no regulation, when good regulation would be needed. GDPR led to higher market concentration in Ads, which arguably undermines privacy in a different way, and it’s imposed huge compliance and convenience cost on everybody. But in EUparl it’s celebrated as success, because hey, for once Europe was relevant (even if net effects are negative).</li>
+<li><strong>Pervasive shortsightedness among EU national legislators</strong>, undermining the single market and passing poor laws with negative side effects for startup and capital formation. The best example is Germans “exit tax”: Imagine you are an Angel Investor in the US but if you move out of state it triggers immediate cap gains on all your illiquid holdings/Angel Investments at the valuation of the last round. It essentially means you can’t angel invest if you don’t know if you’ll have to move in the next 8-10 years because you don’t know if you can afford the tax bill. It’s hair-raisingly insane, and likely illegal under EU rules, but who wants to fight the German IRS in European court?</li>
+</ol>
+<p>I think these are the most important factors that come to mind. I’ll add more if I remember more of them.</p>
+<p>Also, given that this post has a strong resonance with extreme “anti government” and “libertarian” types, please be aware that I am very much on a different area of the political spectrum (centre-left, somewhere where the social democrats used to reside historically in Germany). I am strongly in favor of good and competent regulation to ensure markets function, competition works, and customers are protected.</p>
+
+
+
+ ]]></description>
+  <guid>https://thomasdullien.github.io/posts/2023-12-11-a-list-of-factors-that-act-ed-as-drag-on-the-european-tech-startup-scene/</guid>
+  <pubDate>Sun, 10 Dec 2023 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

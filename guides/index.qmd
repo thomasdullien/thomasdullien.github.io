@@ -1,0 +1,8 @@
+---
+title: "Guides"
+---
+
+Long-form material that is better maintained as part of the site than as a
+blog post.
+
+- [Halvar’s Guide to Entrepreneurship](entrepreneurship/index.qmd)

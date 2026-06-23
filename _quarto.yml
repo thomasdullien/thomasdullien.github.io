@@ -1,0 +1,52 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "about/"
+    - "guides/"
+    - "posts/"
+    - "!_templates/"
+
+website:
+  title: "Thomas Dullien / Halvar Flake"
+  site-url: "https://thomasdullien.github.io"
+  description: "Personal website of Thomas Dullien / Halvar Flake."
+  navbar:
+    pinned: true
+    left:
+      - text: "About"
+        href: about/index.qmd
+      - text: "Writing"
+        href: posts/index.qmd
+      - text: "Guides"
+        href: guides/index.qmd
+    right:
+      - icon: github
+        href: "https://github.com/thomasdullien"
+        aria-label: "GitHub"
+      - icon: rss
+        href: posts/index.xml
+        aria-label: "RSS"
+  page-footer:
+    left: "© Thomas Dullien"
+    right:
+      - text: "GitHub"
+        href: "https://github.com/thomasdullien"
+      - text: "Twitter"
+        href: "https://twitter.com/halvarflake"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    link-external-newwindow: true
+    anchor-sections: true
+
+execute:
+  freeze: auto

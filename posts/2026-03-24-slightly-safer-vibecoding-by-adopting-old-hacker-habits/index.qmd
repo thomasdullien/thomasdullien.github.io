@@ -1,0 +1,35 @@
+---
+title: "Slightly safer vibecoding by adopting old hacker habits"
+date: 2026-03-24
+date-modified: 2026-03-24
+original-url: "https://addxorrol.blogspot.com/2026/03/slightly-safer-vibecoding-by-adopting.html"
+blogger-id: "4869525190488162593"
+---
+I have seen a lot of public discussion around supply-chain attacks on the Python ecosystem, prompt injection risks when using coding agents, and general worries about the security implications of "vibe coding" for the development machine.  
+  
+In some of these discussions I find myself puzzled as to what problem is being solved - and it took me a while to realize that my failure to understand lies in the development setup that I tend to use.  
+  
+In this blog post I'll quickly explain my development setup.  
+  
+The setup is pretty simple:  
+
+1.  The actual development happens on a rented server (or a VM on that server).  
+2.  In order to do development, I SSH into that server with key-forwarding for my github keys enabled.  
+3.  I perform my development on the server by attaching to a screen or tmux session.  
+4.  I used to just use vim with various extensions, but with the advent of coding agents I also use claude code etc. nowadays.
+5.  I avoid keeping secrets inside the development VM or on the development server.  
+6.  I let the agent churn away on problems for extended periods of time while I am detached from the tmux/screen.
+
+A setup like this reduces a large number of supply-chain attacks to - at worst - compromise the development VM.  
+  
+There is still a significant risk of the github key forwarding being abused to compromise the upstream main repository.  
+  
+The way around this is a bit cumbersome, but not much different from what many open-source projects already do: You keep a main repository, and you \*fork\* a development repository from it. Then you do all your development on the dev repository, and when you're done in your development branch, you issue a cross-repository pull request.  
+  
+Obviously, a human needs to go through that PR with a fine comb - but this is something you want to do for insider risk etc. anyhow, so your risk profile changes only marginally.  
+  
+In a setup like this, the main secret that you'll lose in a supply chain attack are your Claude credentials. And you don't need to worry about prompt injection into your coding agent too much, and can just focus on writing code.
+
+  
+
+Interestingly, the development model of "SSH into a machine and attach to a screen session" was popularized by the hacker subculture (as in "computer break-in" subculture) since historically it was never a good idea to have data on machines you physically own. SSH'ing into a random machine in a different country that law enforcement couldn't easily get access to was a reasonable way of keeping your hands clean. I mainly switched to that development model because I almost always need long-running compute and was travelling a lot, and with agent-first development the model is seeing a bit of a resurgence.

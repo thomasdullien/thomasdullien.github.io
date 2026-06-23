@@ -1,0 +1,6 @@
+author: "Thomas Dullien"
+format:
+  html:
+    toc: true
+    comments: false
+page-layout: article

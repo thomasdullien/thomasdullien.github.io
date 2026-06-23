@@ -1,0 +1,1003 @@
+---
+title: "About"
+description: "About Thomas Dullien / Halvar Flake."
+date: 2019-01-03
+toc: true
+---
+
+## About me {#aboutme}
+
+I am a trained mathematician who skews heavily toward computer science
+and programming - to an extent that I am now more a mathematical
+computer scientist than a computing mathematician. I started reverse
+engineering software as a teenager, and have always kept a keen interest
+in all aspects of low-level programming, program analysis, compilers
+etc.
+
+My professional work has been centered on computer security. Areas that
+I have sunk substantial time into are:
+
+- Identifying vulnerabilities in software (both when source code is
+  available, and when only binaries are available).
+- Comparing executables (for both malware and vulnerability research).
+- Similarity search over large databases (many billions) of graphs
+- Mechanisms of exploiting such vulnerabilites.
+- Analyzing mitigations for vulnerabilities and their effectiveness.
+- Theoretical foundations for software vulnerabilities. What precisely
+  is a vulnerability, and what precisely is an exploit?
+
+In more recent years, I have pivoted toward computational efficiency,
+particularly around cost-effective cloud computing. Areas that I have
+invested in:
+
+- Large-scale whole-fleet profiling tooling for typical cloud workloads
+- Backend engineering to make use of such tooling
+- Converting output of large-scale whole-fleet profiling into formats
+  useful to PGO
+- Performance analysis of large-scale workloads
+
+In 2004, I started a company called [zynamics](http://www.zynamics.com)
+that built highly specialized reverse engineering tools. We won an
+important research prize with our work in 2006, and grew the company to
+about a dozen employees. One of our products (BinDiff) became an
+industry standard and even a verb. In 2011, Google acquired the company,
+and I spent the next 5 years integrating our technology and team into
+Google.
+
+In 2015, I was awarded the lifetime achievement [Pwnie
+award](https://en.wikipedia.org/wiki/Pwnie_Awards).
+
+From 2016 to the end of 2018 I worked as a researcher in Google's
+[Project Zero](https://googleprojectzero.blogspot.com/), one of the
+leading computer security research teams.
+
+As of January 2019 I have left Google and am one of the co-founders of
+[optimyze](https://optimyze.cloud). Optimyze builds the world's first
+frictionlessly- deployable multi-runtime continuous in-production
+profiler.
+
+This is quite a mouthful, so in short: A small agent that you can easily
+install in a fleet of thousands of Linux machines, and that can tell you
+at any point in time where your fleet is spending CPU cycles -- down to
+the line of code, and irrespective of the language runtime you are using
+(e.g. this works for C/C++, Java, Ruby, PHP, Perl, Python etc.).
+
+No changes to your code are necessary, check it out at
+[www.prodfiler.com](https://prodfiler.com).
+
+Update November 2021: We've been acquired by
+[Elastic](https://elastic.co).
+
+Some of my prouder moments on Twitter are [Rob
+Joyce](https://en.wikipedia.org/wiki/Rob_Joyce) praising my Cycon
+[talk](https://twitter.com/RGB_Lights/status/1191326508691992577) and
+Jaana Dogan (AWS lead for observability) [praising
+prodfiler](https://twitter.com/rakyll/status/1434605993317466118).
+
+## Fields of expertise/experience {#expertise}
+
+Over the years of doing research, starting/running a company, and then
+leading a team in a large multinational, I have acquired quite a bit of
+experience in a variety of areas:
+
+- Technical experience:
+
+  - Reverse engineering of malicious software (userspace and
+    kernelspace)
+  - Reverse engineering of COTS software
+  - Security analysis of software (C/C++)
+    - Vulnerability discovery
+    - Exploit development
+    - Tooling to assist in both of the above
+  - Exploitation of hardware reliability flaws (Rowhammer)
+  - Engineering of large-scale distributed systems (particularly for
+    malware analysis)
+  - Large-scale analysis of executable code (both large in terms of
+    volume and in terms of inidividual size)
+  - Static analysis, formal methods
+  - Applying mathematics/statistical inference/machine-learning to
+    real-world problems
+  - Building low-level profiling tools by extending the Linux Kernel
+  - Backend engineering of large-scale SaaS infrastructure
+
+- Management experience:
+
+  - I've started startups twice, and in both cases delivered products
+    that provided capabilities that were unparalleled by any competitor
+    and ahead of the their time.
+  - The products were beloved by users and gained a lot of mindshare
+    with their specialist users.
+  - Product conception, design, and engineering (BinDiff, BinNavi,
+    VxClass) - going all the way from idea to ''bringing to market''
+  - Building and leading engineering teams
+  - Training cybersecurity experts on vulnerability discovery, exploit
+    development, reverse engineering and malware analysis
+  - Technical roadmapping to improve the defensive posture of a very
+    large organisation
+  - Transitioning a small team (9 people) through an acquisition;
+    integrating the team & technology in a very large organisation
+
+## Talks and presentations {#talks}
+
+I have given quite a large number of presentations over the years and
+nearly two decades that I have been involved in computer security. Below
+is a list of those that I can remember / find evidence for, in reverse
+chronological order.
+
+I have tried to link videos and slides (if I could find any), as well as
+a brief synopsis of what I remember the important point of the talk was.
+
+My year 2019 has a sharp drop-off in the number of talks compared to
+previous years; my wife and me have a child now and I have decided to
+travel & talk much less.
+
+### 2019 {#2019}
+
+**FinOps Foundation Meeting**: [Fin(Dev)Ops: Beyond rightsizing and
+RI-planning](https://docs.google.com/presentation/d/1YaFB09agl9AvNiqUP3v1pBHfCOOhgkmfnce6c5YkktA/edit#slide=id.p)
+A talk in which I explain my rationale for my new company,
+optimyze.cloud AG: The end of Moore's Law and Dennard scaling, combined
+with the move to the cloud and the continued digital transformation of
+society, presents some unique opportunities: Computational efficiency
+will start to matter again, and there is the possibility of doing good
+while doing well in helping organisations deliver their digital services
+more cheaply (and hence more efficient in terms of energy and other
+resources).
+
+**Some event, had to cancel due to birth of first child that day**: [A
+crash-course in cyber](https://docs.google.com/presentation/d/14iFim2m0jmPhQKQFOPoqvVKykz8EVgmV1q_8dsapZ68/edit)
+
+An attempt at making a very succinct, 12-slide presentation that brings
+people not well-versed in the realm of cybersecurity up to speed on the
+unique challenges of that realm.
+
+**CODE Colloquium**:
+[https://www.unibw.de/code/events-u/computer-security-exploits-and-the-weird-machine](https://www.unibw.de/code/events-u/computer-security-exploits-and-the-weird-machine)
+
+Another iteration of the Oxford weird machine talk, this time at the
+Cyber Defense institute of the German Armed Forces University.
+
+### 2018 {#2018}
+
+**HITB Bejing**: [The good 0(ld) days](https://docs.google.com/presentation/d/10TvoiRXx8RQpVY7SAzRUOiLGECkTORFERykU_mddbk0/edit)
+
+Slightly modified talk from beVX.
+
+**beVX Conference Hong Kong**: [The good 0(ld) days](https://docs.google.com/presentation/d/16r_AUSWmtGw0CNxRg60VlTqkjBRxlvjEgxF10O0imk4/edit)
+
+A talk about some of the research I did while at Project Zero, focused
+on automatically discovering statically-linked library functions in
+binaries and highly efficient similarity searches over large quantities
+of code.
+
+A technical talk that covers most of the ground also covered in the
+corresponding blog post.
+
+**SSTIC 2018, Keynote**: [Closed, heterogenous platforms and the
+(defensive) reverse engineers dilemma](https://www.sstic.org/2018/presentation/2018_ouverture/)
+
+The slides are
+[here](https://docs.google.com/presentation/d/1ljVUiXVi2PfEdolGXr7Wpepj0x2RxaOo9rzMKWXebG4/edit#slide=id.g3807d77cc5_0_82).
+A talk where I complain about the state of tooling in reverse
+engineering, and how it feels like insufficient progress has been made
+in the last 20 years. The talk borrows from previous talks - the BSides
+Zurich talk about exploit economics, and the CyCon keynote about
+escalating complexity.
+
+I criticize the proliferation of half-finished tools, the difficulty of
+interaction with them, and the general lack of progress.
+
+Btw, about 1 year later, I am a bit more optimistic - the open-sourcing
+of GHIDRA seems to have created a bit of momentum behind one major
+framework.
+
+**CyCon Talinn 2019, Keynote**: [Security, Moore's law, and the anomaly
+of cheap complexity](https://www.youtube.com/watch?v=q98foLaAfX8)
+
+I was invited to Keynote CyCon, and my talk was supposed to be right
+before Bruce Schneier's talk. I tried hard to make a talk that is
+accessible to people with a non-technical and non-engineering
+background, which nonetheless summarized the important things I had
+learnt about security. The core points are:
+
+1.  CPUs are much more complex than 20 years ago, the feeling of being
+    overwhelmed by complexity is not an illusion.
+2.  We are sprinkling chips into objects like we are putting salt on
+    food.
+3.  We do this because *complexity is cheaper than simplicity*. We often
+    use a cheap but complex computer to *simulate* a much simpler device
+    for cost and convenience.
+4.  The inherent complexity/power of the underlying computer has a
+    tendency to break to the surface as soon as something goes wrong.
+5.  Discrete Dynamical Systems and computers share many properties, and
+    tiny changes have a tendency to cause large changes quickly.
+
+This may be the most polished talk I have ever given -- I did multiple
+dry-runs with different audiences, and bothered everybody and his dog
+with the slides.
+
+I am particularly proud that [Bruce Schneier seemed to have liked it](https://www.schneier.com/blog/archives/2018/06/thomas_dullien_.html)
+this is a big thing for me because reading "Applied Cryptography" and "A
+self-study course in block-cipher cryptanalysis" had a pretty
+significant impact on my life.
+
+**RuhrSec 2018**: [Weird machines, exploitability, and provable
+unexploitability](https://www.youtube.com/watch?v=1ynkWcfiwOk)
+
+A re-run of the Oxford Seminar talk.
+
+**Cyber Security Seminar Oxford**: [Weird machines, exploitability, and
+provable unexploitability](https://vimeo.com/252868605)
+
+At the beginning of 2018 I finally managed to get my long-in-the-making
+[paper about the weird machine formalism](https://ieeexplore.ieee.org/document/8226852) published. The final
+version of the paper is rather dense, so I gave a few talks that give a
+less heavy-handed, less formal explanation of the topic.
+
+**T2.fi Keynote**: [Risks, damned lies, and
+probabilities](https://docs.google.com/presentation/d/1q6LVXJRf4MOzwS8JCRHklRwYNcjdgapuKuGpgd9GNyY/edit#slide=id.p)
+
+A keynote in which I venture like the amateur that I am into the realm
+of risk modelling, and talk a bit about proper scoring rules,
+probabilities, and incentives in security.
+
+### 2017 {#2017}
+
+**Zeronights Moscow, 2017, Keynote**: [Machine Learning, Offense, and
+the future of Automation](https://www.youtube.com/watch?v=BWFdxAG_TGk)
+
+After having done a lot of reading about Machine Learning / AI on my
+sabbatical and after returning to Google, I gave this keynote where I
+tried to condense the key "tricks" that make a lot of modern ML work
+into one talk (Automatic differentiation, high-dimensional nearest
+neighbor search, Monte Carlo Tree Search). In the second half I examine
+why common areas where ML/AI is applied defensively violate fundamental
+assumptions needed to make it work reliably (stability of input
+distribution), and argue that defenders should focus on solving tasks
+where this stability is given vs. the sexy task where they have an
+adversary that breaks their assumptions.
+
+The talk was contentious / provocative with people that work on products
+that apply AI in adversarial scenarios, but I stand by the key message
+(e.g. use AI/ML when you have a reasonably stable target distribution
+and no adversary that can modify it at will).
+
+**FIRST Puerto Rico, 2017**: [Finding an Intruder in a 10TB haystack:
+The benefits of similarity searching]
+
+A talk about similarity searching algorithms and how it is pretty easy
+to bootstrap code similarity search, image similarity search, and other
+similarity searches by using MinHashing or SimHashing.
+
+**BSides Zurich, 2017, Keynote**: [Repeated vs. single-shot games in
+security](https://docs.google.com/presentation/d/1y_R6Lkby-10LIIzFMnF4wqzqPWD-eh5RemWy31y4UjE/edit?usp=sharing)
+
+A quick and reasonably amusing keynote about the fact that the security
+community often thinks in terms of single-shot games and does not take
+the long-term dynamics of iterated games into account. This has a number
+of interesting consequences:
+
+1.  Most mitigations do not quite provide the same benefit as people
+    think.
+2.  "Raising the bar" on exploitation may counterintuitively lead to
+    worse long-term security.
+3.  Cost of exploit development against the same target is almost
+    monotonically falling.
+4.  The 0day vendor business model may actually benefit from raising
+    0day prices due to inflexible demand.
+
+**DIMVA 2017, Keynote**: [What happens when someone writes an
+exploit?](https://drive.google.com/file/d/0B5hBKwgSgYFad1YybERxTmpURms/view?usp=sharing)
+
+Essentially a re-run of the weird machine talk I had given in November
+2016 in Switzerland. I very distinctly remember the difficulty I had in
+giving this talk, because I was re-using the earlier slides although my
+understanding of the formalism had evolved quite a bit.
+
+**Blackhat Asia 2017 Keynote**: [Why we are not building a defendable
+internet](https://www.youtube.com/watch?v=PLJJY5UFtqY)
+
+After the relatively optimistic engineering tone of my "Re-architecting
+a defendable Internet"-talk, I felt it was important to emphasize that -
+while the engineering problems seem surmountable - the organisational
+and economic problems for security are particularly tricky. The slides
+were done in a bit of a rush (I think the final version is
+[here](https://docs.google.com/presentation/d/1uR1WJgApoWDLmtwTxKtVxVUbRvCCLevf8aPT0uEmF3g/edit?usp=sharing)),
+but the talk was none-the-less well-received.
+
+The talk examines the economics (and failures) of the security product
+market: Why most security products, while not improving security per-se,
+provide a benefit to the purchaser (who is tasked with buying products
+to 'produce' security, but can't do it).
+
+To this day, I think it is a good talk, and important for understanding
+why the security product market is somewhat pathological.
+
+### 2016 {#2016}
+
+**[Cyber Security Alliance](https://web.archive.org/web/20161020092417/http://www.cybersecurityalliance.ch/)**:
+[What happens when someone writes an exploit](https://drive.google.com/file/d/0B5hBKwgSgYFad1YybERxTmpURms/view?usp=sharing)
+
+I was writing my weird machine paper at the time, and this seems to be
+my first attempt at publicly talking about it. The content mutated a lot
+over the next 18 months until the paper was finally published.
+
+The archive.org link is provided because the entire conference seems to
+have fallen off the internet.
+
+**O'Reilly Security Conference Amsterdam**: [Re-architecting a
+defendable Internet](https://www.oreilly.com/library/view/oreilly-security-conference/9781491976128/video287524.html)
+
+My first talk after the end of my sabbatical, describing how I imagine a
+way forward to build devices that could actually be defended in a
+reasonable manner. The talk was recorded, but is paywalled
+unfortunately. The slides are
+[here](https://drive.google.com/file/d/0B5hBKwgSgYFacC1jejJYSE1LTlk/view?usp=sharing).
+
+The core of the talk is that we need to build hardware support for
+hashing *all* the code in a device, and a public ledger to see that the
+code running on the device is actually the code that the vendor avows.
+
+**Some informal event in Singapore**: [3 Things Rowhammer taught me](https://docs.google.com/presentation/d/1x7syhRv8Kxi78fpbcp4vSsslriGOj5cuHUgCUuZcZ3U/edit?usp=sharing)
+
+During my sabbatical, my wife and me travelled through Singapore, and I
+was asked to give a short talk. I had spent a fair bit of time thinking
+through my experience with Rowhammer (which had been very educational -
+on the technical front, on the organisational front, and on the economic
+front). This talk tries to condense my lessons from Rowhammer:
+
+1.  We need a proper theory of exploitation. This is me reminding myself
+    to invest the time to formalize the informal things I presented
+    during my Infiltrate 2011 keynote.
+2.  Hardware is not properly analyzed for worst-case behavior, and is
+    only average- case deterministic. Research into chip faults due to
+    manufacturing process variation looks extremely interesting.
+3.  The importance of building systems that can be inspected if we wish
+    to reach defendable systems.
+
+### 2015 {#2015}
+
+**Blackhat Briefings 2015** (with Mark Seaborn, who did most of the
+work): [Exploiting the DRAM Rowhammer Bug to Gain Kernel Privileges](https://www.youtube.com/watch?v=HtqBvHVYrP4)
+
+The talk to present the work that had been published in the blog post
+previously. I am co-presenting with Mark Seaborn, who really did 90% of
+the research work on this. My only actual technical contribution was
+double-sided hammering, and proposing PTE spraying (and then learning
+that someone else had proposed PTE sprays earlier).
+
+### 2014 {#2014}
+
+**Area41 Zurich Keynote**: [Why Johnny can't tell if he is
+compromised](https://docs.google.com/presentation/d/1dRk1czhS0FSNcWEFdRea2_QN7AVuGFLjxL-7gEXBe7w/edit?usp=sharing)
+
+The original speech blurb:
+
+> It is 2014, and Bob Morris Sr. old golden rules of computer security
+> still apply: "Do not own a computer; do not power it on; and do not
+> use it." It has become clear over the last years that we are quickly
+> moving toward a world full of computers which are simultaneously under
+> the control of multiple parties whose interests may diverge (or even
+> be diametrically opposed). Possession and ownership take on very
+> bizarre shapes - mostly because it is practically impossible for
+> anybody to determine whether he is actually "in possession" of his own
+> computing infrastructure.
+
+> This talk examine the technical reasons why I can't tell if I am in
+> control of my own computing infrastructure, and highlight all the
+> things that would need to be changed to fix it.
+
+**ISACA Nordic Conference Keynote**: [Hacking and addiction](https://docs.google.com/presentation/d/1Sv8IHkBtBEXjSW7WktEYg4EbAUHtVyXIZBrAGD3WR5Y/edit#slide=id.p)
+
+A talk about the network effects in hacking - how the number of machines
+you have compromised enlarges your "compromise boundary", e.g. the
+number of machines you can easily compromise next - and about the
+fundamental addictiveness of an activity where your success accelerates
+with past successes. The talk ends with comments about the necessity of
+code-signing transparency.
+
+### 2013 {#2013}
+
+**Syscan 2013**: [Checking the boundaries of static analysis](https://docs.google.com/presentation/d/1_Te02rSqn7wuhsmkkluqWhDBoXXFVUL5Mp0dUxH0cVE/edit?usp=sharing)
+
+This is probably the talk where I most mis-aligned talk content to
+audience, and I feel guilty to the conference organizers to this day.
+
+The talk discusses some trends at the time in the academic research
+sector about the confluence of abstract interpretation and SMT solvers,
+e.g. areas where the two interact constructively.
+
+The talk covers issues of myopic analysis and how "most precise
+transforms" can be synthesized using solvers, it discusses issues of
+heap-cell summarization, and a few other topics. Most importantly, it
+discusses all the things where static analysis has a very hard time
+providing results.
+
+The talk would have been good to give at a seminar for people embarking
+on a static analysis PhD, but it was very ill-suited for Syscan, and
+fell very flat on it's face. Quite possibly the worst talk I have given.
+Sorry, Thomas Lim.
+
+**SOURCE Dublin 2013 Keynote**: [Piracy, Privateering, and the creation
+of a new Navy](https://docs.google.com/presentation/d/1pD_BRXg6sgWdNtIEnTpZYXqQ2MEoAGdfrQsvuj9YeDA/edit?usp=sharing)
+
+A talk about the parallels between the geopolitical situation during the
+time of the Spanish Main (the 1500-1600s after the discovery of the new
+world) and the current times on the internet, particularly with regards
+to Hackers and their relationship to the military. A good talk that
+captured a thought that had been floating around, and was lateron
+[studied
+seriously](https://www.politics.ox.ac.uk/materials/publications/14938/workingpaperno1egloff.pdf)
+by others. Amusingly, the NYT ran an op-ed titled ["An Elizabethian
+Cyberwar"](https://www.nytimes.com/2013/06/01/opinion/an-elizabethan-cyberwar.html)
+about a week after my talk, using the same analogy I had used. I was
+assured that this was coincidence, so my talk must have verbalized some
+part of the collective unconcious at the time.
+
+**GreHack 2013 Invited Talk**: [The many flavors of binary analysis](https://docs.google.com/presentation/d/19rr_45lOc7jffhR_PFo1XzWDmoZewx1V6mLqc3kjPaM/edit?usp=sharing)
+
+A sort-of survey-slash-recruitment talk where I discuss the many
+different areas that one can tackle when doing binary analysis -
+fuzzing, abstract interpretation, SMT solvers, etc. etc.
+
+Touches on a few topics that occupied my mind at the time, primarily the
+"myopic analysis" of many binary abstract interpreters, and the issue of
+heap cell summarization for use-after frees.
+
+### 2012 {#2012}
+
+**Hashdays 2012 Switzerland**: [Things one wants from a heap
+visualisation tool](https://www.youtube.com/watch?v=PS9Pnq2WIyE)
+
+Proper heap visualization is one of my pet topics that many people have
+difficulty relating to. I was introduced to heap visualisation as part
+of the exploit development process in 2004 by Gerardo Richarte, who
+[released his
+tool](http://actes.sstic.org/SSTIC07/Rump_sessions/SSTIC07-rump-Richarte-Heap_Massaging.pdf)
+a few years later (you can still find a [copy of it on
+archive.org](https://web.archive.org/web/20091013134700/http://oss.coresecurity.com/projects/heapdraw/)).
+
+For me, the tool was a revelation, and I built my own version during my
+time at zynamics. I have never done any heap exploitation *without* such
+a visualizer post-2004.
+
+Interestingly, the entire approach seems to be quite polarizing: Of all
+the vuln-dev people I have interacted with, about 5-10% swear by having
+the visualizer and would not want to live without it, and 90% are like
+"meh, what is this for?".
+
+Anyhow, building a good heap visualizer is not easy, and in 2012 I was
+frustrated with the non-availabilty of anything useful. As a result, I
+gave this talk, which outlines both what you would need from a good heap
+visualizer, and some of the engineering challenges involved with it. I
+had hoped somebody would take this as an invitation to build one, but I
+was not so lucky :-)
+
+I did end up writing a (not good, extremely yanky) [heap
+visualizer](https://github.com/thomasdullien/heap_history_viewer) for
+64-bit address spaces in 2016 during two weeks of my sabbatical, but it
+is very much the minimum I needed to finish my exploit, not the
+well-rounded tool I asked for in this talk.
+
+### 2011 {#2011}
+
+**Infiltrate 2011 Keynote**: [Exploitation and state machines](https://downloads.immunityinc.com/infiltrate-archives/Fundamentals_of_exploitation_revisited.pdf)
+
+After the extremely stressful Google/zynamics acquisition, I gave a talk
+in Miami where I outlined some of my thoughts about the proper mental
+model for exploitation. I had heard the term "weird machine" for the
+first time during an informal lecture Sergey Bratus had given, and my
+experience in exploit writing between 2008 and 2011 had allowed my
+thoughts to mature a lot.
+
+The recording of this keynote is sadly lost, but I think it is one of my
+better talks, and contains a few goodies, so I will summarize the
+important points:
+
+1.  A theoretical part about weird machines:
+
+- A reasonable (if informal) explanation of what a 'weird machine' is.
+- Why the existence of the weird machine leads to mitigation bypasses.
+- The importance of the set-up and initial states.
+- **"Infoleaks are made, not found"** - an important sentence at the
+  time, because many people thought that ASLR implies that one needs to
+  **find** an information leak in addition to a regular bug. Weird
+  machines allow you to construct one.
+
+2.  A concrete part about a Spidermonkey-byte-code-spray
+
+- Instead of JIT-spraying, the talk discusses how one can
+  byte-code-spray for modern JS engines, obtaining near-native code
+  execution; essentially obviating NX memory.
+- Some "stunt exploitation" -- a story of how I exploited a bug that
+  most sane researchers would have discarded. Probably the beginning of
+  my love affair with really shitty bugs.
+
+3.  A long part about "implicit state machines". This needs to be read
+    as a long- winded criticism of the 'automated exploit generation'
+    papers that were fashionable in academia at the time; in essence,
+    various authors claimed that making a target application execute a
+    particular program path was just a matter of solving path
+    constraints. I had subscribed to a similar superstition until 2006
+    until I had run face-first into the "implicit state machine" (e.g.
+    the state machine of the application that may make a particular
+    program path impossible). Knowing better, I was very annoyed with
+    academia doing their best to ignore this roadblock in order to not
+    jeopardize paper acceptance.
+4.  A discussion of "crackaddr", the memory corruption from sendmail
+    reduced to an absolute minimum. Triggering it requires taking a
+    particular path through a state machine, and it is still to this day
+    an excellent example of the sort of bugs that are hard to deal with
+    automatically. Progress has been made, but my view is that this
+    progress does not generalize well to variations of this loop (e.g.
+    without the accidental linear invariant, and with larger values for
+    BUFFERSIZE).
+5.  A short part about how inherent approximation problems in abstract
+    interpretation, e.g. the inherent cascading loss of precision due to
+    overapproximation. This gets short shrift in the talk but is
+    actually a deep insight: The spin-out-of-control nature of weird
+    machines makes sound approximation by overapproximating states
+    escalate the imprecision. I will probably write a blog post about
+    this in the future.
+
+Anyhow, this is one of the talks I am proudest of, content-wise, even
+though one could have probably made 4 separate single-topic talks out of
+it. I was clearly anxious and trying to impress. It is also the first in
+a series of keynotes that make up a greater portion of my talks since
+2011.
+
+### 2010 {#2010}
+
+**Virus Bulletin 2010**: [Challenging conventional wisdom on byte
+signatures](https://www.virusbulletin.com/conference/vb2010/abstracts/challenging-conventional-wisdom-byte-signatures/)
+
+One of the cool side-effects of the algorithms that Christian Blichmann
+developed as part of his MSc thesis was the surprising length of these
+signatures: We got way more than strictly needed. As a side-effect, we
+could cut one "master signature" into many fragments, all of which with
+comparable false-positive rate.
+
+The upshot of this was that some signatures could be used for detection,
+others could be used for monitoring whether detection was being
+bypassed. This talk discussed the algorithms & approaches.
+
+**CanSecWest 2010**: [ShaREing is caring](http://blog.zynamics.com/2010/03/25/shareing-is-caring-announcing-the-free-bincrowd-community-server/)
+
+Collaboration, knowledge management and data exchange between reverse
+engineers has always been a huge problem. During our time at zynamics,
+we recognized this problem, and after we had gained some experience with
+hashing control-flow-graphs, we realized that this leads to an easy
+method of exchanging function names via a centralized server.
+
+This talk presented BinCrowd, a product we sold for a while that allowed
+the exchange of function names and comments between many users of
+diverse RE tools.
+
+**NATO IST Conference that was cancelled 2010**: [Automated Attacker
+Correlation for Malicious Code](https://www.sto.nato.int/publications/STO%20Meeting%20Proceedings/RTO-MP-IST-091/MP-IST-091-26.pdf)
+
+Strictly speaking, this should not be listed under talks - we got our
+paper accepted at the conference, and it was supposed to be presented,
+but the conference was cancelled.
+
+**T2.fi Helsinki 2010**: [How to notice if you are re-owned](https://t2.fi/schedule/2010/#speech3)
+
+A talk about automated signature generation, malware classification, and
+how to use the ability of generating large quantities of signatures.
+
+### 2009 {#2009}
+
+There seems to be no trace of me giving public talks in 2009 - if you
+find evidence of a talk I gave, please contact me :-)
+
+### 2008 {#2008}
+
+**Hack.lu 2008**: [Various ways of classifying malware](http://archive.hack.lu/2008/Halvar_hacklu.next.attempt.odp)
+
+A talk that surveyed some malware classification approaches and
+discussed ours at the time.
+
+**RSA 2008**: [Unknown title, something about malware classification?](http://addxorrol.blogspot.com/2008/04/oh-before-i-forget-ero-me-will-be.html)
+
+I must have spoken at RSA in 2008. I remember visiting San Francisco,
+and having a rather nice lunch & chat somewhere, but I do not remember
+anything about the talk. Neither does the internet.
+
+### 2007 {#2007}
+
+**Bluehat 2007**: [Structural Classification of Malware]
+
+I suspect this was a re-run of the DeepSec talk.
+
+**Blackhat Asia 2007**: [Automated unpacking and Malware
+Classification])
+
+I suspect this was a re-run of the DeepSec talk.
+
+**DeepSec 2007**: [Automated structural classification of malware](https://www.youtube.com/watch?v=IaB2aR0QR2E)
+
+A talk which describes using BinDiff-style algorithms for malware
+classification, after surveying what other people were doing.
+
+### 2006 {#2006}
+
+**Bluehat 2006**: [BinDiff Analysis](https://channel9.msdn.com/podcasts/HalvarFlake.mp3)
+
+I presented about patch diffing to various Microsoft folks at Bluehat.
+
+**Blackhat USA 2006**: [RE 2006: New Challenges Need Changing Tools](https://www.youtube.com/watch?v=q8OGmvR23CA)
+
+It appears that the slides for this talk are lost (in slide format), but
+do exist as part of the video recording. This talk can best be described
+as a "keynote slipped into a conference under the guise of a research
+talk": The talk lists a number of problems that I wanted to see solved,
+and sometimes provided a rough sketch on how I would go about solving
+the problem.
+
+It contains a nicely broad definition of reverse engineering, and a
+number of interesting ideas that I would still like to see solved:
+
+- #1 and #2: Automated data structure recovery; building UML inheritance
+  diagrams from binaries.
+- Coupling the above with a debugger to allow run-time object inspection
+  and editing.
+- #3: Automated modularization of binaries (decomposing binaries to
+  recover library structure / groupings).
+- #4: De-templating of heavily templated C++ code.
+- #7: "Normal forms" for sequences of code (a Groebner-base equivalent?)
+- #8: A visualization for callgraphs that shows each node as a Poset to
+  make sure the order of outgoing edges is visualized, too.
+- 9#: Recovery of the internal state machine of a target.
+- 10#: Semantics-based FLIRT-style library identification.
+
+Interestingly, challenge #5 - automated input data creation - is the one
+where most progress has happened since the talk. To my great amusement,
+this talk suggests the use of SAT solvers to do it. At that time, I was
+obviously unaware at the time of the research on SMT that is happening
+and will lead to Vijay Ganesh's great 2007 thesis (and the release of
+STP).
+
+**DEF CON 14**: [RE 2006: New Challenges Need Changing Tools](https://www.youtube.com/watch?v=q8OGmvR23CA)
+
+This talk is the same as the corresponding Blackhat talk.
+
+**CanSecWest 2006**: [More on Uninitialized Variables](https://seclists.org/basics/2006/Mar/85)
+
+The contents of this talk have been lost; I presume it was similar to
+the other uninitialized variable talks I gave in 2006.
+
+**Blackhat Europe 2006 - Amsterdam**: [Attacks on Uninitialized Local
+Variables](https://www.blackhat.com/presentations/bh-europe-06/bh-eu-06-Flake.pdf)
+
+A re-run of the DC talk.
+
+**Blackhat DC 2006 - Washington DC**: [Attacks on Uninitialized Local
+Variables](https://www.blackhat.com/presentations/bh-federal-06/BH-Fed-06-Flake.pdf)
+
+A talk where I discuss my attempts at properly initializing an
+uninitialized stack buffer in a given target function. The research was
+inspired by some spellunking I had done with a friend in a then-popular
+IKE implementation; we had a good uninitialized stack variable bug in it
+and then struggled with populating it with good data.
+
+### 2005 {#2005}
+
+**T2 Helsinki** [Diff, Navigate,
+Audit](https://t2.fi/schedule/2005/#speech5)
+
+My first trip to Finland, and a great conference where I was introduced
+to Ero Carrera, who would later join me at zynamics and be instrumental
+in starting the development of VxClass.
+
+**SSTIC 2005**: [Comparaison structurelle d'object
+executables](https://www.sstic.org/2005/presentation/bindiff_compairson_struct_objets_exec/)
+
+Rolf Rolles and me had made a lot of progress with the core BinDiff
+algorithms between the DIMVA publication and early 2005 - Rolf had
+contributed a few critical ideas that greatly improved the ability to
+perform matching of basic blocks.
+
+This paper is a description of BinDiff ca. 2005 including these new
+methods. It is also the only conference talk I ever gave in French, and
+because I was terrified of doing it, it is probably the talk I practiced
+most in my life.
+
+**Blackhat Europe, 2005**: [Compare, Port,
+Navigate](https://www.blackhat.com/presentations/bh-europe-05/BH_EU_05-Flake.pdf)
+
+A joint talk with Rolf Rolles about BinDiff, diffing patches, porting
+symbols, and using coverage information & interactive graph
+visualization for reverse engineering / vulnerability research.
+
+### 2004 {#2004}
+
+**DIMVA 2004**: [Structural comparison of executable objects](https://www.researchgate.net/publication/28356113_Structural_Comparison_of_Executable_Objects)
+
+My first academic publication was presented at DIMVA in 2004 in
+Dortmund.
+
+**DefCon 12, USA, 2004**: [Take it from
+here](https://media.defcon.org/DEF%20CON%2012/DEF%20CON%2012%20video/DEF%20CON%2012%20Hacking%20Conference%20Presentation%20By%20FX%20-%20Halvar%20-%20Take%20it%20from%20here%20-%20Video.m4v)
+
+A joint talk with Fx at DefCon about vulnerability research. I have
+almost no memory of the content of the talk.
+
+**Blackhat Hat USA, 2004**: [Diff, Navigate,
+Audit](https://www.blackhat.com/presentations/bh-usa-04/bh-us-04-flake.pdf)
+
+At some point in spring 2004, I started what was then called "SABRE
+Security", and what would later become
+[zynamics](http://www.zynamics.com). This talk describes BinDiff, and a
+proto-BinNavi (essentially an IDE for reverse reverse engineering
+centered around interactive graph visualisation, coverage analysis, and
+differential debugging, and some ideas for "BinAudit", the static binary
+analyzer that we never got around to building. It also uses the company
+logo for the first time.
+
+**Blackhat Hat Windows, 2004**: [Automated Reverse
+Engineering](https://www.blackhat.com/presentations/win-usa-04/bh-win-04-flake.pdf)
+
+As far as I can tell, largely a re-run of the talk given at Blackhat
+Asia, with some more practical examples -- using BinDiff for reverse
+engineering a particular patch in the Windows messenger service.
+
+### 2003 {#2003}
+
+**Blackhat Asia, 2003**: [Automated Reverse
+Engineering](https://www.blackhat.com/presentations/bh-asia-03/bh-asia-03-halvar.pdf)
+
+A two-part talk: The first half discusses IDC scripts that identify bad
+usage of common C functions, followed by a discussion of the design
+criteria for the IL I was using at the time. The second half discusses
+methods to identify memory-copying loops, followed by a discussion of
+the BinDiff algorithm as it was in 2003.
+
+**Blackhat Europe, 2003**: [Data flow
+analysis](https://www.youtube.com/watch?v=llJwWZ0p4F4)
+
+It appears the slides are lost, but from what I can tell in the video,
+the content is largely identical with the "More fun with graphs" talk.
+
+**Blackhat Federal, 2003**: [More fun with
+graphs](https://www.blackhat.com/presentations/bh-federal-03/bh-fed-03-halvar.pdf).
+
+Apparently the first presentation where I talk about a proto-BinDiff.
+This is interesting, because I had misremembered to not have started
+work on this prior to fall 2003, but I must have been off by quite a
+bit. The second half of the talk shows some slides with the first
+binary-IL that I wrote -- it is clearly inspired by SPARC (input and
+output registers), and I had to learn the hard lesson that IDA cannot be
+trusted to always produce correct stackframes -- and that hence an IL
+that requires stack analysis to be correct first is not terribly useful.
+
+There's some amount of proto-REIL visible if you squint enough. And I do
+wonder what happened to the code for that translation engine.
+
+**Blackhat Windows, 2003**: [Graph-based binary
+analysis](https://www.blackhat.com/presentations/win-usa-03/bh-win-03-halvarflake.pdf)
+AFAICT a re-run of the previous talk, most likely with slightly changing
+examples.
+
+### 2002 {#2002}
+
+**Blackhat Asia, 2002**: [Graph-based binary
+analysis](https://www.blackhat.com/presentations/bh-asia-02/bh-asia-02-halvarflake.pdf).
+AFAICT a re-run of the talk from Las Vegas that same summer.
+
+**Blackhat USA, 2002**: [Professional Source Code
+Auditing](http://www.blackhat.com/presentations/bh-usa-02/bh-us-02-iss-sourceaudit.ppt) -
+[Video](https://www.youtube.com/watch?v=YceCSBLlelQ). Personally, one of
+my favorite talks - jointly with Mark Dowd, Chris Spencer, Nishad
+Herath, and Neel Mehta. The talk discusses the security implications of
+pre-malloc integer overflows in some depth, and was one of the first
+public discussions thereof. Integer overflows had been the worst-kept
+secret in the offensive community at the time for a while. The talk
+concluded with a "bug quiz" - bugs where shown on slides, and whoever
+spotted the bug was (privately) told the name of the software.
+
+**Blackhat USA, 2002**: [Graph-based binary
+analysis](http://www.blackhat.com/presentations/bh-usa-02/bh-us-02-halvar-binary.ppt) -
+[Video](https://www.youtube.com/watch?v=S3-64rXYSTo). A talk in which I
+talk about incrementally deleting pieces of a CFG while performing
+manual reverse engineering, complain about (then-current) IDA not
+handling non-contiguous functions, and (perhaps most interestingly) talk
+about setting one-off breakpoints on basic blocks and feeding the
+information back into fuzzers to improve coverage (this was entirely
+manual at the time -- observe coverage, then improve the fuzzer). This
+may have been one of the earlier mentions of the idea of using coverage
+to improve fuzzers.
+
+**CanSecWest, 2002**: [Graph-based-binary
+analysis](https://cansecwest.com/core02/Graph_Based_Binary_Analysis.ppt)
+From what I can tell, a pre-run to the talk in Las Vegas this summer.
+
+**Blackhat Windows, New Orleans, 2002**: [Third Generation Exploits on
+NT/Win2k
+Platforms](http://www.blackhat.com/presentations/win-usa-02/halvarflake-winsec02.ppt).
+Apparently mostly a re-run of the BH Amsterdam talk from the previous
+fall. I remember this conference because I met Felix Lindner ('FX') for
+the first time here.
+
+### 2001 {#2001}
+
+**Blackhat Amsterdam, 2001**: [Third Generation Exploits on NT/Win2k
+Platforms](http://www.blackhat.com/presentations/bh-europe-01/halvar-flake/bh-europe-01-halvarflake.ppt).
+Exploiting heap corruptions on Windows NT / Windows 2000, and exploiting
+format string bugs. A detour into exploit reliability in multi-threaded
+environments, and overwriting the SEH handler directly in the
+statically-mapped TEB (assuming the attacker can cause creation of new
+threads). ''Thread grooming'' if you want.
+
+**Blackhat USA, 2001**: [Hit them where it hurts - finding holes in COTS
+programs](http://www.blackhat.com/presentations/bh-usa-01/HalvarFlake/bh-usa-01-Halvar-Flake.PPT) -
+[Video](https://www.youtube.com/watch?v=fy2W4yt6UHw). Pretty standard
+review of common vulnerable patterns in binary code; some IDC scripts to
+detect format string bugs; finding a real-world format string bug in
+CheckPoint Firewall's management console; some IDC scripts to help
+reconstruct data structure layouts.
+
+**HAL 2001**: [Source code and binary code
+auditing](http://www.nettime.org/Lists-Archives/nettime-l-0108/msg00044.html).
+Joint talk with scut about source and binary auditing.
+
+**Blackhat Windows, 2001**: [Auditing Closed-Source
+Software](http://www.blackhat.com/presentations/win-usa-01/Halvar/bh-win-01-halvar-flake.ppt) -
+[Video](https://www.youtube.com/watch?v=4_Wt4tZ7jEI): Pretty standard
+review of common vulnerable patterns in binary code; some IDC scripts to
+detect format string bugs; finding a real-world format string bug in iWS
+(iPlanet Web Server, the artist formerly known as Netscape Enterprise)
+SHTML parsing code; some IDC scripts to help reconstruct data structure
+layouts.
+
+### 2000 {#2000}
+
+**17C3, Berlin, 2000**: [Exploiting format string
+vulnerabilities](https://events.ccc.de/congress/2000/fahrplan/event/204.de.html).
+A joint talk with scut about format string exploitation.
+
+**Blackhat Amsterdam, 2000**: [Auditing binaries for security
+vulnerabilities](<http://www.blackhat.com/presentations/bh-europe->
+00/HalvarFlake/HalvarFlake.ppt). My first conference talk - a number of
+IDC scripts that could be used to detect common broken coding patterns
+in binaries (such as a deficiency of arguments to a
+format-string-consuming function).
+
+## Proper academic papers {#papers}
+
+I sometimes (very rarely) write or co-author academic papers. Here is a
+list of publications I authored or co-authored:
+
+**WOOT 2010**: [A Framework for Automated Architecture-Independent
+Gadget
+Search](https://www.usenix.org/conference/woot10/framework-automated-architecture-independent-gadget-search)
+Tim Kornau, Ralf-Philipp Weinmann, Thomas Dullien. A paper that grew out
+of Tim's MSc thesis work.
+
+**INSCRYPT 2010**: [Algebraic precomputation in differential and
+integral
+cryptanalysis](https://link.springer.com/chapter/10.1007%2F978-3-642-21518-6_27).
+Martin Albrecht, Carlos Cid, Thomas Dullien, Jean-Charles Faugère,
+Ludovic Perret. A paper to which I contributed a tiny idea with the
+other authors doing most of the heavy lifting.
+
+**ICML 2019**: [Graph Matching Networks for Learning the Similarity of
+Graph Structured Objects](http://proceedings.mlr.press/v97/li19d.html).
+Yujia Li, Chenjie Gu, Thomas Dullien, Oriol Vinyals, Pushmeet Kohli. A
+paper that grew out of a collaboration with the coauthors while I was at
+Google and them at Deepmind about the use of neural networks to learn
+algorithms for comparing graphs.
+
+**Cancelled NATO conference 2010**: [Automated attacker correlation for
+malicious
+code](https://www.researchgate.net/publication/235169390_Automated_Attacker_Correlation_for_Malicious_Code)
+Thomas Dullien, Ero Carrera, Soeren Meyer-Eppler. A paper that grew out
+of our work on VxClass.
+
+**CanSecWest 2009**: [REIL: A platform-independent intermediate
+representation of disassembled code for static code
+analysis](https://www.researchgate.net/publication/228958277_REIL_A_platform-independent_intermediate_representation_of_disassembled_code_for_static_code_analysis?_sg=f1fGBZp7fiCN59qGdPRd1YWfZfIDqJq9FN4h1XvPkHaGnB5EX93ToFgQyqaYNcW1fD97PeFGQ6QQ-w.0wQ1QYKsvdETmGI2VirePvIJbvvqqnjno4SPkvh2B72LfE62GQVjvEYIfqG9l40On5lxtwaYQ3yFXXd_D0PvCA&_sgd%5Bnc%5D=0&_sgd%5Bncwor%5D=0)
+Thomas Dullien, Sebastian Porst. This paper did not undergo a normal
+academic peer-review process, but is cited quite a bit, so it should
+probably be listed here.
+
+**IEEE Transactions on Emerging Topics in Computation**: [Weird
+machines, exploitability, and provable
+unexploitability](https://ieeexplore.ieee.org/document/8226852) Thomas
+Dullien. This paper is the closest thing to my "magnum opus" - e.g. I
+poured a lot of effort into it; writing it was important to me. The
+paper introduces the "right" way to think and reason about
+exploitability, and sets the stage for the understanding of exploitation
+as the process of steering a complicated discrete dynamical system.
+
+**DIMVA 2004**: [Structural comparison of executable
+objects](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.6632&rep=rep1&type=pdf)
+The original BinDiff paper.
+
+**SSTIC 2005**: [Graph-based comparison of executable
+objects](http://195.154.171.95/SSTIC05/Analyse_differentielle_de_binaires/SSTIC05-article-Flake-Graph_based_comparison_of_Executable_Objects.pdf)
+Thomas Dullien, Rolf Rolles. The updated and better original BinDiff
+paper.
+
+## Blog posts and other publications {#blogs}
+
+I used to run a blog called
+[ADD/XOR/ROL](https://addxorrol.blogspot.com) on Blogger.
+
+There are still good blog posts there, but I will try to blog here
+instead in the future.
+
+I also collaborated with Mara Tam and Vincenzo Iozzo on a paper about
+Wassenaar exploit export controls: [Surveillance, Software, Security,
+and Export
+Controls](https://tac.bis.doc.gov/index.php/documents/pdfs/299-surveillance-software-security-and-export-controls-mara-tam/file)
+
+## MSc theses I have supervised {#theses}
+
+In Germany, it is pretty common for MSc students to write their thesis
+in cooperation with industry, and during my time at zynamics we
+supervised a number of MSc theses. I am quite proud of some of the work
+the students (and often later co-workers) produced; some of the work
+still has impact more than a decade later.
+
+**2008**: [Automatisierte Signaturgenerierung fuer
+Malware-Staemme](https://static.googleusercontent.com/media/www.zynamics.com/en//downloads/blichmann-christian--diplomarbeit--final.pdf)
+
+Christian Blichmann's thesis on automatic generation of byte signatures
+from groups of executables. Very good work - the ideas were part of our
+VxClass commercial product, and were re-implemented in 2017 by Cisco
+Talos
+[here](https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/003/827/original/2017-06-17_BASS.pdf)
+
+**2009**: [Return-oriented programming for the ARM
+architecture](https://static.googleusercontent.com/media/www.zynamics.com/en//downloads/kornau-tim--diplomarbeit--rop.pdf)
+Tim Kornau's thesis on ROP-for-ARM; a very good thesis that contains a
+lot of pieces that became "standard" later: Identifying suitable gadgets
+by examining intermediate language translations of the underlying
+assembly, considering all "free branches" (e.g. any branch with a
+user-controllable target, and not just returns) etc.
+
+## Open-source projects {#opensource}
+
+[FunctionSimSearch](https://github.com/googleprojectzero/functionsimsearch)
+Code to calculate similarity-preserving hashes from disassembly control
+flow graphs, and to perform high-dimensional nearest-neighbor search
+over large indices of such graphs. More details about the code and what
+it does in [this blog
+post](https://googleprojectzero.blogspot.com/2018/12/searching-statically-linked-vulnerable.html)
+
+[simple_simhash](https://github.com/optimyze/simple_simhash) A pure
+ANSI-C implementation of calculating a SimHash over 4-byte tuples
+(including multiplicities) for a given byte stream. Simple and
+reasonably fast, no dynamic memory allocations (outside of some stack
+usage). Uses a counting bloom filter to count multiplicities while
+keeping memory consumption constant.
+
+[heap_history_viewer](https://github.com/thomasdullien/heap_history_viewer)
+A C++ / OpenGL program to visualize diagrams of heap layouts. Very
+useful in exploit development.
+
+## Now-defunct products I worked on {#oldproducts}
+
+[BinNavi](https://www.zynamics.com/binnavi.html). A reverse-engineering
+IDE that I loved, and that had many features ahead of it's time.
+Differential debugging, multi-user commenting, intermediate language for
+CPU-independent analysis, interactive flowgraph navigation -- all
+features first seen here, and now standard in modern RE frameworks. Fell
+into disrepair after the acquisition by Google, since Google could not
+really justify developing a RE framework. Google eventually open-sourced
+it, but due to the use of a closed-source graph component not everything
+could be open-sourced -- and with the release of Ghidra, there is little
+point in trying to repair BinNavi. I miss the tool, because it was very
+much taylored toward my personal reverse engineering workflow.
+
+[VxClass](https://www.zynamics.com/vxclass.html). The technology for
+which we got acquired. An antivirus-analyst-lab-in-a-box: Feed it large
+quantities of malware, it automatically discovered code-sharing
+relationships between them, identified clusters of related malware, and
+allowed automated generation of ClamAV signatures from groups of related
+malware. Parts of the technology live on, in heavily mutated form,
+somewhere inside Google to this day.
+
+[BinCrowd](https://blog.zynamics.com/category/bincrowd/). A server-based
+solution to exchange symbol names - essentially a precursor to what is
+now "Illumia", a standard feature of IDA Pro.

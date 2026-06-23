@@ -1,0 +1,36 @@
+---
+title: "What I want for Christmas for the EU startup ecosystem"
+date: 2024-12-05
+date-modified: 2024-12-05
+original-url: "https://addxorrol.blogspot.com/2024/12/what-i-want-for-christmas-for-eu.html"
+blogger-id: "8138403000640685814"
+---
+Hey all,  
+  
+I have written about the various drags on the European tech industry [in the past](https://addxorrol.blogspot.com/2023/12/a-list-of-factors-that-acted-as-drag-on.html?m=1), and recently been involved in discussions on both X and BlueSky about what Europe needs.  
+  
+In this post, I will not make a wishlist of what concrete policy reforms I want, but rather start "product centric" -- e.g. what "user experience" would I want as a founder? Once it is clear what experience you want as a founder, it becomes easier to reverse-engineer what policy changes will be needed.  
+  
+What would Europe need to make starting a company smoother, easier, and better?  
+  
+Let's jointly imagine a bit what the world could look like.  
+  
+Imagine a website where the following tasks can be performed:  
+
+1.  Incorporation of a limited liability company with shares. The website offers a number of standardized company bylaws that cover the basics, and allows the incorporation of a limited liability company on-line (after identity verification etc.).  
+2.  Management of simple early-stage funding rounds on-line: Standardized SAFE-like instruments, or even a standardized Series A agreement, and the ability to sign these instruments on-line, and verify receipt of funds.  
+3.  Management of the cap table (at least up to and including the Series A).  
+4.  Ability to employ anyone in the Eurozone, and run their payroll, social security contributions, and employer-side healthcare payments. Possibly integrated with online payment.
+5.  Ability to grant employee shares and manage the share grants integrated with the above, with the share grants taxed in a reasonable way (e.g. only tax them on liquidity event, accept the shares themselves as tax while they are illiquid, or something similar to the US where you can have a lightweight 409a valuation to assign a value to the shares).  
+6.  Integration with a basic accounting workflow that can be managed either personally or by an external accountant, with the ability to file simplified basic taxes provided overall revenue is below a certain threshold.
+7.  Ways of dealing with all the other paperwork involved in running a company on-line.
+
+This is a strange mixture of Carta, Rippling, Docusign, Cloud Atlas, a Notary, and Intuit -- but it would make the process of starting and running a company much less daunting and costly.  
+  
+Ideally, I could sign up to the site, verify my identity, incorporate a basic company with standardized bylaws, raise seed funding, employ people, run their payroll, and file basic taxes and paperwork.  
+  
+In the above dream, what am I missing?  
+  
+My suspicion is that building and running such a website would actually be not difficult (if the political will in Europe existed), and would have a measurable impact on company formation and GDP. If we want economic growth like the US, Europe needs to become a place where building and growing a business is easier and has less friction than in the US.  
+  
+So assuming the gaps that I am missing are filled in, the next step is asking: What policy reforms are necessary to reach this ideal?
