@@ -1,8 +1,9 @@
 ---
 title: "Halvar’s Guide to Entrepreneurship"
-subtitle: "Version 0.1"
+subtitle: "Version 0.11"
 description: "Thomas Dullien’s guide to software and SaaS B2B entrepreneurship."
 date: 2026-06-23
+date-modified: 2026-06-24
 author: "Thomas Dullien"
 toc: true
 ---
