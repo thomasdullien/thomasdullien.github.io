@@ -47,7 +47,7 @@ My reasons were:
 
 Your reasons may be very different. Mine changed — when I started my first company, #8 and #2 were paramount because I had no experience in large organizations. That’s normal. Either way, it is important to think about “why do you want to start a company”, and also “why do you want to start this company”. The process of running a company has stretches where it really isn’t fun - in those moments you need to know why you’re doing this (to yourself).
 
-Weigh the alternatives carefully — “would I rather do this for the next 7+ years, or …”. Starting a company and having second thoughts 18 months into the journey is not a great situation.1
+Weigh the alternatives carefully — “would I rather do this for the next 7+ years, or …”. Starting a company and having second thoughts 18 months into the journey is not a great situation. (The pros and cons here can be a good basis for your pitch deck if you need to raise funding.)
 
 In the end, the first thing you need to do is “figure out what you want” - imagine yourself in 2, 5, 7, 10 years, and think about where you want to be at each of these points. Figuring out what you want is crucial, because everything else follows from that - and first and foremost the choice of your target market.
 
@@ -61,11 +61,7 @@ Broadly speaking, target markets come in 4 forms:
 
 1. No target market. The market is so small that it’ll amount to less than 1m a year if you saturated it. This isn’t a company, it’s a shop.
 
-2. A growing niche: Any market between a few million and less than 50m, with a sensible growth rate. My first company was built into such a market (it amounted to perhaps 6m when we started, and grew to 30-50m today - 20 years later). Sometimes a niche can explode into an enormous market, so a “good” niche can
-
-1 The pros and cons here can be a good basis for your pitch deck if you need to raise funding.
-
-become (4) - but be careful, because many hyped niche markets never became huge.
+2. A growing niche: Any market between a few million and less than 50m, with a sensible growth rate. My first company was built into such a market (it amounted to perhaps 6m when we started, and grew to 30-50m today - 20 years later). Sometimes a niche can explode into an enormous market, so a “good” niche can become (4) - but be careful, because many hyped niche markets never became huge.
 
 3. A healthy specialized market: A market somewhere between 50m and a few billion — big enough to build a large mid-sized company (the German “Mittelstand” thrives here — these are privately-held businesses serving some specialized part of an industry).
 
@@ -469,6 +465,26 @@ As a founder, you will find yourself in situations where you need to hire an ext
 4. Intersect multiple of these lists to find people that are actually good.
 
 A publication track record does not automatically imply practical expertise. It does imply that they know something about that field, and through knowing something, they will automatically have a much better instinct for ranking other experts than you do. In any field, the best practitioners are often not those that publish a lot, but the best practitioners tend to be known to people that do.
+
+### The true value of being a great boss
+
+Your life and your career will be a series of "games", or life periods. It's a quest that will span from ~18-20 until your retirement, whenever that may be. Along the way,
+you will meet people of great ability and personality - people that you will absolutely **want** on your team when you try something big.
+
+In order to achieve something great, or anything nontrivial, you will need to assemble a great team. This is something you can only
+really do if **almost every good player you ever played with will want to play with you again**.
+
+This is a sort of egotistical perspective on why you should treat people fairly, why you should be the boss and colleague that everybody
+thinks makes the team better: You can only assemble a great team if great and highly intelligent people perceive you as trustworthy, as
+someone who has the best interest of the team in mind, and someone that can pull off great things **as part of a team** and **for the team**.
+
+True leadership is this - the ability to attract, motivate, and direct great people in a way that the achievement of the group greatly
+exceeds what each individual could've achieved on their own and what the group could've achieved without your leadership.
+
+Both in running the company, and also (perhaps most importantly) in exiting: Try to make sure that everybody walks away feeling fairly
+treated, feeling that the outcome was worth the struggle or at least that your leadership achieved the best that could be achieved under
+the circumstances. If you manage to do that, people will be happy to join you on your next quest, and you'll have the ability to have
+a world-cup-level team.
 
 ## Marketing
 
