@@ -9,9 +9,9 @@ In this post, I will explain my current thinking about neural networks. In a [pr
   
 The standard textbook explanation of a layer of a neural network looks something like this: 
 
-\\ \sigma( \overline{W}x + b )\\
+$$ \sigma( \overline{W}x + b )$$
 
-where \\\sigma : \mathbb{R} \to \mathbb{R}\\ is a nonlinearity (either the sigmoid or the ReLU or something like it), \\\overline{W}\\ is the matrix of weights attached to the edges coming into the neurons, and \\b\\ is the vector of "biases". Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as "matrix multiplications alternating with applying a nonlinearity".
+where $\sigma : \mathbb{R} \to \mathbb{R}$ is a nonlinearity (either the sigmoid or the ReLU or something like it), $\overline{W}$ is the matrix of weights attached to the edges coming into the neurons, and $b$ is the vector of "biases". Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as "matrix multiplications alternating with applying a nonlinearity".
 
   
 
@@ -19,51 +19,51 @@ I really don't like to think about NNs with nonlinearities other than ReLU and l
 
   
 
-Assume we have a network with \\k\\ layers, and the number of neurons in each layer are \\n\_1, \dots, n\_k\\. The network maps between real vector spaces (or an approximation thereof) of dimension \\i\\ and \\o\\.
+Assume we have a network with $k$ layers, and the number of neurons in each layer are $n_1, \dots, n_k$. The network maps between real vector spaces (or an approximation thereof) of dimension $i$ and $o$.
 
-\\  
-    NN : \mathbb{R}^i \to \mathbb{R}^o  
-\\  
-I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector \\\overline{x}\\ gets augmented by appending a 1, and the bias vector \\b\\ gets appended to \\\overline{W}\\:  
-\\  
-    W' = \[\overline{W}b\], x = \left\[\begin{array}{c}\overline{x}\\1\end{array}\right\]  
-\\  
+$$
+    NN : \mathbb{R}^i \to \mathbb{R}^o
+$$  
+I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector $\overline{x}$ gets augmented by appending a 1, and the bias vector $b$ gets appended to $\overline{W}$:  
+$$
+    W' = [\overline{W}b], x = \left[\begin{array}{c}\overline{x}\\1\end{array}\right]
+$$  
 
-Instead of \\\sigma(\overline{W}x + b)\\ we can write \\\sigma(W'x)\\.  
-In our case, \\\sigma\\ is always ReLU or leaky ReLU, so a "1" will be mapped to a "1" again. For reasons of being able to compose things nicely later, I would also like the output of \\\sigma(W'x)\\ to have a 1 as last component, like our input vector \\x\\. To achieve this, I need to append a row of all zeroes terminated in a 1 to \\W'\\. Finally we have:
+Instead of $\sigma(\overline{W}x + b)$ we can write $\sigma(W'x)$.  
+In our case, $\sigma$ is always ReLU or leaky ReLU, so a "1" will be mapped to a "1" again. For reasons of being able to compose things nicely later, I would also like the output of $\sigma(W'x)$ to have a 1 as last component, like our input vector $x$. To achieve this, I need to append a row of all zeroes terminated in a 1 to $W'$. Finally we have:
 
-\\  
-    W = \left\[\begin{array}{cc}\overline{W}& b\\0, \dots & 1\end{array}\right\], x = \left\[\begin{array}{c}\overline{x}\\1\end{array}\right\]  
-\\
+$$
+    W = \left[\begin{array}{cc}\overline{W}& b\\0, \dots & 1\end{array}\right], x = \left[\begin{array}{c}\overline{x}\\1\end{array}\right]
+$$
 
-The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point \\x\_1\\. If you evaluate the NN on \\x\_1\\, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given \\x\_1\\, there will be \\k\\ boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either \\0\\ or \\1\\ in the ReLU case, or \\0.01\\ and \\1\\ in the leaky ReLU case.
+The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point $x_1$. If you evaluate the NN on $x_1$, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given $x_1$, there will be $k$ boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either $0$ or $1$ in the ReLU case, or $0.01$ and $1$ in the leaky ReLU case.
 
   
-We call this function \\a\\. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:
+We call this function $a$. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:
 
-\\  
-    a\_{l, n} : \mathbb{R}^i \to \\ 0, 1 \\ \textnormal{ for ReLU }  
-\\  
+$$
+    a_{l, n} : \mathbb{R}^i \to \{ 0, 1 \} \textnormal{ for ReLU }
+$$  
 and
 
-\\  
-    a\_{l, n} : \mathbb{R}^i \to \\ 0.01, 1 \\ \textnormal{ for leaky ReLU }  
-\\  
+$$
+    a_{l, n} : \mathbb{R}^i \to \{ 0.01, 1 \} \textnormal{ for leaky ReLU }
+$$  
 This gives us a very linear-algebra-ish expression for the entire network:
 
-\\  
-    NN(x) = W\_1 A\_1 \dots W\_k A\_k x = \prod\_{i=0}^k (W\_i A\_i)x  
-\\  
+$$
+    NN(x) = W_1 A_1 \dots W_k A_k x = \prod_{i=0}^k (W_i A_i)x
+$$  
 
-Where the \\A\_k\\ are of the form
+Where the $A_k$ are of the form
 
-\\  
-    A\_k = \left( \begin{array}{cccc} a\_{k, 1}(x) & \dots & 0 & 0\\ \dots & \dots & \dots & \dots \\ 0 & \dots & a\_{k, n\_k}(x) & 0\\ 0 & 0 & 0 & 1\end{array}\right)  
-\\  
+$$
+    A_k = \left( \begin{array}{cccc} a_{k, 1}(x) & \dots & 0 & 0\\ \dots & \dots & \dots & \dots \\ 0 & \dots & a_{k, n_k}(x) & 0\\ 0 & 0 & 0 & 1\end{array}\right)
+$$  
 
 So we can see now very clearly that the moment that the activation pattern is determined, the entire function becomes linear, and just a series of matrix multiplications where every 2nd matrix is a diagonal matrix with the image of the activation pattern on the diagonal.  
   
-This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a "polytope identifier" -- for any input point \\x\\ I can run it through the network, and if a second point \\x'\\ has the same pattern, I know it lives on the same polytope.  
+This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a "polytope identifier" -- for any input point $x$ I can run it through the network, and if a second point $x'$ has the same pattern, I know it lives on the same polytope.  
   
 So from this I can take the sort of movies for single-layer NNs that were created in [part 1](https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html) - where we can take an arbitrary 2-dimensional image as the unknown distribution that we wish to learn and then visualize the training dynamics: Show how the input space is cut up into different polytopes on which the function is then linearly approximated, and show how this partition and approximation evolves through the training process for differently-shaped networks.  
   

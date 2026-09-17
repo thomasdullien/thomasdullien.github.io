@@ -65,6 +65,16 @@ def blogger_id(entry: dict) -> str:
 
 
 IFRAME_RE = re.compile(r"<iframe\b.*?</iframe>", re.IGNORECASE | re.DOTALL)
+MATH_RE = re.compile(r"\\\[.*?\\\]|\\\(.*?\\\)", re.DOTALL)
+
+
+def normalize_math_breaks(source_html: str) -> str:
+    # Blogger inserts HTML line breaks inside TeX. Pandoc's HTML math reader
+    # needs these to be plain whitespace; TeX's own \\ row separators stay intact.
+    return MATH_RE.sub(
+        lambda match: re.sub(r"<br\s*/?>", "\n", match.group(0), flags=re.IGNORECASE),
+        source_html,
+    )
 
 
 def preserve_iframes(source_html: str) -> tuple[str, list[str]]:
@@ -98,6 +108,7 @@ def restore_iframes(markdown: str, iframes: list[str]) -> str:
 
 def convert_html_to_markdown(pandoc: str, source_html: str) -> str:
     source_html, iframes = preserve_iframes(source_html)
+    source_html = normalize_math_breaks(source_html)
     with tempfile.TemporaryDirectory() as tmp:
         html_path = Path(tmp) / "post.html"
         md_path = Path(tmp) / "post.md"
@@ -107,9 +118,9 @@ def convert_html_to_markdown(pandoc: str, source_html: str) -> str:
                 pandoc,
                 str(html_path),
                 "-f",
-                "html",
+                "html+tex_math_single_backslash",
                 "-t",
-                "markdown_strict+raw_html+pipe_tables+backtick_code_blocks+auto_identifiers",
+                "markdown_strict+raw_html+pipe_tables+backtick_code_blocks+auto_identifiers+tex_math_dollars",
                 "--wrap=preserve",
                 "-o",
                 str(md_path),

@@ -11,15 +11,15 @@ In one of these discussions, somebody correctly called me out on the simplistic 
 
 ### The space of words
 
-The tokenization and embedding step maps individual words (or tokens) to some \\\mathbb{R}^n\\ vectors. So let us imagine for a second that we have \\\mathbb{R}^n\\ in front of us. A piece of text is then a path through this space - going from word to word to word, tracing a (possibly convoluted) line.
+The tokenization and embedding step maps individual words (or tokens) to some $\mathbb{R}^n$ vectors. So let us imagine for a second that we have $\mathbb{R}^n$ in front of us. A piece of text is then a path through this space - going from word to word to word, tracing a (possibly convoluted) line.
 
   
 
-Imagine now that you label each of the "words" that form the path with a number: The last word with 1, counting forward until you hit the first word or the maximum context length \\c\\. If you've ever played the game "Snake", picture something similar, but played in very high-dimensional space - you're moving forward through space with the tail getting truncated off.
+Imagine now that you label each of the "words" that form the path with a number: The last word with 1, counting forward until you hit the first word or the maximum context length $c$. If you've ever played the game "Snake", picture something similar, but played in very high-dimensional space - you're moving forward through space with the tail getting truncated off.
 
   
 
-The LLM takes your previous path into account, calculates probabilities for the next point to go to, and then makes a random pick into the next point according to these probabilities. An LLM instantiated with a fixed random seed is a mapping of the form \\(\mathbb{R}^n)^c \mapsto (\mathbb{R}^n)^c\\.
+The LLM takes your previous path into account, calculates probabilities for the next point to go to, and then makes a random pick into the next point according to these probabilities. An LLM instantiated with a fixed random seed is a mapping of the form $(\mathbb{R}^n)^c \mapsto (\mathbb{R}^n)^c$.
 
   
 
@@ -83,7 +83,7 @@ This muddles the public discussion. We have many historical examples of humanity
 
   
 
-We should think in terms of "this is a function to generate sequences" and "by providing prefixes we can steer the sequence generation around in the space of words and change the probabilities for output sequences". And for every possible undesirable output sequence of a length smaller than \\c\\, we can pick a context that maximizes the probability of this undesirable output sequence.  
+We should think in terms of "this is a function to generate sequences" and "by providing prefixes we can steer the sequence generation around in the space of words and change the probabilities for output sequences". And for every possible undesirable output sequence of a length smaller than $c$, we can pick a context that maximizes the probability of this undesirable output sequence.  
   
 A much clearer formulation, which helps more clearly articulate the problems to solve.
 
@@ -97,7 +97,7 @@ Perhaps I am fighting windmills, or rather a self-selection bias: A fair number 
 
 ### Why I think human consciousness isn't comparable to an LLM
 
-The following is uncomfortably philosophical, but: In my worldview, humans are dramatically different things than a function \\(\mathbb{R}^n)^c \mapsto (\mathbb{R}^n)^c\\. For hundreds of millions of years, nature generated new versions, and only a small number of these versions survived. Human thought is a poorly-understood process, involving enormously many neurons, extremely high-bandwidth input, an extremely complicated cocktail of hormones, constant monitoring of energy levels, and millions of years of harsh selection pressure.
+The following is uncomfortably philosophical, but: In my worldview, humans are dramatically different things than a function $(\mathbb{R}^n)^c \mapsto (\mathbb{R}^n)^c$. For hundreds of millions of years, nature generated new versions, and only a small number of these versions survived. Human thought is a poorly-understood process, involving enormously many neurons, extremely high-bandwidth input, an extremely complicated cocktail of hormones, constant monitoring of energy levels, and millions of years of harsh selection pressure.
 
   
 

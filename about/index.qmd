@@ -119,17 +119,106 @@ experience in a variety of areas:
 
 ## Talks and presentations {#talks}
 
-I have given quite a large number of presentations over the years and
-nearly two decades that I have been involved in computer security. Below
+I have given quite a large number of presentations over the more than
+two decades that I have been involved in computer security. Below
 is a list of those that I can remember / find evidence for, in reverse
 chronological order.
 
 I have tried to link videos and slides (if I could find any), as well as
 a brief synopsis of what I remember the important point of the talk was.
 
-My year 2019 has a sharp drop-off in the number of talks compared to
-previous years; my wife and me have a child now and I have decided to
-travel & talk much less.
+From 2019 onward, I began travelling and speaking less after the birth
+of our first child.
+
+### 2026 {#2026}
+
+**BlueHat Asia, Singapore, September 17**: [An age of
+experimentation](slides/An-age-of-experimentation-BlueHat-Asia-2026.pdf)
+(slides, PDF).
+
+A talk about reasoning LLMs, rapid technological change, and why empirical
+experimentation, good benchmarks, and fast feedback loops matter for
+making progress.
+
+### 2025 {#2025}
+
+**CyCon, Tallinn, May**: [A walk down the learning
+curve](https://docs.google.com/presentation/d/1_3Iu74UijAjfSLHzqWDkDEaIwoB6WBSo9-mY5e0u0HM/edit)
+(slides) — [Video, including the Gentlemen Hackers fireside
+chat](https://www.youtube.com/watch?v=qllU_B_Rmis).
+
+A short talk on learning curves, production scale, and the economics of
+security, followed by a conversation with Mikko Hypponen and Tomi Tuominen.
+
+**DistrictCon, February 21, Keynote**: [Is this memory safety here in
+the room with us?](https://docs.google.com/presentation/d/1-CgBbVuFE1pJnB84wfeq_RadXQs13dCvHTFFVLPYTeg/edit)
+(slides).
+
+A look at approaches to memory safety, their trade-offs, and the gaps
+that remain, from Rust's ownership model to hardware/software co-design.
+
+### 2024 {#2024}
+
+**FUZZING workshop, Vienna, September 16, Keynote**: [Reasons for the
+Unreasonable Success of Fuzzing](https://www.youtube.com/watch?v=Jd1hItbf52k)
+(video) — [Abstract and programme](https://conf.researchr.org/details/issta-ecoop-2024/fuzzing-2024-papers/10/-Keynote-Reasons-for-the-Unreasonable-Success-of-Fuzzing).
+
+Why fuzzing turned out to be so effective, what I learned from initially
+underestimating it, and how brute-force exploration benefits from advances
+in hardware.
+
+**QCon London, Panel**: [What Does the Future of Computing Look
+Like](https://www.infoq.com/presentations/computing-interaction-technology/)
+(video and transcript).
+
+A discussion with Julia Lawall, Matt Fleming, and Joe Rowell about
+computing, performance engineering, and diagnosing production problems.
+
+**Ringzer0 / Bootstrap, February 24, Keynote**: [Revisiting 2017: AI
+and Security, 7 years later](https://www.youtube.com/watch?v=xA-ns0zi0k0)
+(video) — [Abstract](https://archive.ringzer0.training/sessions/halvar-keynote.html).
+
+Revisiting my ZeroNights 2017 keynote on AI in offensive and defensive
+security: what has changed, and which arguments still hold.
+
+### 2023 {#2023}
+
+**QCon London, March 29**: [Adventures in
+Performance](https://www.infoq.com/presentations/factors-code-performance/)
+(video and transcript).
+
+Lessons from performance and efficiency analysis at scale: how language
+design, hardware history, organisational structure, and statistical
+variance affect the efficiency of our software.
+
+### 2022 {#2022}
+
+**High Confidence Software and Systems (HCSS), May, Keynote**:
+[Limiting weird machines: Putting boundaries around emergent
+insecurity](https://docs.google.com/presentation/d/1-7XQWUHpGTrFls8M5OysefpF_HZ2YYCYW3huLPo6ArM/edit)
+(slides).
+
+A graph-theoretic view of why weird machines become powerful through
+composition, and how mitigations such as memory tagging might constrain
+the states an attacker can reach.
+
+### 2021 {#2021}
+
+**P99 CONF**: [Where Did All These Cycles
+Go?](https://p99conf.io/session/where-did-all-these-cycles-go/)
+(session and recording).
+
+Finding the hidden places where CPU resources are wasted, and using
+profiling to recover them.
+
+### 2020 {#2020}
+
+**OffensiveCon, Keynote; also presented at Bugcrowd LevelUp0x06**:
+[Why I Love Offensive Work, Why I Don't Love Offensive
+Work](https://www.youtube.com/watch?v=8QRnOpjmneo) (video).
+
+Reflections on the appeal of offensive security research and the
+frustrations that come with doing it.
 
 ### 2019 {#2019}
 
@@ -191,7 +280,7 @@ Btw, about 1 year later, I am a bit more optimistic - the open-sourcing
 of GHIDRA seems to have created a bit of momentum behind one major
 framework.
 
-**CyCon Talinn 2019, Keynote**: [Security, Moore's law, and the anomaly
+**CyCon Tallinn 2018, Keynote**: [Security, Moore's law, and the anomaly
 of cheap complexity](https://www.youtube.com/watch?v=q98foLaAfX8)
 
 I was invited to Keynote CyCon, and my talk was supposed to be right
