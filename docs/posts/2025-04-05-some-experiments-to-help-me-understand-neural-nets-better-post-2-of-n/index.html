@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3a8c703fb520cc07f7eefc65bb59a90d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-be9ea2f46684da68f705b6d67b70e0b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -214,47 +214,41 @@ window.Quarto = {
 
 <p>In this post, I will explain my current thinking about neural networks. In a <a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html">previous post</a> I explained the intuition behind my “origami view of NNs” (also called the “polytope lens” in some circles). In this post, I will go a little bit into the mathematical details of this.</p>
 <p>The standard textbook explanation of a layer of a neural network looks something like this:&nbsp;</p>
-<p>\ ( x + b )\</p>
-<p>where \: \ is a nonlinearity (either the sigmoid or the ReLU or something like it), \\ is the matrix of weights attached to the edges coming into the neurons, and \b\ is the vector of “biases”. Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as “matrix multiplications alternating with applying a nonlinearity”.</p>
+<p><span class="math display">\[ \sigma( \overline{W}x + b )\]</span></p>
+<p>where <span class="math inline">\(\sigma : \mathbb{R} \to \mathbb{R}\)</span> is a nonlinearity (either the sigmoid or the ReLU or something like it), <span class="math inline">\(\overline{W}\)</span> is the matrix of weights attached to the edges coming into the neurons, and <span class="math inline">\(b\)</span> is the vector of “biases”. Personally, I find this notation somewhat cumbersome, and I prefer to pull the bias vector into the weight matrices, so that I can think of an NN as “matrix multiplications alternating with applying a nonlinearity”.</p>
 <p>I really don’t like to think about NNs with nonlinearities other than ReLU and leaky ReLU - perhaps over time I will have to accept that these are a thing, but for now all NNs that I think about are either ReLU or leaky ReLU. For the moment, we also assume that the network outputs a real vector in the end, so it is not (yet) a classifier.</p>
-<p>Assume we have a network with \k\ layers, and the number of neurons in each layer are \n_1, , n_k\. The network maps between real vector spaces (or an approximation thereof) of dimension \i\ and \o\.</p>
-\<br>
-&nbsp; &nbsp; NN : ^i ^o<br>
-\<br>
-I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector \\ gets augmented by appending a 1, and the bias vector \b\ gets appended to \\:<br>
-\<br>
-&nbsp; &nbsp; W’ = [b], x = [
-<span class="math display">\[\begin{array}{c}\overline{x}\\1\end{array}\right\]\]</span>
-<p>\</p>
-<p>Instead of \(x + b)\ we can write \(W’x)\.<br>
-In our case, \\ is always ReLU or leaky ReLU, so a “1” will be mapped to a “1” again. For reasons of being able to compose things nicely later, I would also like the output of \(W’x)\ to have a 1 as last component, like our input vector \x\. To achieve this, I need to append a row of all zeroes terminated in a 1 to \W’\. Finally we have:</p>
-\<br>
-&nbsp; &nbsp; W = [
-<span class="math display">\[\begin{array}{cc}\overline{W}&amp; b\\0, \dots &amp; 1\end{array}\]</span>
-], x = [
-<span class="math display">\[\begin{array}{c}\overline{x}\\1\end{array}\right\]\]</span>
-<p>\</p>
-<p>The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point \x_1\. If you evaluate the NN on \x_1\, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given \x_1\, there will be \k\ boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either \0\ or \1\ in the ReLU case, or \0.01\ and \1\ in the leaky ReLU case.</p>
-<p>We call this function \a\. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:</p>
-<p>\<br>
-&nbsp; &nbsp; a_{l, n} : ^i \ 0, 1 \ <br>
-\<br>
+<p>Assume we have a network with <span class="math inline">\(k\)</span> layers, and the number of neurons in each layer are <span class="math inline">\(n_1, \dots, n_k\)</span>. The network maps between real vector spaces (or an approximation thereof) of dimension <span class="math inline">\(i\)</span> and <span class="math inline">\(o\)</span>.</p>
+<p><span class="math display">\[
+&nbsp; &nbsp; NN : \mathbb{R}^i \to \mathbb{R}^o
+\]</span><br>
+I would like to begin by pulling the bias vector into the matrix multiplications, because it greatly simplifies notation. So the input vector <span class="math inline">\(\overline{x}\)</span> gets augmented by appending a 1, and the bias vector <span class="math inline">\(b\)</span> gets appended to <span class="math inline">\(\overline{W}\)</span>:<br>
+<span class="math display">\[
+&nbsp; &nbsp; W' = [\overline{W}b], x = \left[\begin{array}{c}\overline{x}\\1\end{array}\right]
+\]</span></p>
+<p>Instead of <span class="math inline">\(\sigma(\overline{W}x + b)\)</span> we can write <span class="math inline">\(\sigma(W'x)\)</span>.<br>
+In our case, <span class="math inline">\(\sigma\)</span> is always ReLU or leaky ReLU, so a “1” will be mapped to a “1” again. For reasons of being able to compose things nicely later, I would also like the output of <span class="math inline">\(\sigma(W'x)\)</span> to have a 1 as last component, like our input vector <span class="math inline">\(x\)</span>. To achieve this, I need to append a row of all zeroes terminated in a 1 to <span class="math inline">\(W'\)</span>. Finally we have:</p>
+<p><span class="math display">\[
+&nbsp; &nbsp; W = \left[\begin{array}{cc}\overline{W}&amp; b\\0, \dots &amp; 1\end{array}\right], x = \left[\begin{array}{c}\overline{x}\\1\end{array}\right]
+\]</span></p>
+<p>The previous post explained why the NN divides the input space into polytopes on which the approximated function will be entirely linear. Consider the data point <span class="math inline">\(x_1\)</span>. If you evaluate the NN on <span class="math inline">\(x_1\)</span>, a few of the ReLUs will light up (because their incoming data sums to more than 0) and a few will not. For a given <span class="math inline">\(x_1\)</span>, there will be <span class="math inline">\(k\)</span> boolean vectors representing the activation (or non-activation) of each ReLU in the NN. Which means we have a function which for a given input vector, layer, and neuron number in the layer returns either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> in the ReLU case, or <span class="math inline">\(0.01\)</span> and <span class="math inline">\(1\)</span> in the leaky ReLU case.</p>
+<p>We call this function <span class="math inline">\(a\)</span>. We could make it a function with three arguments (layer, neuron index, input vector), but I prefer to move the layer and the neuron index into indices, so we have:</p>
+<p><span class="math display">\[
+&nbsp; &nbsp; a_{l, n} : \mathbb{R}^i \to \{ 0, 1 \} \textnormal{ for ReLU }
+\]</span><br>
 and</p>
-<p>\<br>
-&nbsp; &nbsp; a_{l, n} : ^i \ 0.01, 1 \ <br>
-\<br>
+<p><span class="math display">\[
+&nbsp; &nbsp; a_{l, n} : \mathbb{R}^i \to \{ 0.01, 1 \} \textnormal{ for leaky ReLU }
+\]</span><br>
 This gives us a very linear-algebra-ish expression for the entire network:</p>
-<p>\<br>
-&nbsp; &nbsp; NN(x) = W_1 A_1 W_k A_k x = _{i=0}^k (W_i A_i)x<br>
-\</p>
-<p>Where the \A_k\ are of the form</p>
-\<br>
-&nbsp; &nbsp; A_k = (
-<span class="math display">\[\begin{array}{cccc} a\_{k, 1}(x) &amp; \dots &amp; 0 &amp; 0\\ \dots &amp; \dots &amp; \dots &amp; \dots \\ 0 &amp; \dots &amp; a\_{k, n\_k}(x) &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\]</span>
-<p>)<br>
-\</p>
+<p><span class="math display">\[
+&nbsp; &nbsp; NN(x) = W_1 A_1 \dots W_k A_k x = \prod_{i=0}^k (W_i A_i)x
+\]</span></p>
+<p>Where the <span class="math inline">\(A_k\)</span> are of the form</p>
+<p><span class="math display">\[
+&nbsp; &nbsp; A_k = \left( \begin{array}{cccc} a_{k, 1}(x) &amp; \dots &amp; 0 &amp; 0\\ \dots &amp; \dots &amp; \dots &amp; \dots \\ 0 &amp; \dots &amp; a_{k, n_k}(x) &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)
+\]</span></p>
 <p>So we can see now very clearly that the moment that the activation pattern is determined, the entire function becomes linear, and just a series of matrix multiplications where every 2nd matrix is a diagonal matrix with the image of the activation pattern on the diagonal.</p>
-<p>This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a “polytope identifier” – for any input point \x\ I can run it through the network, and if a second point \x’\ has the same pattern, I know it lives on the same polytope.</p>
+<p>This representation shows us that the function remains identical (and linear) provided the activation pattern does not change - points on the same polytope will have an identical activation pattern, and we can hence use the activation pattern as a “polytope identifier” – for any input point <span class="math inline">\(x\)</span> I can run it through the network, and if a second point <span class="math inline">\(x'\)</span> has the same pattern, I know it lives on the same polytope.</p>
 <p>So from this I can take the sort of movies for single-layer NNs that were created in <a href="https://addxorrol.blogspot.com/2024/07/some-experiments-to-help-me-understand.html">part 1</a>&nbsp;- where we can take an arbitrary 2-dimensional image as the unknown distribution that we wish to learn and then visualize the training dynamics:&nbsp;Show how the input space is cut up into different polytopes on which the function is then linearly approximated, and show how this partition and approximation evolves through the training process for differently-shaped networks.</p>
 <p>We take input images of size 1024x1024, so one megabyte of byte-sized values, and sample 5000 data points from them - a small fraction, about 0.4% of the overall points in the image. We specify a shape for the MLP, and train it for 6000 steps, visualizing progress.</p>
 <p>For simplicity, we try to learn a black ring on white ground, with sharply-delineated edges - first with a network that has 14 neurons per layer, and is 6 layers deep.&nbsp;</p>
