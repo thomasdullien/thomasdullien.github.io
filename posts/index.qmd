@@ -11,3 +11,14 @@ listing:
 Some of my writing, a lot of it imported from my blog at addxorrol.blogspot.com - topics
 range from technical, mathematical, political to the very personal. Enjoy.
 
+## In memoriam
+
+Eulogies I wrote for two friends:
+
+- [My friend Stealth — Sebastian Krahmer](https://www.thc.org/404/stealth/eulogy.txt).
+  My contribution, signed "halvar", to the collection of memories hosted by THC.
+- [In memory of FX — Felix Lindner](https://phenoelit.de/fx.html#Halvar).
+  My tribute on Phenoelit's memorial page.
+
+## Blog posts
+
